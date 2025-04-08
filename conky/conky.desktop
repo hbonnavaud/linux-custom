@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Exec=/bin/bash -c 'for conf in ~/.config/conky/*.conf; do [ -f "$conf" ] && conky -c "$conf" & done'
+Name=ConkyLauncher
+Comment=Launch all conky files
+X-GNOME-Autostart-enabled=true
