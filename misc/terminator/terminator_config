@@ -1,0 +1,107 @@
+[global_config]
+  focus = system
+  enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, TerminatorThemes
+  cell_width = 1.2
+  cell_height = 1.2
+[keybindings]
+  split_horiz = <Primary><Shift>h
+  split_vert = <Primary><Shift>v
+  copy = <Primary>c
+  paste = <Primary>v
+[profiles]
+  [[default]]
+    background_color = "#353a44"
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_bg_color = "#d9d9d9"
+    foreground_color = "#afdab6"
+    show_titlebar = False
+    palette = "#151515:#bc5653:#909d63:#ebc17a:#6a8799:#b06698:#c9dfff:#d9d9d9:#636363:#bc5653:#a0ac77:#ebc17a:#7eaac7:#b06698:#acbbd0:#f7f7f7"
+  [[Afterglow]]
+    background_color = "#212121"
+    cursor_bg_color = "#d0d0d0"
+    foreground_color = "#d0d0d0"
+    show_titlebar = False
+    palette = "#151515:#ac4142:#7e8e50:#e5b567:#6c99bb:#9f4e85:#7dd6cf:#d0d0d0:#505050:#ac4142:#7e8e50:#e5b567:#6c99bb:#9f4e85:#7dd6cf:#f5f5f5"
+  [[Zenburn]]
+    background_color = "#3f3f3f"
+    cursor_bg_color = "#73635a"
+    foreground_color = "#dcdccc"
+    show_titlebar = False
+    palette = "#4d4d4d:#705050:#60b48a:#f0dfaf:#506070:#dc8cc3:#8cd0d3:#dcdccc:#709080:#dca3a3:#c3bf9f:#e0cf9f:#94bff3:#ec93d3:#93e0e3:#ffffff"
+  [[WildCherry]]
+    background_color = "#1f1726"
+    cursor_bg_color = "#dd00ff"
+    foreground_color = "#dafaff"
+    show_titlebar = False
+    palette = "#000507:#d94085:#2ab250:#ffd16f:#883cdc:#ececec:#c1b8b7:#fff8de:#009cc9:#da6bac:#f4dca5:#eac066:#308cba:#ae636b:#ff919d:#e4838d"
+  [[WarmNeon]]
+    background_color = "#404040"
+    cursor_bg_color = "#30ff24"
+    foreground_color = "#afdab6"
+    show_titlebar = False
+    palette = "#000000:#e24346:#39b13a:#dae145:#4261c5:#f920fb:#2abbd4:#d0b8a3:#fefcfc:#e97071:#9cc090:#ddda7a:#7b91d6:#f674ba:#5ed1e5:#d8c8bb"
+  [[Vag]]
+    background_color = "#191f1d"
+    cursor_bg_color = "#e5f0fa"
+    foreground_color = "#d9e6f2"
+    show_titlebar = False
+    palette = "#303030:#a87139:#39a871:#71a839:#7139a8:#a83971:#3971a8:#8a8a8a:#494949:#b0763b:#3bb076:#76b03b:#763bb0:#b03b76:#3b76b0:#cfcfcf"
+  [[Urple]]
+    background_color = "#1b1b23"
+    cursor_bg_color = "#a063eb"
+    foreground_color = "#877a9b"
+    show_titlebar = False
+    palette = "#000000:#b0425b:#37a415:#ad5c42:#564d9b:#6c3ca1:#808080:#87799c:#5d3225:#ff6388:#29e620:#f08161:#867aed:#a05eee:#eaeaea:#bfa3ff"
+  [[UnderTheSea]]
+    background_color = "#011116"
+    cursor_bg_color = "#4afcd6"
+    foreground_color = "#ffffff"
+    show_titlebar = False
+    palette = "#022026:#b2302d:#00a941:#59819c:#459a86:#00599d:#5d7e19:#405555:#384451:#ff4242:#2aea5e:#8ed4fd:#61d5ba:#1298ff:#98d028:#58fbd6"
+  [[Treehouse]]
+    background_color = "#191919"
+    cursor_bg_color = "#fac814"
+    foreground_color = "#786b53"
+    show_titlebar = False
+    palette = "#321300:#b2270e:#44a900:#b5835a:#58859a:#97363d:#b25a1e:#cdab8f:#433626:#ed5d20:#55f238:#f2b732:#85cfed:#e14c5a:#f07d14:#ffc800"
+    bold_is_bright = True
+  [[Tomorrow Night Eighties]]
+    background_color = "#2d2d2d"
+    cursor_bg_color = "#cccccc"
+    foreground_color = "#cccccc"
+    show_titlebar = False
+    palette = "#000000:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#ffffff:#000000:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#ffffff"
+  [[Teerb]]
+    background_color = "#262626"
+    cursor_bg_color = "#e4c9af"
+    foreground_color = "#d0d0d0"
+    show_titlebar = False
+    palette = "#1c1c1c:#d68686:#aed686:#d7af87:#86aed6:#d6aed6:#8adbb4:#d0d0d0:#1c1c1c:#d68686:#aed686:#e4c9af:#86aed6:#d6aed6:#b1e7dd:#efefef"
+  [[Sweet-Mars]]
+    background_color = "#1a1e21"
+    cursor_bg_color = "#e1dd8f"
+    foreground_color = "#b6b7b9"
+    show_titlebar = False
+    palette = "#2e3436:#f67e7d:#cae7b9:#e1dd8f:#729fcf:#d7bcc8:#a0c1b9:#d3d7cf:#555753:#f67e7d:#cae7b9:#e1dd8f:#729fcf:#d7bcc8:#a0c1b9:#eeeeec"
+  [[Relaxed]]
+    background_color = "#353a44"
+    cursor_bg_color = "#d9d9d9"
+    foreground_color = "#d9d9d9"
+    show_titlebar = False
+    palette = "#151515:#bc5653:#909d63:#ebc17a:#6a8799:#b06698:#c9dfff:#d9d9d9:#636363:#bc5653:#a0ac77:#ebc17a:#7eaac7:#b06698:#acbbd0:#f7f7f7"
+  [[Andromeda]]
+    background_color = "#23262e"
+    cursor_bg_color = "#f8f8f0"
+    foreground_color = "#e5e5e5"
+    show_titlebar = False
+    palette = "#000000:#f92672:#00e8c6:#ffe66d:#7cb7ff:#c74ded:#96e072:#e5e5e5:#666666:#ee5d43:#96e072:#f39c12:#7cb7ff:#ff00aa:#00e8c6:#e5e5e5"
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
