@@ -1,0 +1,70 @@
+\section{Automated planning}\label{section:bg:planning}
+%ALEX: Je l'appellerais plutôt "Automated Planning". Puis tu dis que Classical Planning (ou STRIPS) est quand les actions sont des effets deterministes.
+
+The automated planning problem is frequently defined as the selection of actions in order to achieve a desired objective.
+% ALEX Il faut le différencier du RL, où le but est semblable.(tu as un paragraphe dans ce style dans le rapport Parhéro que je t'ai passé)
+% Dire que Planning dispose d'un modèle duquel on peut extraire, grÂce à la fonction de transition, un graphe d'atteignabilité.
+% De ma compréhension, la seul différence c'est qu'n RL on va apprendre (on résuit une certaine erreur) les actions à effectuer alors qu'en automated planning on calcule directement l'action optimale.
+% Mais déjà je ne suis pas un expert de la question donc que je parle dans ma thèse de quelque chose que je ne connais pas c'est peut-être qu'on m'a ...
+% Mais en plus à part utiliser Dijikstra je ne fait pas de planning donc je ne sais pas pourquoi on s'embêtte.
+
+This problem can be conceptualised as a graph of nodes, representing potential states, interconnected by edges, representing actions.
+% ALEX : Ici tu dis que tu te focalises sur ce qu'on appelle Classical Planning, où les transitions dans le graphe orienté sont déterministes, i.e. pas de 'fils' OR.
+% Ce serait aussi bien de faire le rapprochement avec STRIPS, que les lecteurs connaissent.
+
+The Classical planning problem is solved by formulating a plan, which is in classical planning defined as a sequence of actions or edges that originates at the initial node and ends in one of the designated goal nodes.
+In order to be represented as a classical planning model, which must satisfy three preconditions.
+\begin{itemize}
+    \item a finite set of states;
+    \item deterministic transitions between states;
+    \item full information about the initial state;
+\end{itemize}
+
+A classical planning problem can be translated as a directed graph, with the nodes representing states and the edges representing actions.
+A transition is then directed from a source node (or state) towards a destination node (or next state).
+A solution plan is thus defined as a sequence of transitions in this graph, leading from the initial node to another node that is an element of the goal nodes set, i.e. a linearly ordered finite sequence of actions.
+
+\begin{definition}[Classical Planning Model]\label{definition:bg:plan:classical-planning-model}
+    The classical planning model could then be defined by:
+    \begin{itemize}
+        \item A finite set of states $S$;
+        \item An initial state $s_0 \in S$;
+        \item A set of goal states $S_G \subseteq S$;
+        \item A set of actions $A$;
+        \item A state transition function $f: S \times A \rightarrow S: (s, a) \mapsto f(s, a) = s'$;
+    \end{itemize}
+\end{definition}
+The state resulting from the application of the action $a$ to the given state $s$ is denoted $s'$.
+
+The applicability of a fixed action $a$ in a state $s$ is defined as the existence of at least one target state $s'$ such that $f(s, a) = s'$.
+We define the applicability domain as the subset $S_a$ such that, $f \mid S_a$ is injective.
+Executing a sequence of applicable actions $[a0, \dots, an]$ onto a given state $s_0$ results in a chain of states such that $f(s_0, [a_0, \dots, a_n]) = [s_0, \dots, s_{n+1}]$, with $f(s_i, a_i) = s_{i+1}$, for $0 \leq i \leq n$, and $a_i$ an applicable operator in $s_i$.
+We define the action $a_0$ as the \("\)no-operation\("\) action, such that $f(s_0, a_0) = s_0$.
+
+A plan for a classical planning problem is constituted by a sequence of actions that are designed to achieve a goal
+state from the initial state of the problem. % ALEX: Fais gaffe, tu l'as déjà dit plus haut. JE garderais cette jolie définition formelle et couperait en haut, ligne 10.
+
+\begin{definition}[Classical Plan]\label{definition:classical-plan}
+    A plan $p$ for a classical problem  $P = \langle S, s_0, S_G, A, f \rangle$ is an action sequence
+    $p = \left[ a_0, \dots, a_n \right]$ that, once applied on the initial state, results in a sequence of states
+    $[ s_0, \dots, s_n ]$, such that:
+    \begin{itemize}
+        \item all actions are applicable, and $s_{i+1} = f (s_i, a_i)$,
+        \mbox{for $\,0 \le i \le n$.}
+        \item the sequence terminates in a goal state: $s_{n+1} \in S_G$.
+    \end{itemize}
+
+    We sometimes use the writing $result(p, s_0) = s_{n+1}$ to indicate that the state resulting from the execution of
+    $p$ on $s_0$ is $s_{n+1}$.
+\end{definition}
+
+The solution to a planning problem is defined as the shortest plan. % ALEX : Faux. Une solution est un plan. Une solution optimale est le plan le plus court.
+However, in certain cases, the actions associated with a given problem are subject to a range of costs.
+In such instances, the objective is to identify the plan, $p = \left[a_0, \dots , a_n\right]$, that minimises the total
+cost, $cost(p) =  \sum_{i \in [0, n]}cost(a_i)$.
+The planning model with costs is then defined as:
+\begin{definition}[Classical planning model with costs]\label{definition:planning-cost}
+    A planning model with costs $P_c$ consists of a planning model $P_c = \langle S, s_0, S_G, A, f \rangle$ along with
+    a function \linebreak \hbox{$c: A \mapsto \mathbb{R}_0^+$} that maps each operator in the model to a non-negative
+    cost.
+\end{definition}

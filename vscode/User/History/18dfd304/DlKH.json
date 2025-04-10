@@ -1,0 +1,6 @@
+{
+    "files.autoSave": "afterDelay",
+    "python.defaultInterpreterPath": "/home/hedwin/computing/home_venv",
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredDarkColorTheme": "Night Owl (No Italics)"
+}

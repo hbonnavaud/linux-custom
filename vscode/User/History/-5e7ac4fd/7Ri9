@@ -1,0 +1,89 @@
+#!/bin/bash
+
+VENS_DIR=~/py-venvs
+DEFAULT_SOURCE_VENV_NAME="default_venv"
+DEFAULT_DESTINATION_VENV_NAME="venv"
+
+# Function to check if a path is a valid venv
+is_valid_venv() {
+  if [ -f "$1/bin/activate" ]; then
+    return 0  # True
+  else
+    return 1  # False
+  fi
+}
+
+# Compute the SOURCE and DESTINATION venvs path or names from the given arguments.
+if [ -z "$1" ]; then
+  # No arguments are given, let's use default venv names. 
+  # We will try to find the source venv in the venv directory $VENVS_DIR.
+  SOURCE="$VENVS_DIR/$DEFAULT_SOURCE_VENV_NAME"
+  DESTINATION="venv"
+else
+  # A first argument is given, use it at the source venv. Then check if we can find the second one.
+  SOURCE="$1"
+  if [ -z "$2" ]; then
+    # There is no second argument, use the default venv name for the destination.
+    DESTINATION="$DEFAULT_DESTINATION_VENV_NAME"
+  else
+    # A second argument was given, use it as the destination.
+    DESTINATION="$2"
+  fi
+fi
+
+# Verify if we can find a valid source venv
+echo "SOURCE: $SOURCE"
+echo "DEST: $DESTINATION"
+if ! is_valid_venv "$SOURCE"; then
+  # The given/computed source is not a valid venv. Let's verify if this source is a venv path or a venv name. 
+  if [[ "$SOURCE" != *"/"* ]]; then
+    # The source venv is not a path but a venv name. Let's try to find it in the default venv directory.
+    if ! is_valid_venv "$VENVS_DIR/$SOURCE"; then
+      # No valid venv can be find with this name.
+      echo "ERROR: Neither $SOURCE nor $VENVS_DIR/$SOURCE are valid venv. Aborting."
+      exit 1
+    else
+      # We found a venv with the given name, let's use it as a source.
+      SOURCE="$VENVS_DIR/$SOURCE"
+      echo "Found a valid source venv $(realpath $SOURCE)."
+    fi
+  else
+    # I was a venv path, and we already saw that it does not exists or is not valid. Abort.
+    echo "ERROR: $SOURCE is not a valid venv. Aborting."
+    exit 1
+  fi
+  echo "Found a valid source venv $(realpath $SOURCE)."
+fi
+
+
+# Verify if the destination is free to be created
+if [ -d "$DESTINATION" ]; then
+  echo "ERROR: Destination directory '$(dirname "$DESTINATION")' already exists."
+  exit 1
+fi
+
+SRC_VENV_PATH=$(realpath $SOURCE)
+DEST_VENV_PATH=$(realpath $DESTINATION)
+SRC_VENV_NAME=$(basename $SRC_VENV_PATH)
+DEST_VENV_NAME=$(basename $DEST_VENV_PATH)
+
+# Copy venv
+echo "Copying $SRC_VENV_NAME to $DEST_VENV_PATH ..."
+cp -r "$SRC_VENV_PATH" "$DEST_VENV_PATH"
+
+if [ $? -ne 0 ]; then
+  echo "ERROR 8"
+  echo "Error: Failed to copy virtual environment"
+  exit 1
+fi
+
+# Update paths in scripts
+echo "Updating paths in the new virtual environment..."
+cd "$DEST_VENV_PATH/bin/" || exit 1
+echo "PASSS 0"
+sed -i "s|$SRC_VENV_PATH|$DEST_VENV_PATH|g" *
+echo "PASSS 1"
+sed -i "s|$SRC_VENV_NAME|$DEST_VENV_NAME|g" *
+echo "PASSS 2"
+
+echo "Virtual environment successfully copied from '$SRC_VENV_PATH' to '$DEST_VENV_PATH'"

@@ -1,0 +1,101 @@
+{
+    "telemetry.sqmId": "",
+    "telemetry.machineId": "9a28490d2caf143b7de4b665b70ad3a60baa44d59a2d91db2a599928aed5a4ea",
+    "telemetry.devDeviceId": "3ca32d58-a507-421e-af1c-e9f4ae29ade6",
+    "backupWorkspaces": {
+        "workspaces": [],
+        "folders": [
+            {
+                "folderUri": "file:///home/hedwin/computing"
+            }
+        ],
+        "emptyWindows": [
+            {
+                "backupFolder": "1744183472644"
+            }
+        ]
+    },
+    "windowControlHeight": 35,
+    "profileAssociations": {
+        "workspaces": {
+            "file:///home/hedwin/Documents/hedwin_thesis": "__default__profile__",
+            "file:///home/hedwin/Documents/invariant_policies": "__default__profile__",
+            "file:///home/hedwin/computing/projects/NavigationRLEnvironments": "__default__profile__",
+            "file:///home/hedwin/computing": "__default__profile__"
+        },
+        "emptyWindows": {
+            "1744183472644": "__default__profile__"
+        }
+    },
+    "theme": "vs-dark",
+    "themeBackground": "#282c34",
+    "windowSplash": {
+        "zoomLevel": 0,
+        "baseTheme": "vs-dark",
+        "colorInfo": {
+            "foreground": "#cccccc",
+            "background": "#282c34",
+            "editorBackground": "#282c34",
+            "titleBarBackground": "#282c34",
+            "activityBarBackground": "#282c34",
+            "sideBarBackground": "#282c34",
+            "sideBarBorder": "#23252c",
+            "statusBarBackground": "#282c34",
+            "statusBarBorder": "#282c34",
+            "statusBarNoFolderBackground": "#282c34"
+        },
+        "layoutInfo": {
+            "sideBarSide": "left",
+            "editorPartMinWidth": 220,
+            "titleBarHeight": 35,
+            "activityBarWidth": 48,
+            "sideBarWidth": 170,
+            "auxiliarySideBarWidth": 0,
+            "statusBarHeight": 22,
+            "windowBorder": false
+        }
+    },
+    "windowsState": {
+        "lastActiveWindow": {
+            "backupPath": "/home/hedwin/.config/Code/Backups/1744183472644",
+            "uiState": {
+                "mode": 1,
+                "x": 2920,
+                "y": 140,
+                "width": 1200,
+                "height": 800
+            }
+        },
+        "openedWindows": [
+            {
+                "folder": "file:///home/hedwin/computing",
+                "backupPath": "/home/hedwin/.config/Code/Backups/149e2099b7c62992d21a5a8eec626818",
+                "uiState": {
+                    "mode": 0,
+                    "x": 3306,
+                    "y": 0,
+                    "width": 960,
+                    "height": 786
+                }
+            },
+            {
+                "backupPath": "/home/hedwin/.config/Code/Backups/1744183472644",
+                "uiState": {
+                    "mode": 1,
+                    "x": 2920,
+                    "y": 140,
+                    "width": 1200,
+                    "height": 800
+                }
+            }
+        ]
+    },
+    "windowSplashWorkspaceOverride": {
+        "layoutInfo": {
+            "auxiliarySideBarWidth": [
+                400,
+                []
+            ]
+        }
+    }
+}

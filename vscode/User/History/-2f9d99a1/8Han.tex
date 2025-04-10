@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{multirow} % Include the multirow package
+
+\begin{document}
+
+\title{Default LaTeX Document with Multirow Package}
+\author{Author Name}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+This is a basic LaTeX document that demonstrates the use of the \texttt{multirow} package for creating multi-row table cells.
+
+\section{Example Table}
+Here is an example table using the \texttt{multirow} package:
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \multirow{2}{*}{Header 1} & \multicolumn{2}{c|}{Header 2} \\
+        \cline{2-3}
+        & Subheader 1 & Subheader 2 \\
+        \hline
+        \multirow{2}{*}{Row 1} & Data 1 & Data 2 \\
+        & Data 3 & Data 4 \\
+        \hline
+        Row 2 & Data 5 & Data 6 \\
+        \hline
+    \end{tabular}
+    \caption{Example table with multirow functionality}
+    \label{tab:example}
+\end{table}
+
+\end{document}

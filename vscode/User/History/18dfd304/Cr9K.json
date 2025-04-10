@@ -1,0 +1,7 @@
+{
+    "files.autoSave": "afterDelay",
+    "python.defaultInterpreterPath": "/home/hedwin/computing/home_venv",
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredDarkColorTheme": "Monokai Dimmed",
+    "workbench.activityBar.location": "bottom"
+}

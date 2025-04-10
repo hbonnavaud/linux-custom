@@ -1,0 +1,36 @@
+\documentclass{article}
+
+% Package for input encoding
+\usepackage[utf8]{inputenc}
+
+% Package for handling graphics
+\usepackage{graphicx}
+
+% Package for page numbering
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+% Title and author
+\title{Policy invariance in Reinforcement Learning}
+\author{Hedwin BONNAVAUD}
+\date{\today}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{Page \thepage\ out of \pageref{LastPage}}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This is the introduction of the document. We will include content from other files below.
+
+% Including external files
+\input{chapter1} % Includes chapter1.tex
+\input{chapter2} % Includes chapter2.tex
+
+% Another way to include files, starting on a new page
+\include{chapter3} % Includes chapter3.tex with a new page
+
+\end{document}

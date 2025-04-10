@@ -1,0 +1,37 @@
+{
+    // Theme settings
+    "workbench.colorTheme": "One Dark Pro Flat",
+    "workbench.iconTheme": "material-icon-theme",
+    
+    // Editor appearance
+    "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 14,
+    "editor.lineHeight": 1.5,
+    "editor.renderWhitespace": "boundary",
+    "editor.renderLineHighlight": "gutter",
+    "editor.minimap.enabled": false,
+    
+    // Terminal settings
+    "terminal.integrated.fontSize": 14,
+    
+    // Window settings
+    "window.zoomLevel": 0,
+    "window.menuBarVisibility": "toggle",
+    
+    // File explorer
+    "explorer.openEditors.visible": 0,
+    "explorer.autoReveal": true,
+    
+    // Cursor and selection
+    "editor.cursorBlinking": "solid",
+    "editor.cursorStyle": "line",
+    "editor.cursorWidth": 2,
+    "editor.multiCursorModifier": "alt",
+    "editor.wordWrap": "on",
+    
+    // Tab behavior
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "workbench.editor.showTabs": true,
+    "workbench.editor.enablePreview": false
+  }

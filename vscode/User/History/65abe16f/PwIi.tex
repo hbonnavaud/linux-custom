@@ -1,0 +1,999 @@
+\chapter{Introduction}
+\label{chapter:classical-planning}
+
+\begin{comment}
+\begin{epigraphs}
+  \qitem{Some text... \ldots } {}
+
+%  \qitem{More text \ldots}
+  {\emph{That story}. \\ Short story by that guy}
+\end{epigraphs}\end{comment}
+The aim of Artificial Intelligence is 
+to program autonomous computer agents able to produce intelligent behaviour
+ by simulating many of the higher functions of the human brain. % citep Dartmouth Proposal
+The general problem of finding a solution to a given task %s by selecting actions
+%that act on the environment and produce the desired goal
+ has been tackled mainly 
+following three approaches. First,
+ \emph{programming--based} approaches count on programmers to encode the method to solve a problem.
+ In \emph{learning--based} approaches, it is the program that improves itself by learning the adequate solution, and this can be done by trial-and-error or based on the information provided by an instructor.
+ \emph{Model--based} methodologies rely on a  general program which infers automatically a solution, starting from a suitable description of the actions, sensors, and goals.
+
+Automated Planning is a model--based approach to autonomous behaviour, and
+ is a quintessential discipline of Artificial Intelligence as
+it involves different aspects of what makes intelligent a conduct.
+The ability to reason well about the actions to perform, before acting,
+%in order to achieve goals in the world
+is certainly a central point to define intelligence, and is the main
+focus of our approach to Automated Planning.
+
+The \emph{classical} model for planning is a common restriction of the more general problem of selecting actions to reach a desired objective.
+Here, the actions are assumed to be deterministic and the information about the environment, complete.\index{planning!classical}
+Classical planning can thus be cast as a path finding problem
+in a graph whose nodes are the states, 
+and whose edges are the transitions
+that are possible, described in terms of actions.
+The purpose of classical planning solvers is to find an action sequence that reaches one of the target nodes from the root node of the graph.
+
+In this chapter we introduce the classical planning model
+ and how it is used to solve deterministic automated planning  problems.
+%
+
+\section{Automated Planning}
+
+Automated planning is the task of finding \emph{plans}, i.e. solutions of a planning problem given following a specific representation.
+A solution plan is a path in a directed graph that drive the environment described in the problem
+from an initial node to a desired goal node.
+% Such paths describe action sequences, that can eventually be conditioned on sensing, are called
+%
+% This can make by different means and under different constraints.
+%Conditions -- sensing -- uncertainty
+
+Two contrasting approaches to automated planning have been followed
+since the '70s: domain--dependent and
+domain--independent.\index{planning,
+  domain--dependent}\index{planning, domain--Independence}
+%
+The first aims at solving tasks by ad-hoc approaches, involving
+high performance algorithms that exploit domain features for the sake of efficiency.
+Such domain--specific approaches are however not satisfying for our purpose of studying and designing machines that mimic autonomous and rational behaviour, as many aspects of reasoning are just focused on a specific problem, and not on understanding the process of planning in a whole. 
+%
+In contrast, domain--independent planning makes use of
+general languages for representing problem instances (e.g. \pddl), and
+general algorithms to solve all kind of tasks
+expressible in the language.  The principal characteristic of this
+approach -- that is also the one
+discussed in this dissertation -- resides in the separation of the planning engine from the
+world model, which is given to the solver as part of the problem,
+together with the initial situation and the goal.
+\index{planning!domain--independent}
+%
+
+A planning task is defined by a model description provided by a
+language; solving an automated planning task requires then a
+description of the dynamic system, the \emph{model}, whose states are
+considered by the planning agent.  This model, also called 
+\emph{environment}, has to be driven by means of \emph{actions} from
+an initial situation to a desired goal, or final situation.
+%
+General language and models
+lead to high level representations that
+allows fast prototyping and that are often simple to modify and extend.
+%
+An easy analogy can be made with the human process of 
+representing tasks in an abstract way,
+ %for the human, 
+that potentially involves different brain regions.  Humans' and other
+animals'\footnote{Just for comparison, animals with fewer than a
+  hundred thousand neurons can approach food and avoid predators. In
+  the human brain there are 100 billion or more neurons.} remarkable
+capacity to switch between multiple tasks is bound to updating the
+many representations of the information needed to guide performance in
+complex tasks~\citep{miller:PFC, wouter:brain}.
+
+
+
+
+\begin{example}[A planning task]\label{ex:first}
+  As an example of a planning problem consider the task of catching a
+  train on time, while stopping to drink a coffee on the way to the
+  train station.  The initial situation would be that we are at home.
+  Thus, reaching first the cafe and then the station would require the
+  use of different means of transportation, a careful selection of the
+  path leading to the locations, and use of the time--table and,
+  eventually, gathering information about the traffic situation.
+
+  % This task is not trivial as the planning domain,
+  % is not fully known initially. 
+  % Solving this task would then involve information gathering about
+  % a dynamic domain, and reasoning about the possible consequences of the
+  % performed actions.
+\end{example}
+%% Emil: To solve the two problems above, maybe you can add a
+%% paragraph after the example describing how these types of
+%% uncertainty/inobservability could be present in your problem?
+
+To solve a planning task, the research in (domain--independent)
+automated planning has focused in the last 40 years on the development
+of general-purpose algorithms, called \emph{planners}. 
+The development of planners brought many families of algorithms and seach spaces to represent a planning problem and to solve it.
+We can cite planning-graph, and propositional satisfiability techniques that use powerful procedures for finding a solution. These techniques will be discussed in \autoref{sec:beyond}. Constraint satisfaction techniques, encodes a planning problem into a constraint satisfaction problem, and uses many efficient methods to refine the plan space. These last three approaches have in common that the nodes of the search space can be viewed as a set of several partial plans,
+where each partial plan\index{plan!partial} is a sequence of actions in the state space\footnote{When searching in the space of plans, a partial plan is a partially ordered set of actions.}. 
+On the other hand, classical planning associates to every node of the search space a partial plan, such that any solution reachable from that node comprises all the actions of the associated partial plan.
+
+
+\subsection{Motivations} %TODO I don't know if it is necessary here.
+The aim of automated planning is to
+model real--life problems or puzzles, and to have automated systems
+solving them. 
+The possible applications to such kind of problem--solving tasks
+are uncountable, 
+going from automated rovers exploring afar planets to
+generators of dialogs for human--machine interfaces.
+% Web services, etc...
+
+However, real world problems are considered hard, mainly because 
+the dynamics of the domain are generally only partially known to 
+a planning agent; this would involve unpredictable behaviours, 
+unknown values of variables, and a huge number of variables describing
+the different aspects of the environment.%
+%In the example~\ref{ex:first} we saw the description of a problem
+%involving a partial information knowledge of the behaviour of the domain,
+%and consequently of the outcome and  duration of the planned actions.
+
+
+One way to limit the amount of possible contingencies of a problem,
+and to restrict the difficulty of finding a solution,
+involves algorithms for searching efficiently a
+simplification of the complex problem.
+Such simplification aims at reducing the number of variables involved,
+and the incomplete information about the behaviour of the environment affecting
+ the planning task. 
+The most common used simplification, or relaxation, of the (complex) planning task
+is known as the \emph{classical planning} paradigm, and comprises
+full knowledge of the environment and to how a planner would affect it.
+
+
+\section{Models for Classical Planning}
+\index{classical planning}
+% ok, applied.
+%% Emil: I'm not sure you should say classical planning is an
+%% approach, maybe better to say that methods FOR classical planning
+%% have had great success, and that simplification of more complicated
+%% problems TO classical planning problems in order to solve them has
+%% been a successfull approach.
+Methods for classical planning have had great success, and are in
+continual development and subject of research.
+% ``Classical'' planning with complete knowledge and deterministic action effects is the most popular track in the International Planning Competition (IPC) ~\citep{linares:ipc2011}.
+% Classical planning forms the basis for more complex extensions, as
+The good results of classical planning techniques have cleared the path to
+approaches that simplify more complicated problems to classical planning problems,
+in order to solve them efficiently.
+%
+
+The paradigm of classical planning we use has a representation based
+on states and on transitions between them.  Compared to more
+particular types of problems, classical planning restricts the model
+with some strong assumptions:
+\begin{itemize}
+ \item finite set of states;
+ \item  deterministic transitions between states, caused by the agent's actions;
+ \item full information about the initial state;
+% \item the only means of changing the environment are the actions   triggered by the planning agent.
+% \item the execution of the actions is instantaneous.
+\end{itemize}
+
+
+\subsection{Model description}
+The objective of planning, and of classical planning in particular, is
+to find actions that drive the system from an initial state to a goal state.
+%
+% From Emil's thesis
+A classical planning problem can be translated as a directed graph whose
+nodes represent states, and whose edges represent actions.  The change
+of state is then represented as a transition from a source node
+representing it along an edge and toward a target node representing
+the next state.  A solution plan is then a path from the node in the
+graph representing the initial state to a goal node representing a
+state recognized as a goal state of the problem, i.e. a linearly ordered finite sequence of actions. The formal model
+underlying the planning problem can be described as follows:
+
+\begin{definition}[Classical Planning Model]\label{def:classical}
+ The classical planning model $Q$ is defined as the tuple 
+ $Q = \langle S, s_0, S_G, A, f\rangle$ where:
+  \begin{itemize}
+  \item $S$ is a finite set of states,
+  \item $s_0 \in S$ is the initial state,
+  \item $S_G \subseteq S$ is the set of goal states,
+  \item $A$ is the set of operators (the actions),
+  \item a state \emph{transition} function $f: S \times A \to S : \; (s,a) \mapsto f(s,a) = s'$.
+%	where $f(s,a)$ is defined when $a$ is applicable, i.e. $a \in p(s)$.
+  \end{itemize}
+ $s'$ is the state resulting from applying the operator $a$ onto a given state $s$.
+%  if operator is not applicable, then f(s,a) = \emptyset ?? TODO mention it? maybe not. 
+
+ A fixed action $a$ is \emph{applicable} in a state $s$ when exists at least one target state $s'$ such that $f(s,a)=s'$. We define the applicability domain as the subset $S_a$ such that, $f\vert_{S_a}$ is injective.
+% $f\vert_{S_a}$ is f applied to the domain of applicable states (for a)
+%We say that a fixed action $a$ in \emph{applicable} is a state $s$ when $s$ belongs to the set of states for which the transition function is injective, i.e. the operator $a$ is applicable in a state $s$ when exists a target state $s' = f(s,a)$.
+% we define an auxiliary \emph{applicability} function $p: S \mapsto 2^A$ that associates to a state its applicable operators:  given a successor state $s'$, an  operator $a$ is applicable in a state $s$ when $s' = f(s,a)$.
+Executing a sequence of applicable actions $[ a_0, \ldots, a_n]$ onto a given state $s_0$ results in a chain of states
+such that
+$f\left(s_0, \left[a_0, \ldots, a_n \right]\right) = \left[ s_0, \ldots s_{n+1}  \right]$,
+with $f (s_i, a_i)= s_{i+1}$, for $\,0 \le i \le n$, and $a_i$ an applicable operator in $s_i$. 
+We define the action $a_0$ as the noop action, such that $f(s_0, a_0) = s_0$.
+\end{definition}
+
+A plan for a classical planning problem is given by a sequence of
+actions achieving a goal state from the initial state of the problem:
+
+\begin{definition}[Classical Plan]
+ A plan $\pi$ for a classical problem  $P = \langle S, s_0, S_G, A, f \rangle$
+ is an action sequence $\pi = \left[ a_0, \ldots, a_n \right]$
+ that, once applied on the initial state,
+ results in a sequence of states $[ s_0, \ldots, s_n ]$, such that:
+\begin{itemize}
+  \item all actions are applicable, and $s_{i+1} = f (s_i, a_i)$, 
+   \mbox{for $\,0 \le i \le n$.}
+  \item the sequence terminates in a goal state: $s_{n+1} \in S_G$.
+\end{itemize}
+
+    We sometimes use the writing $result(p, s_0) = s_{n+1}$ to indicate that the state resulting from the execution of $p$
+    on $s_0$ is $s_{n+1}$.
+\end{definition}
+
+To evaluate a plan $\pi$, its length $|\pi|$ is commonly considered as
+a preference criterion, and it corresponds to the number of actions in
+the plan. This is a special case of planning with costs, where to
+every action is associated a non-negative cost:
+
+\begin{definition}[Classical planning model with costs]\label{def:planning-cost}
+  A planning model with costs $P_c$ consists of a planning model
+   $P_c = \langle S, s_0, S_G, A, f \rangle$ along with a function \linebreak
+  \hbox{$c: A \mapsto \positivereals$} that maps each operator in the model
+  to a non-negative cost.
+\end{definition}
+
+\begin{definition}[Plan cost]
+  The cost of a plan $\pi = [ a_1, \ldots, a_n ]$ is given by
+  \begin{equation*}
+    \mathit{cost}(\pi) = \sum_{i = 1}^n c(a_i)
+  \end{equation*}
+  \label{def:plan-cost}
+\end{definition}
+
+The plan length corresponds with the cost of a plan when 
+all the costs are 1. In a planning model with non--unitary costs,
+ plans with lower cost are preferred
+to plans with higher cost. 
+
+
+\begin{figure}[bt] 
+\includegraphics[width=0.8\textwidth]{figs/classical-goal.pdf}
+ \caption[A solution plan $\pi$ for a classical planning problem]{The objective of classical planning  is to
+find a plan $\pi$, which is a sequence of actions providing the transitions from the initial state $s_0$
+to a desired goal state in $S_G$.}
+\end{figure}
+
+\subsection{Modelling language}
+The representation of a planning problem seen so far is general but not 
+effective, as it is often costly to represent explicitly all the states of
+a planning problem.
+%
+% potentially exponential in the number of variables of the problem.
+% In the example shown in \autoref{fig:example-room-classical}, the total state space consists of $8^2$ states.
+%
+Because we are interested in problems whose state spaces are too large to be represented explicitly, 
+a  factored  representations must be used.\index{STRIPS}
+% 
+
+A factored representation represents states via 
+a set of variables\index{fluent}, or \emph{fluents}\footnote{
+Factored representations can use multivalued variables, but
+``fluents'' usually refers to Boolean variables only.
+}, interpreted as a conjunction, and 
+ such that each state
+$s$ is a complete assignment of the state variables.
+%
+% States are in fact represented as a vector of truth values of such variables.
+%
+% A factored representation becomes compact when dependencies
+% between state variables are limited.
+%
+The goal states and the operators, as well as the 
+applicability and transition functions, can also be described in terms of these state variables.
+%
+In particular, the actions encoding the transitions between states
+are expressed in terms of preconditions and post--conditions.
+% A problem in planning is a task of any kind that
+% can be expressed in terms of pre-conditions and
+% post-conditions.
+%
+Action preconditions specify the conditions under which an action can be applied.
+% QUALIFICATION PROBLEM
+The post-conditions specify  the changes to variable assignments
+made by the effects of the applied actions.
+
+
+The effects of the actions\index{action, effect} describe the changes
+an action $a$ makes to the world. %, resulting in an update of the environment.  
+In the case of a factored representation that consists
+only of Boolean variables, these changes are commonly specified in terms of
+\emph{add lists} and \emph{delete lists}.  
+For an action $a$, the add
+list add($a$) specifies the properties that $a$ makes true, while the delete
+list del($a$) specifies the properties that $a$ makes false.
+%
+All other variable assignments are left unchanged by the action; we often refer to that rule as
+a solution to the \emph{frame problem}\index{frame problem}~\citep{mccarthy:frame}.
+
+
+The Boolean factored representation is surely the simplest and most
+common, and is widely used in automated planning.  In the planning language called STRIPS~\citep{fikes:strips,
+  nilsson:ai} state variables are Boolean, so each such variable
+indicates whether a proposition about the world is true or false in a
+given state.
+ 
+%\subsection{Syntax}
+
+\begin{definition}[STRIPS]\label{def:strips}\index{STRIPS}
+  A planning problem in STRIPS is defined as a 4--tuple $\langle \mathcal{F, A, I, G} \rangle$, 
+consisting in:
+  \begin{description}
+  \item[\fluents:] a set of Boolean variables (fluents), 
+  \item[\acts:] a set of operators, where each action $a$ is  a pair of
+    pre\-conditions  and post--conditions: 
+     $\langle\: \text{pre}(a), \text{eff}(a)\:\rangle\,$.\\
+%
+The precondition pre$(a)$ is a subset of fluents over \fluents.\\
+%
+The effects are conjunction of fluents, described in terms of \emph{simple effects},
+such that 
+an effect  $\text{eff}(a)$ is either
+\begin{itemize}
+\item a \emph{simple add effect} $e$, where $e \in \mathcal{F}$,
+\item a \emph{simple del effect} $\neg e$, where $e \in \mathcal{F}$, or
+\item a \emph{conjunctive effect} $e \land e'$, where $e$ and $e'$ are effects.
+\end{itemize}
+  \item[\init:] a set of fluents $\mathcal{I} \subseteq \mathcal{F}$, describing the initial state
+  \item[$G$:] a set of fluents $\mathcal{G} \subseteq \mathcal{F}$, describing the set of goal states.
+%TODO G is a partial assignment while I is a total assignment.
+  \end{description}
+
+% \begin{example}
+%  \texttt{up}($p_{\,x, y}$) for any $y < N$ and $x \in [1, N]$ \\
+%    Precondition: \{ \texttt{at}($p_{\,x, y}$) \}. \hspace{3mm}
+%    Effect:  \{ \texttt{at}($p_{\,x, y+1}$), $\neg$\texttt{at}($p_{\,x, y}$) \}
+% TODO put simple add and delete effects, but maybe useless
+% \end{example}
+
+In STRIPS, following the Closed World Assumption, the unmentioned literals are false, so a state can be described only by literals that hold in it.
+\end{definition}
+
+A STRIPS problem defines a state model as in \autoref{def:classical}
+ in the following way:
+\begin{itemize}
+ \item the set of  states $S$ is defined in terms of the set $\mathcal{F}$ of fluents,
+% \footnote{We here do not define the set of states of the problems as  $S = 2^\mathcal{F}$, since some of the states in $2^\mathcal{F}$ might be impossible or unreachable. However, this can also be considered, in particular when we will deal with problems which are unsolvable by existing planners in \autoref{cha:dead-ends}.}, 
+  s.t. $S = 2^\mathcal{F}$;
+ \item the initial state $s_0$ is described by the assignment \init, 
+       such that in $s_0$ the fluents $p \in \mathcal{I}$
+ have the value true and all other fluents have the value false;
+  % s.t. $\mathcal{I} \models s_0$ % oppure $\init \in s_0$
+ \item the goal states are described by a (partial) assignment of the fluents in $\mathcal{G}$,
+   such that in all the states in $S_G$,  the fluents $p \in \mathcal{G}$ 
+   have the value true;
+ \item the applicability is fixed by the preconditions of the actions: 
+       $a$ is applicable in $s$ if $\text{pre}(a) \in s$;
+ \item the transition function is defined by the action effects, s.t.
+       $s' = f(s,a)$ s.t. $s' = s\setminus \text{del}(a) \cup \text{add}(a)$.
+% TODO Conditional effects!!
+\end{itemize}
+
+Planning languages extend  STRIPS with many features.
+%Action Description Language (ADL) described by \cite{pednault:adl}.  
+% The ADL representation allows action schemata to
+% have complex preconditions and effects expressed in terms of
+% first--order formul\ae, including quantified formul\ae.  
+%Not all the
+%features of ADL are considered for the purposes of this dissertation,
+%but only those that are commonly incorporated in classical planning
+%and conformant/contingent planning.
+%
+In this dissertation we consider extentions of STRIPS that allows negative literals, whereas in STRIPS only conjunctions of positive literals are permitted,
+with a particular reference to actions' preconditions and goals. 
+We  use $\neg L$ to refer to the complement of  $L$.
+Moreover, the effects of actions can be conditioned on the
+truth values of fluents.  
+The difference between a \emph{conditional effect} and a precondition resides in that the precondition
+\emph{must} be satisfied in order to make the action applicable, while
+a condition that does not hold just does not produce the corresponding
+effect. % ADL also supports types and equality. %% Emil: types and
+                                %% equality are details of
+                                %% representation in PDDL rather than
+                                %% logical differences, I wouldn't
+                                %% discuss them here. 
+
+  We extend the representation in
+  \autoref{def:strips} with operators with conditional effects:
+
+\begin{definition}[Conditional effect]\label{def:adleffects}
+  The effects are conjunction of fluents, described in terms of \emph{simple effects} such that
+  an effect $\text{eff}(a)$ is either
+  \begin{itemize}
+  \item a \emph{simple add effect} $e$, where $e \in \mathcal{F}$,
+  \item a \emph{simple del effect} $\neg e$, where $e \in
+    \mathcal{F}$,
+  \item a \emph{conditional effect} $C \rightarrow e$, where $C$ is a
+    conjunction of variables over \fluents \ and $e$ is an effect, or
+  \item a \emph{conjunctive effect} $e \land e'$, where $e$ and $e'$
+    are effects.
+  \end{itemize}
+%
+\end{definition}
+
+Semantically, the consequences of conditional effects apply in the
+target state $s'$
+only if the condition hold in the source state $s$, and the action is by itself executable on that state:
+for a conditional effect of an action $a: C \to e$, 
+the transition function is defined a follows:\label{cond-eff}
+\begin{equation*}
+s' = f(s,a) \text{ s.t. } s' =  
+                  \begin{cases}
+                       s \setminus \text{del}(a,s) \cup \text{add}(a,s)&  \text{ if } pre(a) \subseteq s\\%\text{ if } C \subseteq s\\
+                       undefined & otherwise
+                  \end{cases} 
+\end{equation*}
+  where: % a conditional effect $a = C \rightarrow e$ then
+  \begin{itemize}
+    \item add$(\mathit{a}, s) = \begin{cases}
+                      \text{add}(e)& \text{if }  C \subseteq s\\
+                    \emptyset& \text{otherwise}
+                    \end{cases} $
+    \item del$(\mathit{a, s}) = \begin{cases}
+                      \text{del}(e)& \text{if } C \subseteq s\\
+                    \emptyset& \text{otherwise}
+                    \end{cases} $ 
+   \end{itemize}
+Informally, we say that
+ when an operator makes a set of fluents true, it \emph{adds} these
+ fluents, and \emph{deletes} those that it falsifies. We will
+ refer to the set of fluents made true/false by an operator as its
+ add/delete list, respectively.
+
+
+\begin{comment}
+\begin{definition}[Add and delete lists]\label{def:addelists}
+Let be an operator $a$ on a state $s$.
+The effects $\text{eff}(a)$, as described in definitions~\ref{def:strips} and \ref{def:adleffects},
+ are generally expressed in terms of add and delete lists
+$\bigl\{ \text{add}(a),\text{del}(a)\bigr\} \subseteq \mathcal{F}$,
+where add$(a)$ is the union of the add list of all the effects of $a$, 
+and similarly del$(a)$ is the union of the delete list.
+Let be $\mathit{eff}$ and effect of $a$:
+% TODO NB: we should define eff(s, a) because these lists
+% are defined depending on a states $s$ (cf. cond. eff.)
+\begin{itemize}
+ \item for  a simple add effect $\mathit{eff} = e$ then
+  \begin{itemize}
+    \item add$(\mathit{eff}) = \{ e \}$ 
+    \item del$(\mathit{eff}) = \emptyset$
+   \end{itemize}
+ \item for  a simple delete effect $\mathit{eff} = \neg e$ then
+  \begin{itemize}
+    \item add$(\mathit{eff}) = \emptyset$
+    \item del$(\mathit{eff}) = \{ e \}$ 
+   \end{itemize}
+ \item for a conditional effect $\mathit{eff} = C \rightarrow e$ then
+  \begin{itemize}
+    \item add$(\mathit{eff}) = \begin{cases}
+                      \text{add}(e)& \text{if } s \models C\\
+                    \emptyset& if s \not\models C
+                    \end{cases} $
+    \item del$(\mathit{eff}) = \begin{cases}
+                      \text{del}(e)& \text{if } s \models C\\
+                    \emptyset& if s \not\models C
+                    \end{cases} $ 
+   \end{itemize}
+  \item for a conjunctive effect $\mathit{eff} = e \land e'$ then
+ \begin{itemize}
+    \item add$(\mathit{eff}) = \text{add}(e) \cup \text{add}(e')$
+    \item del$(\mathit{eff}) = \text{del}(e) \cup \text{del}(e')$ 
+   \end{itemize}
+\end{itemize}
+%
+\end{definition}
+\end{comment}
+
+% Existential and universal quantifiers
+% Disjunctive goals
+%
+As any planning problem described in terms of the above semantics, it can be translated into an equivalent STRIPS instance,
+even if existing compilation techniques are worst-case exponential.
+This preprocessing grounding phase is commonly applied by 
+ most existing planners. % (i.e. \ff, \textsc{lpg}, Fast-Downward, \textsc{sgplan5}, and \lama)
+% first translate the ADL instance into one that is essentially a
+% STRIPS one (without conditional or quantiﬁed effects or goals).
+%
+%so that we can refer currently to STRIPS planning problems
+% without loosing generality.
+% 
+
+
+%% Emil: Above, you just discussed that you can start out with a
+%% problem with conditional effects, and compile into a classical
+%% planning problem. I would therefore follow the same order below,
+%% first show the conditional effects problem, then show how it is
+%% compiled into the classical problem (maybe just one of the operators)
+\begin{example}
+\label{ex:example-classical}
+Consider the problem of a robot in a $1\times N$ grid, with
+$N=5$, that has to go from an extreme of the corridor (the hashed cell $p_2$ in \autoref{fig:example-room-classical})
+ to the goal cell at the other side of the corridor (``\emph{goal}'' cell in the figure). The position $x$ of the agent is
+denoted by \texttt{at}$(p_{\,x})$.
+%
+ This problem can be modeled
+as a classical planning problem $P = \langle \mathcal{F, A, I, G} \rangle$, with:
+\begin{description}
+ \item [Fluents \fluents:] \texttt{at}$(p_{\,x})$, % the cells of the grid
+   for any $x$ in  $[1, N]$,
+\item [Actions \acts:]$ $  % \vspace*{.6cm}
+  \begin{itemize}
+  \item \texttt{left}($p_{\,x}$) for any $x \in [1, N-1]$ 
+
+    \hspace*{3mm}Precondition: \{ \texttt{at}$(p_{\,x})$ \}
+    \hspace*{3mm}Effect:  \{ \texttt{at}$(p_{\,x+1})$, $\neg$\texttt{at}$(p_{\,x})$ \}
+%
+%
+  \item \texttt{right}($p_{\,x}$) for any  $x \in [2, N]$  
+
+    \hspace*{3mm}Precondition: \{ \texttt{at}$(p_{\,x}$ )\} 
+    \hspace*{3mm}Effect:   \{ \texttt{at}$(p_{\,x-1})$, $\neg$\texttt{at}$(p_{\,x})$ \}
+  \end{itemize}
+ %%
+  \begin{itemize}
+  \item \texttt{left}$(p_{\,N})$ 
+
+    \hspace*{3mm}Precondition: \{ \texttt{at}$(p_{\,N})$ \} 
+    \hspace*{3mm}Effect:  \{ \texttt{at}$(p_{\,N})$ \}
+%
+  \item \texttt{right}$(p_{\,1})$  
+
+    \hspace*{3mm}Precondition: \{ \texttt{at}$(p_{\,1})$\}  
+    \hspace*{3mm}Effect:   \{ \texttt{at}$(p_{\,1})$ \}
+  \end{itemize}
+\item [Initial situation \init:] \{ \texttt{at}$(p_{\,2})$ \}
+%
+\item[Goal \goal:] \{ \texttt{at}$(p_{\,4})$ \}
+%
+\end{description}
+NB: Moving toward the wall has no effect, e.g. going left from cell $p_{\,5}$ will leave the agent in $p_{\,5}$.
+% the negative effects of the actions are the $del$ effects, while the positive effects are the $add$.
+
+A possible solution for the problem would be to move the agent twice to the left, as in the sequence:
+\begin{equation*}
+ \pi = \bigl[\; \mathit{left}(p_{\,2}),  \mathit{left}(p_{\,3}) \;\bigr]
+\end{equation*}
+
+ \begin{figure}[h!bt]
+   \centering
+\includegraphics[width=0.75\textwidth]{figs/ex-t0-classical}   
+  \caption[Navigation problem in a grid corridor.]{Navigation problem in a $1\times 5$ grid corridor. 
+The \pddl ~ code of this problem in reproduced in \autoref{fig:pddl-example-room-classical-p} and \ref{fig:pddl-example-room-classical-d}.\label{fig:example-room-classical}}
+\end{figure}
+
+The problem can be reformulated in a different way, using conditional effects: instead of having 10 actions,
+we can encode 2 moving actions with 10 possible conditional effects. This change would remove the precondition, and 
+hence would give a slightly different meaning to the action: with preconditions, the position of the agent has to be known before
+moving, while with conditional effects, the action \emph{can always be applied}\footnote{In deterministic classical planning, this difference
+does not affect the problem and its solution, but this changes when dealing with incomplete information, as we will see in the next chapters.}.
+ 
+We show the example of how to change in that way the  \texttt{left}($p_{\,x}$) action above in one action \texttt{left}:
+
+\texttt{left}: \\
+    \hspace*{3mm}Precondition: $\emptyset$ \hspace{3mm}\\
+    \hspace*{3mm}Effect: \\
+  \hspace*{5mm}\{ \texttt{at}$(p_{\,x})$ \} $\longrightarrow$ \{ \texttt{at}$(p_{\,x+1})$, $\neg$\texttt{at}$(p_{\,x})$ \},
+\hspace*{2mm} for any $x \in [1, N-1]$.\\
+\hspace*{5mm}\{ \texttt{at}$(p_{\,N})$ \} $\longrightarrow$ \{ \texttt{at}$(p_{\,N})$ \}
+
+Using this encoding, a solution plan would be:
+\begin{equation*}
+ \pi = \bigl[\; \mathit{left}, \mathit{left} \;\bigr]
+\end{equation*}
+%
+\end{example}
+%
+
+
+\subsubsection{PDDL}
+Planning problems are generally expressed in the Planning Domain
+Description Language (\pddl).  First defined in 1998 by
+\citeauthor{pddl}, the \pddl~language has been updated and extended
+through the years to match advances in planning and the evolution of
+the needs of the planning community.  \pddl ~ is capable of
+representing the semantics of both STRIPS and the ADL extension\citep{pednault:adl} languages since its
+version 1.2, used for the IPC of 1998.  Nowadays the \pddl ~ language
+is widely used in the planning community and includes many specific
+features, as trajectory
+constraints for temporal reasoning or soft constraints to express
+preferences.
+%
+Even complex actions with control flow blocks
+inspired by imperative programming languages
+ can be compiled as ordinary
+\pddl~actions usable
+with standard off-the-shelf planners~\citep{sheila:high-level, baier:extended,
+  petrick:baseline, classen:gogol}.
+%
+The version that is relevant to the topics discussed in this thesis is
+the most basic one with Boolean state variables only. Actions in
+\pddl~ are expressed as schemata instantiated with objects, as shown
+in the following example:
+\begin{verbatim}
+ (:action move
+    :parameters (?s1 ?s2 - cell)
+    :precondition (at ?s1)
+    :effect (and (not (at ?s1))
+                 (at ?s2)))
+\end{verbatim}
+Here the action \emph{move}, referred to the former example,
+ takes two parameters \texttt{s1} and \texttt{s2} that will be
+eventually instantiated with the possible values assumed by the
+\emph{cell}  objects declared in the problem
+description.  These variables appear also in the preconditions and the
+body of the action effects.
+
+
+
+\begin{comment}
+ 
+\begin{itemize} %TODO maybe not itemize
+\item version 1.2 (IPC--1998): STRIPS + ADL (conditional effects, general preconditions) 
+% TODO check what gen. prec. means... On the page of competition, if it still exists 
+\item version 2.1 (IPC--2002): temporal planning, numeric state variables, durative actions
+\item ver. 2.2 (IPC--2004): derived predicates, times literals % WTF?!
+\item ver. 3.0 (IPC--2006): trajectory constraints (temporal logic), preferences (soft constraints)
+\item ver. 3.1 (IPC--2008): functional state variables % ????
+\item ver. ?? (IPC--2011): \ldots
+\end{itemize}
+
+
+Applications: cf. \citep{albore:robot, petrick:baseline}
+% TODO Petrick: they give simple tasks to robots, in pddl
+%      Albore: navigation task with incomplete information about the environment (but that's contingent planning)
+
+\end{comment}
+\begin{figure}[p] \begin{small}
+\begin{verbatim}(define (problem corridor-5)
+  (:domain corridor)
+  (:init  (at p1) )
+  (:goal  (at p5) )
+)\end{verbatim} \vspace*{-50mm}
+  \caption[\pddl{} encoding of a navigation problem in a corridor]{\pddl{} encoding of a navigation problem in a corridor
+    grid. The agent in a $1\times 5$ grid starts at position $1$ and must
+    get to position $5$.\label{fig:pddl-example-room-classical-p}}     
+   \end{small}
+  %
+\end{figure}
+
+\begin{figure}[p]%[H]
+ \begin{small} \centering
+% QUE APAREZCA DESPUES DE CITADO TODO EL PDDL y en general?!
+\begin{verbatim}(define (domain corridor)
+  (:requirements :typing)   (:types pos)
+  (:constants p1 p2 p3 p4 p5 - pos) 
+  (:predicates (at ?p - pos) )
+  (:action left-p5
+     :precondition (at p5)
+     :effect (at p5)
+  )
+  (:action left-p4
+     :precondition (at p4)
+     :effect (and (not (at p4)) (at p5))
+  )
+  ...
+  (:action left-p1
+     :precondition (at p1)
+     :effect (and (not (at p1)) (at p2))
+  )
+  (:action right-p1
+     :precondition (at p1)
+     :effect (at p1)
+  )
+  (:action right-p2
+     :precondition (at p2)
+     :effect (and (not (at p2)) (at p1))
+  )
+  ...
+  (:action right-p5
+     :precondition (at p5)
+     :effect (and (not (at p5)) (at p4))
+  )
+)\end{verbatim} \vspace*{-5mm}
+  \caption[\pddl{} encoding of actions in a corridor navigation problem]
+ {\pddl{} encoding of the actions in a navigation problem in a $1\times 5$ corridor. The available actions are moving \emph{left} and \emph{right}.
+\label{fig:pddl-example-room-classical-d}}
+  %
+ \end{small} 
+\end{figure}
+
+
+
+
+
+
+
+\subsection{Algorithms for Classical Planning}
+
+As commented above, solving classical planning problems can be cast
+as path-finding in a directed graph whose nodes represent states, and whose
+edges represent  state transitions due to actions.  Classical
+planning problems can then be solved by using graph search algorithms
+to find a path from the initial state to a goal state.
+%
+This graph search approach is not trivial because the size of the
+graph may be exponential in the size of the description of the
+planning problem in propositional form (i.e. the number of fluents of
+the problem).
+%
+\begin{comment}
+  This combinatorial blow-up is due to the fact that goals (and action
+  preconditions) are conjunctions of atomic facts that need to be
+  achieved simultaneously.  The standard approach to deriving admi
+\end{comment}
+%
+Thus, blind search algorithms such as depth-first or Dijkstra are
+practically unfeasible. % TODO any citation here?
+
+
+An approach that has  proved to be effective relies on the use of heuristic
+search.\index{heuristic search} Heuristic search uses
+heuristic functions to evaluate the cost-to-go from a node to a goal, or to be more general, to provide a ranking of a set of nodes
+in order of their relative desirability~\citep[chap.9]{planning:book}.
+%
+This estimation of the distance in the search space is then used by
+the search algorithm to drive the state space search, preferring to
+visit nodes considered more promising from their heuristic value.
+
+
+% \begin{comment}
+ %Taken from HPL's
+Planning as Heuristic Search~\citep{bonet:aij-hsp} is sound and complete by construction, as far as the
+used search algorithm is complete, given that the state space contains exactly all the
+possible plans as paths from the initial state to any goal state.
+% \end{comment}
+
+The best first algorithms used for heuristic search  (also called ``informed''
+search)  expand always the best state according to some evaluation
+function.  Optimal algorithms also make use of heuristics to speed up
+the search; in this family we find A*~\citep{hart:astar} and
+IDA*~\citep{korf:ida}.
+%
+Other local search algorithms such as simulated
+annealing~\citep{kirk:simulated, cerny:simulated}, or tabu
+search~\citep{glover:tabu1, glover:tabu2}, are little used in
+planning.
+%
+% multiqueue with different heuristics. portfolio of heuristics.
+
+Many successful heuristics are obtained by solving a simpler version
+of the original problem % $P$
+relaxing its constraints~\citep{pearl:heuristics}.
+%
+Relaxations directly derived from the problem description are useful
+and efficient, such as the successful ``delete relaxation'', obtained by
+dropping the negative effects of the actions~\citep{hoffmann:ff}.
+% widely used 
+% that ignores the negative effects of the actions.
+%
+% Another relaxation 
+% useful relaxations of a planning problem are, for example, to ignore
+% the negative effects of actions or to ignore some of the preconditions.
+%
+%
+Many planners use heuristic search~\citep{mcdermott:unpop,bonet:asp},
+ which is now 
+the most successful used approach to classical planning. 
+% take advantage of Domain knowledge  in heuristics
+% is essential for making this approach efficient and heuristics, functions estimating
+% distance in the search space, are an important.
+
+% ---> general heuristics and heuristic search
+% TODO check planners from last competition, comment representation and put a graph in Patrick's style.
+
+One of the first approaches making use of domain-independent heuristics is the HSP planner~\citep{bonet:hspr}. HSP used best-first search coupled with $h_{add}$ heuristic that approximates the distance between two states by summing the distances between the propositions in the states, ignoring the delete effects.\\
+The Fast-Forward (\ff) planner by \citet{hoffmann:ff} is based on the same delete relaxation as HSP but uses an explicit solution of the relaxed problem to estimate its heuristic $h_{FF}$ and the extraction of helpful actions applied first when searching for a plan\index{helpful actions}. 
+When the  incomplete but effective greedy search of \ff \ (called ``enforced hill-climbing'') based on helpful actions fails, the planner launches a best-first search.
+The helpful actions are defined in the \ff~planner as those operators applicable in the current state that add some precondition of an operator in the plan.
+This search control technique has proved to
+ be quite successful and effective, being the base of many developments~\citep{joerg:numeric,conformant-ff-journal,hoffmann:cont-ff}.\\
+%
+\lama~planner~\citep{richter:lama-jair} makes use of a pseudo-heuristic derived from \emph{landmarks}, 
+i.e. propositions that must be true in every solution of a planning task~\citep{hoffmann:landmarks,porteous:landmarks}. 
+\lama~is built on top of the Fast Downward Planning System, using in particular a multi-heuristic search. The ``landmark counting heuristic''~\citep{richter:lama}  estimates the goal distance of a state $s$ by counting the number of landmarks that still are needed to be achieved. Similarly to what \ff~does with its helpful actions, \lama~uses  preferred operators along with the landmark heuristic.\\
+% A weighted A* search is used with iteratively decreasing weights, so that the planner continues to search for plans of better quality until the search is terminated.
+The planner PROBE~\citep{nir:probes} implements a dual search archi-tecture for planning that is based on the idea of ``probes'': single action sequences computed without search from a given state for achieving a serialization of the problem subgoals that is computed dynamically along with the probe. A probe, by its construction can go quickly deep into the state space, terminating either in the goal or in failure. When the goal is not achieved, the states expanded along the probe are added to the open list, and control returns to the greedy best first search loop. 
+PROBE is a complete planner using the standard additive heuristic $h_{add}$. %~\citep{bonet:hspr}.
+
+
+
+\section{Complexity}
+
+The plan existence problem in the classical setting, i.e. the problem of deciding if there
+exists a valid plan for an arbitrary problem instance, in the
+propositional STRIPS planning model is decidable and has been shown to
+be PSPACE--complete \ \citep{bylander:complexity}. This regards the
+fragment of STRIPS we discussed in this chapter, while the original
+STRIPS language~\citep{bylander:complexity} allows for infinite state
+spaces and is undecidable.  Planning with costs
+(cf. \autoref{def:planning-cost}), which involves the
+optimization problem of finding a valid plan of minimal cost for an
+arbitrary problem instance, has the same class of complexity.  The
+plan existence problem for ADL is also PSPACE--complete for any
+allowed complexity of precondition and effect
+formul\ae~\citep{baier:thesis}.  As noted above, an ADL problem can be
+translated into a STRIPS instance, but existing compilation techniques
+are worst--case exponential \ \citep{gazen:adl}.
+% Bounded plan cost
+
+\section{Other techniques for Classical Planning}
+\label{sec:beyond}
+
+Automated planning has been strongly influenced, in its origins, by the work on automated theorem proving~\citep{green:theorem}.
+Logical description of the problem comes from one of the first formulations of planning problems as
+ axiomatic description of initial state, goal, and operators.
+The original STRIPS representation used first order formul\ae~that added more expressive power. This representation has been then
+restricted to the actual one, where preconditions and effects are specified in terms of literals.
+%
+% Extensions dictated by the necessity to
+% meet the needs of models matching real--world problems or
+% industrial problems.
+%
+The STRIPS representation has been extended in many ways, while staying within
+the confines of the classical planning model. % We already mentioned the ADL representation \citep{pednault:adl}
+% allows action schemata to have complex preconditions (essentially
+% first-order formulas, including quantified formulas), 
+% to specify sets of effects by quantifying variables 
+% appearing in the effect description, and to specify for each individual
+% effect of an action additional conditions that must hold 
+%for that effect to take place
+% when the action is executed (so called conditional effects). 
+%
+%TODO Check this, taken from HPL thesis
+% SMV used for planning, from NU-SMV is a ... representation.
+%These extensions can all
+%be “compiled away”, i.e., a problem description using them can be transformed into
+%an equivalent problem in basic STRIPS representation, although again at the cost
+%of a potentially exponential increase in size \citep{gazen:adl} or changes
+%to the structure of solution plans such that the compilation does not preserve optimal solution cost \citep{nebel:compilation}.
+%Planners
+
+The representation of the planning problem in terms of preconditions and post-conditions adapts well 
+to state-space search algorithms. It is possible to search in both directions: from the goal to the initial state, and vice versa.
+It is also easy to derive heuristics automatically from the explicit goal and actions representation,
+in particular under the subgoal independence assumption, when interaction between goal atoms are not considered, 
+and other relaxation of the planning problem.
+% Partial-order planning ??
+
+
+Other techniques apply to the classical planning formulation. They involve the construction of planning graphs and the
+ translation of the planning problem into propositional axioms, in order to consequently apply 
+a satisfiability algorithm to find a model that then corresponds to a solution plan.
+
+\subsection{Planning graphs}
+A planning graph is constituted by the levels obtained by alternating fluents and actions layers.
+The first layer includes all the fluents that can be obtained in the initial situation, then the second layer
+is made by all the actions that can be applied from the literals true in the former layer. The third layer is 
+made by the fluents obtained from applying the actions of the precedent layer, and so on until reaching a 
+fluent level including all the goal literals.
+
+Such a planning graph is a useful structure from which information can be drawn into. 
+The first immediate information regards \emph{reachability}: a literal not included in the graph cannot be obtained in the problem.
+\index{reachability}\index{GraphPlan}
+Such a graph can also be used as a heuristic estimate: the cost of obtaining a literal is given by the layer it appears first.
+
+The GraphPlan algorithm ~\citep{blum:graphplan,rao:graphplan,anderson:conditional,weld:cgp} applies this approach, expanding the graph until all the  goal literals are reached in a level, 
+with no mutex links between any pair of them, i.e. if no conflict between actions prohibits two literals to be present at the same time in the same state.
+When such a level is reached, the algorithm intents to extract a plan from the graph.
+
+\subsection{Planning as Satisfiability}
+Planning as satisfiability is a powerful approach to automated planning first proposed by \citet{kautz:ecai92}.
+The approach translates a STRIPS problem and a horizon in a propositional logical formula whose satisfiability is checked.
+Of course the formula includes the initial situation, the goal, and all the possible action applications, stored as propositional axioms.
+%
+\emph{If the planning problem is unsolvable, the SAT formula will be unsatisfiable}.
+
+The main issue of planning as satisfiability comes from the encoding of the problem as a formula, being the memory required
+to store the propositional axioms the bottleneck of the approach.
+Recent work has shown that the conflict-directed clause learning algorithm (CDCL), which most the current best SAT solvers use, 
+together with an extremely simple planning-specific scheme for selecting decision variables 
+% (forcing CDCL to do a form of backward chaining, and leveraging the inferences made by CDCL) 
+lead to very competitive planning, matching in efficacy other search paradigms~\citep{rintanen:heuristics}.
+Simple heuristics on top of the basic variable selection scheme improve the efficiency of SAT based planner even further~\citep{rintanen:SAT-heuristics}.
+
+
+\section{Thesis outline}
+Automated planning involves the practice of reasoning about acting. 
+So far we have considered classical planning, the simplest form of planning which involves a deterministic action model, and complete information about the environment and the planning agent's state.
+In problems with incomplete information, planning is done by considering \emph{belief states} instead of states\index{belief state}, and a belief state is the set of all the states that are regarded as possible in a given (uncertain) situation.
+Thus, solving a problem involves finding a solution for all the states deemed compatible with the initial situation. Planning with incomplete information presupposes using the agent's sensing abilities to discover its environment and to reduce the uncertainty.
+Planning under uncertainty is mainly divided in two models: the \emph{conformant} planning setting, where no sensing is available, which is like ``moving in the dark'', and the \emph{contingent} planning setting, in which the agent can make use of limited sensing.
+In both settings, a solution plan is applicable in all the states of the initial belief, and drives them to the goal.
+
+
+Planning problems under incomplete information, with or without sensing available,
+can be cast as a path-finding problem in a belief states space. There the main
+challenges come from deriving the heuristics to guide the search, and the representation and
+update of the beliefs.
+The translation-based approach to planning under uncertainty is elegant and exhibits
+good performances compared to approaches that explicitly search in belief space.
+This dissertation will describe new translations for conformant and contingent planning that are competitive with the state-of-the-art methods.
+A translation that captures all and only the solutions of the original planning problem is said to be \emph{complete} and \emph{sound}.  In the worst case these translations are exponential, but for a large collection of problems they can be shown to be polynomial, sound and complete. 
+We identify then a parameter for planning problems under uncertainty and sensing called the \emph{width}, and show the conditions under which the translations introduced are sound, complete, and polynomial. The complexity of sound and complete translations is exponential in the width parameter, that for most conformant and contingent benchmarks turns out to be bounded and equal to one.
+
+
+% Cf. palacios
+In the first part of the dissertation, we present some background on automated planning. In the present chapter we reviewed
+classical planning, while in the next chapter we will describe models for planning under uncertainty.
+We then review the translation introduced by~\citet{palacios:jair09}, that maps conformant planning problems into classical ones that are then solved by a state-of-the-art classical planner. This translation is the starting point of our research. 
+
+
+The second part of the dissertation describes two translation-based approaches to conformant planning.
+The first uses a set of states sampled from the initial belief state to provide informed heuristics, and to 
+keep track of the belief states along the plan execution (cf. \autoref{chap:conf-plann-t1}). We will see that it is possible to identify a \emph{basis}
+of sampled states for which all the solution plans are also solution plans of the whole planning problem.
+In \autoref{cha:ND} we then define different translations for conformant problems with non-deterministic actions.
+Even if incomplete, such translations have been proved to be quite effective.
+
+In the third part of the dissertation we tackle the problem of contingent planning, which is planning with incomplete information and partial observability.
+We delineate in \autoref{cha:cont-plann-clg} a translation-based approach that compiles a contingent planning problem $P$
+into a non-deterministic but fully observable problem \XP. This planning problem is then solved using a relaxation \HP, that is a classical planning problem and that can be fed to a state-of-the-art classical planner that provides the next-to-apply action.
+This part ends with \autoref{cha:dead-ends}, where we introduce an extention of contingent planning that allows us to automatically introduce assumptions on
+the (hidden) state of the world, in order to eventually find a solution for those planning problems that, because of limited sensing or 
+because of the possibility of a dead-end in the search space, are not solvable by current planners.
+
+We then summarise the contributions of this thesis, and discuss future work and applications.
+
+\section{Summary}
+The classical planning model 
+can be cast as a search problem in a directed graph, where nodes represent states, and edges, actions.
+By shifting the planning problem to a factored representation, the states and the edges of the state space 
+are implicitely represented: states are expressed as a complete assignment to a set of variables, and actions
+are transformations of the variables' value, in terms of pre-conditions and post-conditions. % partial assignment
+The heuristic search approach to planning uses heuristic functions, extracted automatically from the factored problem
+representation, for guiding the search for a plan from the initial state of the state space to a goal state.
+
+Classical planning domains are deterministic, and complete information on the initial situation is assumed. This implies that
+the state of the domain is always perfectly known during a plan execution.
+In an uncertain environment, on the other hand, this assumption does not hold anymore, and the
+agent has to deal with incomplete information, because the world is partially observable, non-deterministic, or both.
+These kinds of representations shift the complexity of finding a solution to a planning problem from PSPACE to the more complex tasks
+of conformant and contingent planning, respectively EXPSPACE and 2--EXP.
+
+
+
+
+
+\begin{comment}
+
+Domain--dependent planning: 
+Most planning systems used for real--world applications have relied on vast amounts of problem specific knowledge
+ (see e.g.
+Jonsson et al., 2000, or Wilkins \& desJardins, 2000, but also Ruml, Do \& Fromherz,
+2005, for an example of an application problem solved without domain specific search
+control). Even in such knowledge-intensive planning systems, however, the planning
+problem is typically formulated as a search problem and problem specific knowledge
+added on to effectively guide the search.
+
+
+Applications
+
+\end{comment}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "thesis"
+%%% End: 
+
+
+% LocalWords:  classical planning, heuristic search,

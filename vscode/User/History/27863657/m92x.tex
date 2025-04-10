@@ -1,0 +1,139 @@
+\chapter{Introduction}
+
+Reinforcement Learning (RL) represents a powerful paradigm within artificial intelligence that enables agents to learn
+by interacting with their environment.
+Unlike supervised learning, where an agent learns from labeled examples, RL is characterized by an autonomous learning
+process in which an agent explores and evaluates the impact of its actions through trial and error, with minimal
+external guidance.
+The core objective in RL is to learn a policy --a mapping from states to actions-- that maximizes cumulative rewards over
+time.
+An agent receives feedback from its environment in the form of rewards or penalties, which inform its decisions and
+guide it toward strategies that are likely to be successful.
+
+The concept of RL has deep roots in psychology and neuroscience, where it is often compared to human or animal learning
+processes.
+Agents are not pre-programmed with specific instructions; instead, they independently discover effective strategies as
+they interact with the environment, updating their behavior based on observed outcomes.
+This approach has proven to be a powerful tool for a wide range of tasks that involve sequential decision-making, where
+each action’s effect extends into the future.
+RL has thus found applications across various domains, from abstract problem-solving tasks to real-world scenarios,
+where adaptability and the ability to learn from experience are essential.
+RL has achieved remarkable success in simulated environments that require strategy, planning, and adaptability.
+A prominent example is in board games, where RL algorithms have outperformed human experts.
+In games such as chess, Go, and shogi, RL has driven major breakthroughs; most notably, the AlphaGo and AlphaZero
+systems from DeepMind have demonstrated the ability of RL-based agents to learn complex strategies from scratch,
+surpassing human players at the highest levels.
+These algorithms work by simulating millions of games, continuously refining their evaluation of strategic moves
+without any initial guidance.
+
+Similarly, in video game environments, such as Atari and StarCraft, RL agents have shown exceptional skill, achieving
+high scores and demonstrating strategic behavior by learning from the rewards tied to winning or losing.
+Beyond simulated contexts, RL’s potential extends significantly to robotics, where it enables robots to develop
+adaptive control policies that respond to dynamic environments and unexpected events.
+For instance, RL has proven effective in teaching robots to perform tasks such as object manipulation, pathfinding, and
+even locomotion across varied terrains.
+This adaptability is particularly beneficial for robotic applications, where fixed, pre-programmed instructions may
+fail to accommodate all possible variations in real-world scenarios.
+Through RL, robots can acquire complex motor skills by gradually learning how to move and interact with objects in ways
+that meet task-specific goals.
+Such applications demonstrate how RL enables robots to navigate the complexity of physical interactions, refine control
+strategies, and even adapt to mechanical inconsistencies, sensor noise, or environmental shifts.
+Despite the successes, applying RL to complex environments --particularly real-world ones-- poses several significant
+challenges.
+
+One of the most fundamental issues in RL is exploration: to discover an optimal policy in an unknown environment,
+a RL agent must explore a wide
+range of potential actions and outcomes, which can be time-intensive, resource-consuming, and, in physical settings,
+potentially unsafe.
+In real-world applications, an exhaustive trial-and-error approach is often impractical, as it demands both
+computational resources and time, or even worse, can be dangerous for the robot and its suroundings, as a result 
+of the said 'errors'.
+
+Another major obstacle in RL is the challenge of sparse rewards, particularly in tasks where feedback is delayed or
+infrequent.
+Sparse rewards mean that the agent may only receive feedback for successful completion of a goal after a long sequence
+of actions, without intermediate guidance to indicate whether it is on the right track.
+For example, this can happen when a robot navigates through an unfamiliar environment and may only receive a positive reward upon reaching its
+final destination, but not for intermediate steps along the way.
+This can make learning difficult and inefficient, as the agent struggles to attribute success or failure to the correct
+actions within a complex sequence.
+Furthermore, RL agents must navigate the complexities of large or continuous state spaces, where representing and
+processing the environment’s numerous variables is challenging.
+In robotics, where state spaces often include sensory inputs, spatial coordinates, and motor actions, learning an
+effective policy that generalizes across this complexity is a non-trivial problem.
+The difficulty increases when the environment requires discontinuous or non-linear value functions, which RL agents
+find challenging to approximate.
+This is particularly relevant when small changes in state lead to drastic shifts in the optimal action, making it
+harder for the RL agent to converge on a stable, reliable policy.
+
+Automated Planning, is a core AI technique concerned with developing structured sequences of actions, or “plans,” 
+that allow an agent to achieve specified goals. 
+This approach typically relies on predefined models that represent the agent’s environment and task requirements.
+Unlike RL, which builds knowledge through interactions, planning is grounded in the use of a priori information and
+structured representations of the environment.
+Automated Planning has been extensively studied and is widely used in applications where tasks can be clearly delineated,
+and where goals can be reached through ordered sequences of sub-goals or intermediate steps.  % ALEX: Plus que ça, tu peux planifier quand tu as un modèle de l'environnement et tu veux élaborer une stratégie pour atteindre un état but. Tu le dis plus tard, mais le mettre au début, donne de suite la couleur.
+One of the main advantages of automated planning is its ability to organize complex tasks by breaking them down into
+smaller, well-defined steps or milestones.
+This hierarchical structure allows an agent to pursue goals in a logical, sequential manner, reducing the cognitive
+and computational load of the overall task.
+For example, for a navigation task, automated planning can provide a high-level route that divides the journey into intermediate
+waypoints, guiding the agent through manageable steps rather than requiring it to learn an entire route from scratch.
+Planning is especially effective in situations where accurate models of the environment and clear task specifications
+are available, as this allows the agent to leverage knowledge to construct reliable strategies.
+However, global planning has limitations, particularly in dynamic or uncertain environments.
+Since planning depends on predefined models, unexpected changes can quickly render a plan obsolete, requiring costly
+revisions or re-planning.
+In real-world applications where environments are highly dynamic or partially unknown, rigid planning approaches can
+struggle to adapt, limiting the agent’s flexibility.
+Additionally, planning algorithms are often computationally intensive, especially when dealing with complex or
+high-dimensional state spaces.
+These challenges restrict the applicability of planning in environments where adaptability and responsiveness are
+crucial for success.
+
+The complementary nature of planning and reinforcement learning provides a unique opportunity to combine these
+approaches, creating a hybrid framework that addresses many of the limitations inherent to each method.
+Planning can provide a high-level structure for RL, effectively guiding the learning process by breaking down
+long-horizon tasks into sequential sub-goals or “macro-actions.” This hierarchical structure alleviates the challenge
+of sparse rewards by giving RL agents intermediate goals, providing more frequent rewards and feedback.
+With planning as a guide, RL agents can focus on refining policies for each sub-goal, thereby simplifying the learning
+process and reducing the computational demands of exploring an entire task from scratch.
+Conversely, RL can bring adaptability and robustness to planning-based approaches.
+In environments where sub-goals may not be perfectly reachable or where conditions fluctuate, RL’s adaptive learning
+capabilities enable agents to adjust their strategies dynamically.
+This flexibility is particularly valuable for robotics, where conditions may change due to environmental variability,
+mechanical wear, or other real-world factors.
+By using RL to make planning more adaptive, we can reduce the need for densely interconnected planning graphs, as the
+RL agent can autonomously explore alternatives within each sub-goal, improving the efficiency and resilience of the
+planning process.
+
+Robotics represents a unique and demanding application domain for AI, where autonomy and resilience are essential.
+Robots operate in physical environments that are inherently dynamic and often unpredictable, making it critical for
+control systems to adapt quickly and reliably to changes.
+Robotic systems are increasingly deployed across various fields, from industrial automation to autonomous vehicles and
+service-oriented applications, where they perform tasks that demand high precision and adaptability.
+The need for autonomy in robotics has motivated the adoption of intelligent control frameworks capable of handling the
+complexity and variability of real-world environments.
+Reinforcement Learning has shown great promise for robotic control, as it allows robots to learn adaptive control
+policies directly from interaction with their environment.
+Through RL, robots can acquire complex motor skills and develop behaviors that respond to sensory inputs in real-time,
+enabling them to navigate dynamic environments or manipulate objects with precision.
+For instance, RL allows robots to improve their grip when handling fragile objects, to optimize their path when
+navigating through obstacles, or to balance on uneven terrain.
+These adaptive capabilities are particularly valuable for robots that need to perform diverse and complex tasks in
+uncontrolled settings, as RL provides the flexibility to adjust behaviors based on real-time feedback and learned
+experience.
+Despite its benefits, applying RL in robotics presents several unique challenges.
+Physical interactions are costly in terms of time, energy, and safety; trial-and-error learning can result in wear or
+damage to robotic hardware, limiting the extent of exploration.
+Sparse rewards further complicate learning, as many robotic tasks only provide rewards after long sequences of actions,
+making it difficult for the agent to identify which actions are most beneficial.
+Additionally, the high-dimensional and continuous nature of robotic state and action spaces poses significant
+computational demands.
+Safety concerns are particularly pronounced, as untested or poorly optimized policies can lead to erratic behavior,
+making safe exploration a critical consideration in robotic RL.
+
+% ALEX: IMHO il manque une partie qui introduise ta thèse.
+% E.g. In this thesis we introduce a novel framework that bridges Reinforcement Learning and symbolic automated planning to address the complexities of robotic applications. By leveraging the data-driven adaptability of RL for low-level control and the abstract reasoning capabilities of symbolic planning for high-level task decomposition, we aim to overcome limitations inherent in each approach. Specifically, we propose an algorithmic approach --called RGL-- to translational invariance. The learned policies in a limited/local environment can be reused under certain assumptions in unexplored states, without further computation, to reach local goals in a wider environment. The integration enables eventually robots to learn complex behaviors while maintaining interpretability and robustness, facilitating efficient exploration in challenging and large environments and enabling the generalization of learned policies across diverse scenarios.
+% Puis une phrase qui ouvre vers un futur brillant de l'humanité: This hybrid approach, and the RGL algorithm we introduce in the following pages, allows for the creation of more intelligent and adaptable robotic systems capable of handling intricate, real-world tasks.
+% Finalment, il faut un petit plan de la thèse. E.g. 'In chapter 1 we... Then in chapter 2, we ... And we conclude.'

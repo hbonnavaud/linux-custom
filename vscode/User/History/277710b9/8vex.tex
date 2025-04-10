@@ -1,0 +1,267 @@
+\chapter{Related work}\label{chapter:related_works}
+
+\section{Reinforcement learning} \label{section:related_works:rl}
+
+Reinforcement learning (RL) has evolved significantly over the years, with numerous algorithms contributing to
+its development.
+Below is a chronological description of key milestones in RL algorithms, highlighting their contributions to the field.
+The early foundation of RL is rooted in Dynamic Programming (DP)~\citep{bellman1954theory} (1954) methods.
+The key idea behind DP is to solve Markov Decision Processes (MDPs) by recursively breaking down the problem using
+the Bellman equation, which relates the value of a state to the values of subsequent states.
+%
+Following this, Policy Iteration~\citep{howard1960dynamic} (1960) and Value Iteration algorithms were developed.
+Policy Iteration works by evaluating a given policy, improving it, and iterating the process until the optimal policy
+is found.
+On the other hand, Value Iteration computes the optimal value function through an iterative process, which can then
+be used to derive the optimal policy.
+%
+Both methods were effective for small, discrete state spaces but struggled with large-scale or continuous domains.
+In the 1970s, Monte Carlo methods became an important milestone in RL.
+These methods estimate value functions by averaging the returns from multiple episodes, allowing the agent to learn
+from actual experience rather than relying on theoretical models.
+This approach was a key advancement, as it allowed for learning from real-world interactions, bypassing the need
+for full knowledge of the environment.
+Temporal Difference (TD) Learning~\citep{sutton1988learning} (1988) combines elements of both Monte Carlo and DP
+methods, allowing agents to update their value function estimates based on both immediate rewards and the expected
+future rewards from subsequent states.
+This approach enabled agents to learn more efficiently from limited interactions with the environment,
+overcoming some of the limitations of Monte Carlo methods.
+%
+Q-learning~\cite{watkins1989learning} (1989) is a model-free, off-policy RL algorithm that learns the optimal
+action-value function, Q(s, a), which estimates the expected cumulative reward of taking action $a$ in state $s$.
+Q-learning does not require a model of the environment and can learn the optimal policy purely from interacting
+with the environment.
+This algorithm has been fundamental in RL research and remains widely used in various applications today.
+%
+REINFORCE~\citep{williams1992simple} (1992), is a policy gradient method that computes the gradient of the expected
+return with respect to the policy parameters, allowing for direct optimization.
+This method is particularly useful in environments with large or continuous action spaces, where discretizing the
+actions would be computationally infeasible.
+%
+Following Q-learning, SARSA (State-Action-Reward-State-Action)~\citep{rummery1994line} (1994) is an
+on-policy~\ref{subsection:bg:rl:on-off-policy} alternative to Q-learning.
+This difference makes SARSA more conservative and less prone to overestimation bias, which can be beneficial in
+certain situations where a more cautious approach is needed.
+
+In parallel, Actor-Critic methods where developed~\cite{barto1983neuronlike} (1983).
+Actor-Critic methods are reinforcement learning algorithms that combine policy-based (Actor) and value-based (Critic)
+learning.
+The actor updates the policy using gradients provided by the critic, which estimates the q-value to reduce variance in
+learning.
+This framework enables learning in high-dimensional, continuous action spaces.
+%
+NAC~\citep{kakade2001natural} (2001) introduced the natural policy gradient, which improves stability by using the
+Fisher information matrix to scale policy updates.
+Unlike standard policy gradients, NAC follows a more efficient update direction, reducing variance and improving
+convergence.
+This method laid the foundation for more stable and efficient policy optimization in Actor-Critic methods.
+%
+DDPG~\citep{lillicrap2015continuous} (2015) extended Deterministic Policy Gradient (DPG) by integrating deep neural
+networks, enabling learning in continuous action spaces.
+Inspired by DQN, it introduced experience replay (to improve sample efficiency) and target networks
+(to stabilize learning).
+However, it suffered from overestimation bias and poor exploration.
+%
+A2C~\citep{mnih2016asynchronous} (2016) is a synchronous version of A3C, where multiple agents collect data in parallel,
+improving sample efficiency.
+It stabilizes training by removing asynchronous updates, making learning more predictable compared to A3C.
+A2C remains simple and effective but lacks trust region constraints.
+%
+PPO\citep{schulman2017proximal} (2017) improved A2C by introducing a clipped surrogate objective, preventing excessively large
+policy updates and improving training stability.
+Unlike NAC and A2C, PPO doesn't require second-order gradients (making it computationally cheaper) and balances
+exploration and exploitation more effectively.
+It became a widely adopted baseline for policy optimization due to its simplicity and robustness.
+%
+SAC~\citep{haarnoja2018soft} (2018) addressed DDPG's instability by introducing entropy regularization, which encourages
+exploration by maximizing reward while maintaining policy randomness.
+It is off-policy, meaning it can reuse old experience, leading to better sample efficiency than PPO and A2C.
+SAC excels in continuous control tasks, making it a major breakthrough in reinforcement learning.
+%
+TD3~\citep{fujimoto2018addressing} (2018) improved DDPG by fixing overestimation bias using clipped double Q-learning,
+which takes the minimum of two Q-values to avoid optimistic value estimates.
+It also introduced delayed policy updates and target smoothing, improving learning stability.
+TD3 became the go-to choice for deterministic policy learning in continuous action spaces.
+%
+% Eventuellement rajouter A3C, TRPO, C51
+% Value iteration ?
+%
+The field continues to evolve, with new methods being introduced regularly to enhance stability, efficiency, and
+applicability across various domains.
+
+\textbf{Goals in Reinforcement Learning (RL).}
+
+Kaelbling~\cite{kaelbling1993learning} introduced one of the earliest works on goal-conditioned reinforcement learning,
+emphasizing how policies can generalize across different goals.
+Unlike traditional RL, which often learns a policy specific to a single task, this work laid the foundation for
+multi-goal learning by treating goals as part of the state space.
+This early formulation influenced later approaches that leveraged function approximation and hierarchical structures to
+improve generalization.
+%
+Sutton et al.~\cite{sutton1999between} introduced the options framework, a key precursor to hierarchical RL, which is
+particularly useful in goal-conditioned settings.
+Options represent temporal abstractions—sub-policies that achieve intermediate goals—which enable efficient
+long-horizon planning.
+This work provided a theoretical basis for learning reusable skills, which later influenced structured exploration and
+goal-directed behavior in RL.
+%
+Universal Value Function Approximators (UVFA)~\cite{schaul2015universal} introduced a way to generalize value functions
+across different goals by learning a Q-function conditioned on goals.
+Unlike standard RL, which learns a separate policy for each task, UVFA allows zero-shot generalization to unseen goals.
+This laid the foundation for goal-conditioned RL by enabling policies that could achieve multiple goals efficiently.
+%
+Hindsight Experience Replay (HER)~\cite{andrychowicz2017hindsight} built on UVFA by introducing hindsight learning,
+where failed attempts to reach a goal are relabelled as successes for training.
+This drastically improved sample efficiency, as even unsuccessful trials provide useful learning signals.
+HER enabled goal-conditioned RL in sparse reward environments, making it practical for real-world robotics and
+high-dimensional tasks.
+%
+Visual Goal-Conditioned RL~\cite{nair2018visual} extended goal-conditioned RL to image-based tasks by introducing a
+latent space representation of goals.
+This allowed RL agents to set and reach goals directly in raw pixel spaces, enabling applications in vision-based
+robotic manipulation.
+The key advantage was making goal-conditioned RL more scalable to real-world environments.
+
+Planning with Goal-Conditioned Policies~\cite{nasiriany2019planning} combined model-based planning with goal-conditioned
+RL, addressing the challenge of long-horizon tasks.
+Unlike previous approaches that relied solely on trial-and-error learning, it used self-supervised world models to
+predict the best way to reach a goal.
+This resulted in faster learning and better generalization to unseen goals.
+
+\section{Hierarchical agents}
+
+Many approaches use hierarchical agents to simplify RL training.
+
+% Options-based Reinforcement Learning
+\textbf{Learning abstract representations for planning.}
+An alternative to crafting a hierarchy of learned policies is to rely on RL for producing ``lower level'' option
+policies, and on some model of how these options affect the environment.
+The aim is then to optimize a sequence of options, or skills, which are an abstraction of actions, in a global plan,
+defined for an abstraction of states (which can either be learned or can be defined by the goal space).
+The key to such approaches hence relies on how the model is built.
+% MODEL-BASED RL
+\citet{silver2017predictron} train a ``predictron'' which, for a given task, predicts $n$-step returns and long term
+values from any state, using a network that builds a consistent internal representation (the state abstraction) of the
+environment's dynamics and rewards.
+Similarly, several approaches~\citep{ha2018world,schrittwieser2020mastering,hafner2020dream,hafner2021mastering} build
+models that emulate the dynamics and rewards related to a task, and permit planning by simulating this surrogate model,
+but without a hierarchy of options and for a single task.
+In contrast, \citet{nasiriany2019planning} optimize a sequence of reachable intermediate goal states (represented in the
+latent space of a variational auto-encoder on states) in order to reach a final goal (single task), using a pre-computed
+reachability metric for a given goal-based lower-level policy.
+\citet{parascandolo2020divide} optimize online a similar curriculum of sub goals between a starting state and a given
+goal.
+They implement a divide-and-conquer approach by building an AND/OR search tree.
+Each node corresponds to a new sub goal in the sequence.
+They explore this tree with a Monte Carlo tree search strategy, which exploits the value function of a pre-trained
+goal-based policy.
+
+% Hierarchical Reinforcement Learning
+\textbf{Reinforcement learning as a global policy.}
+Combining local action sequences with specific goals in order to achieve a more general goal is the core idea of
+HRL~\citep{sutton1999between,precup2000temporal,konidaris2009skill}.
+Notably, among recent works, \citet{kulkarni2016hierarchical} define a bi-level hierarchical policy, using a
+DQN~\citep{mnih2015human} agent to select high-level goals, that define options which make use of a low-level goal-based
+DQN agent.
+\citet{nachum2018data} specializes this idea to the case when the lower-level policy learns to achieve goals that
+encode relative changes to the current state.
+\citet{levy2019learning} couples HER with a three-level hierarchy into an architecture called Hierarchical Actor-Critic
+(HAC).
+\citet{mcclinton2021hac} enhance HAC with a separate higher-level goal generator which drives the exploration process
+during learning.
+Overall, these approaches aim at designing a global neural-network-based controller, able to solve the tasks at hand.
+DIAYN~\cite{eysenbach2018diversity} learn a skill-conditioned policy, by maximising the mutual information between the 
+visited states and the given skill (an integer.).
+Then, they use it as a local policy, by computing the executed skills using a global policy with discrete actions.
+The global actions are given to the local policy to compute the hierarchical agent's action.
+
+% Options-based Reinforcement Learning
+
+\textbf{Graph-based global policies.}
+% Reachability-graph Reinforcement Learning
+Some methods store explicitly these links between sub goals by constructing a reachability graph (which encodes
+transitions between abstractions of states, using abstractions of actions).
+In turn, this graph can be used for higher-level goal-based planning.
+\citet{savinov2018semi} build this graph by randomly exploring the environment, and add a node for every encountered
+state, which yields a very dense graph.
+For a given goal, a shortest path in this graph is computed.
+Then a sequence of landmark sub goals is extracted so that each landmark is far enough from the previous one according
+to a pre-trained neural network.
+\citet{eysenbach2019search} introduce Search on the Replay Buffer (SoRB), which supposes the availability of a replay
+buffer of states and defines a graph where each state in a random subset of the replay buffer is a node.
+Then it uses the goal-reaching policy's value function to estimate edge weights between these nodes and finds a shortest
+path of state waypoints to the goal.
+\citet{huang2019mapping} propose a similar approach, but improve the node sampling strategy, and exploit a policy only
+to reach close goals during pre-training.
+SGM~\citep{emmons2020sparse} improves SoRB's results by pruning useless nodes in the graph, and edges that cannot been
+traversed by the control policy.
+Pruning useless nodes enables a reduction in the number of graph edges and permits a faster convergence to a
+close-to-optimal graph (ie. representative of actual reachability with a minimal number of nodes and edges).
+\citet{chaplot2020neural} learn a reachability graph in a robotics navigation environment.
+For each new location in its graph, the agent uses its camera to estimate promising exploration directions.
+\citet{aubret2021distop} and \citet{ruan2022target} incrementally grow a graph representing reachability, where nodes
+are abstractions of sets of states, using a neural network as a surrogate of the similarity between states.
+Similarly to the work of \citet{aubret2021distop}, PALMER~\citep{beker2022palmer} learns a projection space where the
+distance between the embeddings of two states
+represents the number of actions required by an optimal policy to reach one from the other.
+\acrshort{dsg}~\citep{bagaria2021skill} incrementally grows a graph of options, represented as a local finite set of
+goal-reaching skills in each node.
+The present contribution uses the goal space as a state abstraction, and translation-invariant pre-trained policies as
+action abstractions to enable planning in a graph of goals.
+
+\textbf{Re-using policies across states / Connection with navigation tasks.}
+Learning policies locally to re-use them in unexplored states has also been investigated to enable hierarchical RL.
+%Other methods perform planning on re-usable skills and policy.
+\citet{konidaris2007building} propose to perform skill chaining on skills that are dependent on an discrete set of
+abstract agent contexts.
+These skills become reusable across contexts, but the definition of the contexts are specific to the task to solve and
+cannot be fully assimilated to an abstraction of navigation waypoints.
+PRM-RL~\citep{faust2018prm} and RL-RRT~\citep{chiang2019rl} build a re-usable goal-conditioned policy, and use it to
+navigate through a graph built using respectively PRM~\citep{kavraki1996probabilistic} and
+RRT~\citep{lavalle1998rapidly}, hence providing an abstraction of navigation features into a more general framework.
+Note however that none of these methods provide a generic and formal definition of policy re-useablity.
+
+Some other global policies can be considered, but are less frequent in the literature of hierarchical agents using a 
+local policy trained with reinforcement learning.
+DADS~\citep{sharma2019dynamics} learns a set of diverse skills, in a way that is similar to DIAYN. 
+As a difference, the skills to be executed are computed using model predictive control.
+LEAP~\citep{sharma2019dynamics} learns a set of diverse skills, in a way that is similar to DIAYN. 
+As a difference, the skills to be executed are computed using model predictive control.
+
+
+\begin{figure}%[h]
+  \centering
+  \includegraphics[width=\linewidth]{figures/state_of_the_art_vizualisation_2}
+  \caption{representation of the hierarchical agents state of the art.}
+  \label{figure:stateOfTheArt:vizualisation}
+\end{figure}
+
+% \begin{center}
+% \begin{tabular}{| c | c | c |}
+%  Algorithm & global policy & control policy \\
+%  SPTM & Graph & RL \\
+%  SORB & Graph & RL \\
+%  SGM & Graph & RL \\
+%  RL-RRT & Graph & RL \\
+%  PRM-RL & Graph & RL \\
+%  NTSlam & Graph & RL \\
+%  DisTop & Graph & RL \\
+%  STC & Graph & RL \\
+%  RGL & Graph & RL \\
+%  DSG & Graph & Options \\
+%  BPO &  & Options \\
+%  HAC & RL & RL \\
+%  HIRO & RL & RL \\
+%  DADS & MPC & Skills \\
+%   &  &  \\
+%   &  &  \\
+%   &  &  \\
+%   &  &  \\
+%   &  &  \\
+%   &  &  \\
+%   &  &  \\
+%   &  &  \\
+%   &  &  \\
+%   &  &
+% \end{tabular}
+% \end{center}

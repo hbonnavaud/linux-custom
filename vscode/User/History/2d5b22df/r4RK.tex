@@ -1,0 +1,496 @@
+\section{Reinforcement Learning}\label{section:bg:reinforcement-learning}
+
+\important{Reinforcement Learning} (\acrshort{rl}) is a machine learning paradigm where an agent learns to make
+decisions by interacting with an environment.
+At its core, RL revolves around trial-and-error learning, where the agent observes the state of the
+environment, takes an action, and receives feedback in the form of rewards.
+Over time, the agent learns an action selection strategy that maximize sum of expected rewards.
+
+Unlike supervised learning, where labeled data is provided, RL involves learning directly from interactions, with no
+explicit labels for correct actions.
+This makes RL well-suited to problems where rewards are sparse or require a sequence of decisions.
+RL is distinct from unsupervised learning as it focuses on decision-making rather than pattern discovery.
+Its applications span simulated domains, such as board games and video games, to real-world systems, including robotics,
+autonomous vehicles, and financial trading.
+
+\subsection{Problem definition}\label{subsection:bg:rl:problem_def}
+
+The foundational framework of RL is often modeled as an agent, interacting with an environment.
+The latter is generally defined as a Markov Decision Process (\acrshort{mdp},~\citep{bellman1957markovian}), characterized by:
+\begin{definition}[MDP]\label{definition:bg:rl:mdp} A Markovian Decision Process is defined by:
+\begin{itemize}
+    \item A state space $S$, a set of states of the environment.
+    \item An actions space $A$, a set of action that can be taken by the agent.
+    \item A transition dynamics $P(s' \mid s,a)$, the probability distribution of receiving a new state $s' \in S$ after
+taking action $a \in A$ from the state $s \in S$.
+    \item A rewards model $R(r \mid s, a, s')$, the probability distribution of obtaining a reward $r\in \mathbb{R}$ after
+reaching the state $s' \in S$ using action $a \in A$ from the state $s \in S$.
+    \item A initial state distribution $\delta_0(s)$ that define the probability of $s$ being the first state of the
+    trajectory.
+\end{itemize}
+\end{definition}
+In certain scenarios, we also account for an initial state distribution, denoted as $\mu(s)$, which represents the
+probability distribution from which the initial state $s_0$ is drawn.
+
+When the agent have not access to the state $s$ information, the environment is modeled as a partially observable
+markovian decision process (\acrshort{pomdp}).
+
+It can happen in various scenarios, such as in robotics, because the agent can only gather information about its
+environments using sensors, which can only observe a sample of the total possible information about the current time, or
+is some video games where the agent's velocity is used by $T$ but not shown on the image.
+
+\begin{definition}[POMDP]
+    A Partially Observable Markovian Decision Process is defined by:
+    \begin{itemize}
+        \item A state space $S$, a set of states of the environment.
+        \item An actions space $A$, a set of action that can be taken by the agent.
+        \item A transition dynamics $P(s' \mid s,a)$, the probability distribution of receiving a new state $s' \in S$ after
+    taking action $a \in A$ from the state $s \in S$.
+        \item A rewards model $R(r \mid s, a, s')$, the probability distribution of obtaining a reward $r\in \mathbb{R}$ after
+    reaching the state $s' \in S$ using action $a \in A$ from the state $s \in S$.
+        \item An observation space $\Omega$, a set of possible observations.
+        \item An observation distribution $O(o \mid s, a)$, the probability distribution of obtaining an observation $o \in \Omega$
+    after reaching state $s \in S$ with action $a \in A$,
+        \item A initial state distribution $\delta_0(s)$ that define the probability of $s$ being the first state of the
+        trajectory.
+    \end{itemize}
+\end{definition}
+
+In any of these case, the agent learns a policy $\pi(a \mid s)$ that maximize the expected cumulative reward over time.
+
+\begin{equation}\label{eq:bg:rl:problem_definition}
+    \max_\pi \mathbb{E}_\pi \left[ \sum_{t=0}^\infty \gamma^t R(s_t, a_t) \right]
+\end{equation}
+
+Where $\gamma \in [0, 1)$, the discount factor, determines the weight given to future rewards, with smaller values
+prioritizing immediate rewards and larger values emphasizing long-term rewards.
+
+The solution to this problem is then a policy $\pi^*$ called \textit{optimal policy}, that can be defined as:
+\begin{equation}\label{eq:bg:rl:optimal_policy}
+    \pi^* = \arg\max_\pi \mathbb{E}_\pi \left[ \sum_{t=0}^\infty \gamma^t R(s_t, a_t) \right]
+\end{equation}
+
+Note that the definition of the policy learned by the agent is slightly different, since that it is assumed that the
+policy learned by the algorithm might not be exactly optimal:
+
+\begin{equation}\label{eq:bg:rl:policy}
+    \pi = \arg\max_\pi \mathbb{E}_\pi \left[ \sum_{t=0}^\infty \gamma^t R(s_t, a_t) \right]
+\end{equation}
+In general, a policy learned by a RL algorithm after its convergence is called $\epsilon$-optimal, because the distance
+between the said policy, and the optimal policy $\pi^*$ is bellow a threshold $\epsilon$.
+
+\subsection{Algorithms classes}\label{subsection:bg:rl:algs}
+
+RL methods can broadly be categorized based on how they approach learning and the assumptions they make about the
+environment.
+
+\subsubsection{value-based-rl}
+\textbf{Policy optimisation} methods aim to directly optimize the policy $\pi$ itself.
+An example of such an algorithm is REINFORCE~\citep{williams1992simple}.
+In contrast, \important{value-based} methods focus on estimating value functions to derive the optimal policy indirectly.
+A well-known example of a value-based method is the SARSA~\citep{rummery1994line} algorithm.
+These methods do not explicitly optimize a policy; instead, they aim to learn the value of states or state-action
+pairs and derive the policy from this information.
+The key idea behind value-based methods is to estimate the expected cumulative reward starting from a particular state
+or state-action pair, and then use this information to guide decision-making.
+
+The central goal of value-based methods is to compute an optimal action-value function $Q^*(s,a)$ (called Q-function),
+which represents the maximum expected cumulative reward achievable starting from state $s$, taking action $a$, and
+subsequently following the optimal policy $\pi^*$.
+Mathematically, this is expressed as:
+\begin{equation} \label{eq:bg:rl:q_function}
+    Q^*(s, a) = \mathbb{E} \left[ \sum_{t=0}^\infty \gamma^t R(s_t, a_t) \mid s_0 = s, a_0 = a \right]
+    TODO ou:
+    Q^*(s, a) = \sum_{t=0}^\infty \mathbb{E}_{a\sim \pi^*(s_t)} \left[\mathbb{E}_{s_{t+1} \sim P(s_t, a_t)} \left[ \gamma^t R(s_t, a_t) \mid s_0=s, a_0=a \right] \right]
+\end{equation}
+
+From which we derive the learned Q-function with respect to the policy $\pi$:
+\begin{equation} \label{eq:bg:rl:q_function_wrt_pi}
+    Q^{\pi}(s, a) = \mathbb{E}_\pi \left[ \sum_{t=0}^\infty \gamma^t R(s_t, a_t) \mid s_0 = s, a_0 = a \right],
+\end{equation}
+
+This function contains a lot of information, and can be used to compute two functions.
+The policy $\pi$\footnote{Note that in this case, the Q-function and the policy are inter-dependant.
+In practice, they are initialised randomly, and the relation between the Q-function and the policy define how they will
+evolve during the training.}, that we defined previously~\ref{eq:bg:rl:policy}:
+
+\begin{equation} \label{eq:bg:rl:pi_from_q_function}
+    \pi(a \mid s) = \arg\max_a Q^{\pi}(s, a)
+\end{equation}
+
+and the value function $V(s)$.
+
+The latter is used to estimate the expected cumulative reward that an agent can achieve starting from a state $s$ and
+following a specific policy $\pi$.
+The optimal value function $V^*(s)$ is defined as:
+
+\begin{equation} \label{eq:bg:rl:optimal_value_function}
+    V^*(s) = \mathbb{E} \left[ \sum_{t=0}^\infty \gamma^t R(s_t, a_t) \mid s_0 = s \right]
+\end{equation}
+
+And the value function $V^{\pi}(s)$ (written later as $V(s)$ for simplicity) can be derived from the Q-function:
+\begin{equation} \label{eq:bg:rl:value_function}
+    V^{\pi}(s) = \max_a Q^{pi}(s, a)
+\end{equation}
+
+\subsubsection{Goal-conditioned Reinforcement learning}
+
+\important{gcrl} (GCRL) is a more a problem to solve than a class of algorithms.
+It consists of training a RL algorithm to reach goals, chosen by the environment and given to the agent at the
+beginning of each episode.
+However, some algorithms has been developed and optimized to specifically tacle this problem, which could make it a
+class of RL algorithms by itself.
+
+\textbf{Problem definition.}
+In GCRL, similarly to RL, an agent learns a policy that maximize the expected sum of rewards.
+The trained policy then sample actions from a state $s \in S$ and from a goal $g \in G$, where $S$ is the state
+space and $G$ is the goal space.
+The probability of taking action $a \in A$ is then written $\pi(a \mid s, g)$.
+In order to make the policy to depend on both $s$ and $g$ (i.e. $H(\pi(a \mid s)) - H(\pi(a \mid s, g)) \neq 0$), the
+reward have to depend on both $s$ ang $g$.
+Because we want our agent to reach the goal, the highest reward the goal is reached by the agent.
+Given $P_s$, a projection operator from the state space $S$ to the goal space $G$, and $P_s(s)$ the goal associated to
+$s$ by this projection, the reachability criteria could be $P_s(s) = g$, or $d(P_s(s), g) < \tau$, in most case, and
+specifically in continuous state spaces, with $d$ a distance metric highly dependent on the problem to solve (usually
+the Euclidean distance) and $\tau$ a reachability threshold.
+
+The reward is usually defined by the engineer building the agent, and specifically designed to guide learning using
+expert knowledge.
+Because the best way to reach a goal is hard to know from expert knowledge, and highly depends on obstacles and possibly
+evolving environment dynamics, the reward is frequently only given when the agent reach a goal, to avoid introducing
+human bias in the agent learning, which make the problem of sparse rewards highly present in this domain.
+One beneficial effect of using sparse rewards in this context, especially when the reward received at training steps
+where the goal hasn't been reached is negative, is that a distance function can be extracted from the Q-Value learned by
+the agent.
+If the reward function returns -1 at any steps and 0 when the goal is reached, the sum of expected rewards we can get by
+executing an optimal policy from a state $s$ towards a goal $g$ is the opposite of the amount of actions required to
+reach $g$ from $s$.
+Then, we can compute the exact amount of action required to reach a state using the \important{uvfa} (UVFA) $V^*(s, g)$
+and the projection $P_s$.
+\begin{equation} \label{eq:bg:rl:uvfa-distance}
+    V^*(s, g) = \mathbb{E} \left[ \sum_{t=0}^\infty \gamma^t R(s_t, g, a_t) \mid s_0 = s \right]
+    d^*(s_1, s_1) = - V^*(s_1, P_s(s_2))
+\end{equation}
+where $d^*$ is the amount of actions required to reach the projection of a state from another state.
+This distance depends on the value function, and an approximated value can then be computed because the agent learns an
+approximation of $Q^*(a, s, g)$, and then an approximation of $V^*(s, g)$.
+
+GCRL is one of the many active research domain in RL.
+Many papers uses it or propose new ways of reaching goals such as HER~\citep{andrychowicz2017hindsight},
+HAC~\cite{levy2019learning}, or SORB~\cite{eysenbach2019search}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%             ON/OFF POLICY SECTION TO REFACTOR            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{on-policy vs off-policy}\label{subsection:bg:rl:on-off-policy}
+
+\important{on-policy rl} refers to methods in which the agent learns the value function or policy while
+following the same policy that it is currently optimizing.
+In other words, the data used to improve the agent's decision-making capabilities comes from the agent’s own behavior
+as determined by its current policy $\pi$.
+The term \("\)on-policy\("\) highlights the fact that the learning process is tightly coupled to the policy the agent is
+following during its exploration of the environment.
+This characteristic ensures that the updates to the policy are always aligned with the agent's direct experience of the
+environment.
+
+\important{off-policy rl} methods, in contrast, allow the agent to learn a value function or policy based on
+data collected from a different policy.
+This means that the agent's learning process is decoupled from the policy used to generate the data.
+The term \("\)off-policy\("\) refers to the fact that the learning policy $\pi$ and the behavior policy $\pi_b$ can be
+different.
+
+Off-policy methods are often more flexible because they can leverage data generated from past policies, demonstrations,
+or even other agents, which makes them highly sample-efficient.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%              MODEL BASED SECTION TO REFACTOR             %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Model based reinforcement learning}
+
+Model-Based Reinforcement Learning (MBRL) refers to a class of reinforcement learning (RL) algorithms that explicitly
+use a model of the environment to guide the agent's decision-making process.
+In this context, the model refers to the agent's internal representation or approximation of the environment's dynamics.
+These dynamics includes two of the components defining the MDP~\ref{subsection:bg:rl:problem_def}, the transition model $T$,
+and the reward model $R$.
+
+In MBRL, the agent leverages this model to simulate interactions with the environment and plan its actions accordingly.
+This process often involves predicting future states and rewards, allowing the agent to evaluate different action
+sequences before executing them in the real environment.
+
+The model could be instantiated randomly, and is then refined using interaction with the environment.
+Interactions data are sample by running a policy.
+The latter could be random, or build from expert knowledge.
+Then, the policy is trained by interacting with the said model, which could be refined using interactions generated a
+posteriori by the trained policy.
+
+Such methods are useful when generating interactions with the real environment are costly, and when training a model
+is easier (require fewer data) than directly training the policy.
+
+In MBRL, the model learns the transition function to which the reinforcement learning algorithm is subjected.
+But in other cases, the model could learn macro transitions ($s$, $a_{t, \dots, t+n}$, $s'$, where $a_{t, \dots, t+n}$
+is a sequence of $n$ actions).
+To understand the interest, we should understand what a control-policy is.
+When an agent learn to solve a task, like reaching a given position, some instances of the problem to solve might
+require fewer actions than others.
+In these cases, the task instances that require a lower amount of actions to solve might be easier to solve, and a
+trained to solve such a task might be able to solve theses easier tasks before to be able to solve the harder problem
+instances.
+In this case, it could be interesting to simplify the problem, by letting the policy, called control-policy in this
+case, solve temporally short tasks, that are easier.
+Then, we can use the macro model to compute a trajectory (a sequence of states), separated by sequence of multiple
+actions, and use the states in this trajectory as sub-goals for our control-policy.
+This paradigm is more studied in section~\ref{section:bg:planning-rl}, and some methods are presented in
+section~\ref{section:related_works:planning-rl}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%               DEEP RL SECTION TO REFACTOR                %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Deep Reinforcement Learning}\label{subsection:bg:rl:deep-reinforcement-learning}
+
+Deep Reinforcement Learning (Deep-RL) represents the fusion of reinforcement learning (RL) principles with the
+representation capabilities of deep learning.
+
+In basic environments, where the spaces $S$ and $A$ are discrete spaces, the functions we presented in
+section~\ref{subsection:bg:rl:problem_def} can be represented by simple data structures.
+For example, the Q-function (equation~\ref{eq:bg:rl:q_function_wrt_pi}) can be represented as a 2-dimensional array,
+where the value of $Q(s, a)$ is stored in the row associated to the state $s$, and in the column associated to the
+action $a$.
+However, if one of the spaces $A$ or $S$ become continuous, the Q-function could no more be represented by such
+structure.
+An idea could be to add a new row to our array for each new state our agent encounter, and select a random action if we
+have no information about a new state we meet.
+However, because the number of possible state is infinite, this method will have an infinite space complexity.
+Additionally, in the majority of continuous state space problems, the probability of encountering a state already
+observed before is near zero.
+The agent will then be unable to exploit the knowledge it builds on previously seen states.
+
+Deep neural networks (or Artificial neural networks (\acrshort{ann})) helps to solve this problem with their
+generalisation capabilities~\citep{zhang2021understanding}.
+For example, let's take a neural network trained with states as inputs, and learn some distribution over the state
+space.
+The backpropagation of an error made on a specific state will modify its weights so the value given by this neural
+network will be more accurate on this state in the future.
+More, this modification of the weights will also have an impact on the prediction made from other state,
+because the same weights are used for every prediction.
+More the predictions on states that are similar to the one we learned on, will be more impacted by this gradient
+descent (because the set of activated neurons are similar on two similar states).
+
+With all these information, we can guess that a deep neural network could be a good tool to represent the Q-function.
+In the algorithm deep-Q-network (\acrshort{dqn})~\citep{mnih2013playing}, the Q-function is represented by a neural network with
+states as input.
+Because this algorithm is made to work with discrete actions spaces, this neural network gives one output per possible
+action.
+The $i^{th}$ output of this Q-network is the learned Q-function $Q^\pi(s, a)$ where $s$ is the state used as the
+network input, and $a$ is the $i^{th}$ action.
+The usage of neural networks in reinforcement learning then helped to solve key technical issues.
+However, they also bring new ones, such as catastrophic forgetting.
+
+\subsection{Challenges in Reinforcement Learning}\label{subsection:bg:rl:challenges-in-reinforcement-learning}
+
+While RL has demonstrated remarkable success, some challenges keep this research domain pretty active:
+
+\subsubsection{Exploration versus Exploitation}\label{subsubsection:bg:rl:prblems:exploration-exploitation}
+
+During it's training, an agent learning with RL will sample data using interactions with its environment.
+In this process, the actions it chose have a direct impact on the samples it generates, and then on which information
+it gathered.
+In this context, exploitation refers to the strategy of choosing actions that are considered optimal by the policy $\pi$.
+In the other hand, exploration refers to the idea of adding randomness in the action selection
+strategy\footnote{Adding
+randomness in the action selection strategy could be done by modifying the policy itself, or by modifying its output.}.
+The first one allows the agent to update the outcome\footnote{Here, The outcome of an action refers to the expected sum
+of rewards that could be gatherd in the future with this action.} given by the actions
+${a_0, \dots, a_t}, a_{i \in [0, t]}\sim\pi(s_i)$ in the case of a stochastic environment.
+The other one allows it to diversify the data sampled by the agent, and test the outcome of actions that would not have
+been chosen otherwise.
+Having only randomness in the action selection strategy will prevent the agent to follow the high rewarding states, and
+then, will lower the probability to test actions that are on the optimal path and far from the initial state.
+It might also lead the agent to choose actions that are known as giving a low outcome, then wasting precious time in
+the learning process.
+When a bit of exploration is present in the actions choice, exploitation improve the training by guiding the agent into
+a trajectory close to what is considered to be an optimal trajectory by the current policy $\pi$.
+
+The optimal amount of exploration in the action selection strategy mostly depends on the environment.
+It could be done by randomly sampling a fixed amount of actions~\citep{mnih2013playing}, adding noise to the policy
+output~\citep{lillicrap2015continuous}, training the policy to maximize the entropy of its actions
+selection~\citep{haarnoja2018soft}, or even building a reward function that is maximized when the distribution of
+explored states is uniform~\citep{pong2019skew}.
+Many other methods could be imagined, and exploration is still a problem that motivates a lot of research papers.
+
+\subsubsection{Sparse Rewards}\label{subsubsection:bg:rl:prblems:sparse-rewards}
+
+In most cases, the reward function is designed by a human, using its expert knowledge about the problem to solve.
+The reward is then a known metric we want the agent to maximize, but RL is used because we don't know how to do maximize
+it.
+
+For example, we can imagine an environment where the agent have to control a 200 degree of freedom (DOF) humanoid robot.
+The agent choose actions that corresponds to torques to apply to the controllers, and have to make the robot walk
+towards a pre-defined target.
+Here, an obvious reward function could be the opposite of the distance to it.
+Clearly, no human know the optimal torque to apply to each controller in order to stay stand, and to walk, since we
+don't know with precision which muscle we contract at which time when we do it.
+Then, the expert human know in which direction he wants the robot to go, and the RL algorithm will learn which is the
+best action in each situation to walk in this direction.
+
+This situation could looks fine, and we will have a robot walking in no time!
+But we have a problem here, in the large majority of possible interactions, the reward it exactly the same than the
+reward we received in the previous interaction.
+For example, moving an arm alone (and sending a torque of 0 in any other controller) will not move the robot, and then,
+will not change neither the distance to the target, nor the reward.
+Even if it is a particular case, in most case, only a finely synchronized control of the controllers will allow the
+robot to change its distance to the target, while any other control will barely change it.
+
+But the problem is even worse.
+In the beginning of the training process the control policy is initialised randomly, and will then take actions that
+could also seem to be random.
+Such anarchic control could be compared to an anarchic muscles contraction in the human body.
+Similarly to a human having a generalized tonic–clonic seizure, commonly associated with epilepsy, we cannot expect our
+agent to change a lot its distance to the target.
+We can even hardly imagine it to stand still.
+But if our agent don't get closer to the target during the training process, it will never find better reward.
+Then, the trained policy might choose optimal actions, but it will never consider them as more rewarding than others.
+The agent will likely continue to take actions that don't lead it to rewards until it will luckily start moving, which
+could take a very long time.
+
+More, if we imagine that the policy learned how to wake up and walk, it will likely follow a greedy path towards the
+target, which might not be the optimal path due to walls for example.
+Then, we might want to give to the agent a reward, only if it reach the target, and let it learn the optimal path
+without introducing biases with a too dense reward function.
+However, such reward will be so sparse, that the agent will require to barely explore every state before to find it.
+
+The sparsity of a reward become a problem when it is so sparse, that the exploration induced in the policy is not
+enough to find it in a reasonable amount of time.
+Then, this problem is highly related to the previous one, since that in the hardest cases, solving it can be seen as
+performing an exploration efficient enough to find this so sparse reward.
+However, some methods~\citep{andrychowicz2017hindsight, levy2019learning} tackle this problem specifically, by
+refactoring passed trajectories with denser rewards.
+These methods are more detailed in the Chapter~\ref{chapter:related_works}.
+
+\subsubsection{High-Dimensional Spaces}\label{subsubsection:bg:rl:prblems:high-dimentions}
+
+The state used by a policy to produce an action distribution, give it any information it needs to choose the best action
+in this state.
+However, if often contains more information than what it needs to solve it.
+Similarly, to the sparse-reward problem, it is hard to produce an optimal state representation.
+We explained previously that a human don't know how to solve the task, and is then not able to hand-design an accurate
+and dense reward function to define the task without producing alignment issues.
+Similarly, the state space is often design to represent the situation of the agent, but the produced states can also
+contain useless information.
+As an example, we can imagine an agent navigating in a maze, where the image of what is see is used as its state.
+However, the agent will also be able to navigate using its position in the maze.
+Because the image contains way more information than the position, the state space $S$ is way larger in the first case.
+Because out policy learns the best action to perform in each state, our policy will have to learn a lot more information
+with images as states, than with position.
+This is one of the many reasons why learning from a too big state representation leads to performances issues, and is
+the subject of an active research subdomain of RL\@.
+
+\subsubsection{Catastrophic Forgetting and distribution shift}
+
+During the training of an ANN, each neuron are used to compute every output, whatever the input data.
+This have a two side effect.
+First, the modification of a neuron's weights have an impact on the predictions made from similar inputs, and then leads
+to generalisation.
+The problem arise when the modified weights received another modification do give better predictions on different data.
+These old optimal weights are then replaced by new values that are optimal for the new data, and the information learned
+about the old data is then lost.
+This problem is called \important{catastrophic forgetting}.
+
+\begin{definition}[Catastrophic forgetting]
+    Given a dataset $D \in X \times Y$, where $X$ is the input space, and $Y$ the output space and disjoint data
+    distributions $D_1 \in D$ and $D_2 \in D$.
+    Catastrophic forgetting refers to the issue of an artificial neural network, altering its weights while learning to
+    approximate the distribution $D_2$ after it learns to approximate the distribution $D_1$, then loosing accuracy
+    in its predictions for this initially learned distribution.
+\end{definition}
+
+%Solving this problem is the goal of a large amount of papers.
+%By isolating some sub-parts of the neural network to use them only for a specific task
+%(\citep{rusu2016progressive, fernando2017pathnet, mallya2018packnet}), by regulating the learning gradient
+%(\citep{kirkpatrick2017overcoming, chaudhry2018efficient}), or by learning old tasks again
+%(\citep{chaudhry2019tiny, colas2019curious}).
+In general, this problem is solved by training over the entire distribution $D$ itself.
+Weights are modified according to their average error over $D$, and then learn about the data they fail the most
+without harming the knowledge they gathered about other data.
+However, the distribution $D$ can be unknown in some cases, and the distribution we trained on might change for a new
+one.
+When this happens, we generally care more about performing well in the task of approximating the new
+distribution rather that remembering the old one.
+Indeed, if we don't see any data from the old distribution, we don't need to be accurate about it.
+But we still have another problem: if our neural network has been trained on another distribution, its weights are
+optimized for it.
+However, the new distribution might be completely different, and the answer gave by our ANN in such context inaccurate.
+this is the consequence of a \important{distribution shift}.
+
+\begin{definition}[Distribution shift]
+    Given a dataset $D \in X \times Y$, where $X$ is the input space, and $Y$ the output space and disjoint data
+    distributions $D_1 \in D$ and $D_2 \in D$.
+    Distribution shift occurs when an artificial neural network is trained on a distribution $D_1$, before to be
+    exploited on another distribution $D_2$.
+    If these two distributions are too different one from the other, the neural network might fail to accurately predict
+    the distribution $D_2$ because it is exploiting inaccurate information learned from the distribution $D_1$.
+\end{definition}
+
+The resolution of this problem is an active research domain called \important{domain adaptation}.
+
+\begin{definition}[Domain adaptation]
+    Given a dataset $D \in X \times Y$, where $X$ is the input space, and $Y$ the output space and disjoint data
+    distributions $D_1 \in D$ and $D_2 \in D$.
+    The goal of domain adaptation methods is to learn to predict the distribution $D_1$, before to
+    exploit these knowledge on the distribution $D_2$, and try to transfer the information to make accurate predictions.
+\end{definition}
+
+\subsubsection{Credit assignment}
+
+In value-based RL, algorithms learns a value function that maps states to a value that is an estimation of expected sum
+of future rewards we can get by applying $\pi$ from this state.
+This function is learned by applying $\pi$ in a state and observing the rewards we received in the next-state, and the
+value of this next state.
+However, the estimated value of the next state might not be correct, because it is an estimation.
+Then, the value of the current state we learn might also not be correct.
+In order to get an error of zero for our value function on a given state, we need that the error of this value function
+on the next state is also zero.
+Then, for a given reward associated with a specific state, the value of this reward have to be propagated to the
+neighbor state's values, before to be propagated to further states.
+The propagation of a reward on the result of the value-function applied on the other states, is called
+\important{credit assignment}, because we assign credit (a higher value) to states that are next to an important reward.
+Such process could take some times, and will require a lot of interactions with our environment before to get an
+accurate value function over the state space.
+
+Some methods are considered to be interesting to optimize this process, such as skill-learning (like
+DIAYN~\cite{eysenbach2018diversity} algorithm for example) or hierarchical RL and RL coupled with global planning in
+general.
+The latter is more developed bellow in Section~\ref{section:bg:planning-rl}.
+
+\subsection{Applications of Reinforcement Learning}\label{subsection:bg:rl:applications-of-reinforcement-learning}
+Reinforcement Learning (RL) has demonstrated significant potential across a wide range of domains due to its ability to
+learn optimal decision-making policies through interaction with the environment.
+Below, we summarize key applications where RL has made a substantial impact.
+
+One of the most prominent applications is in games and simulations, where RL algorithms like
+AlphaGo~\citep{silver2016mastering}, AlphaGo Zero~\citep{silver2017masteringgo},
+AlphaZero~\citep{silver2017masteringchessandgo} have achieved human or superhuman performance.
+From mastering board games like Chess and Go to excelling in complex video games such as
+StarCraft II~\citep{vinyals2019grandmaster} and Dota 2~\citep{berner2019dota}, RL has
+proven its capacity to handle large state-action spaces and multistep reasoning.
+These successes have established games as a benchmark for testing and advancing RL methodologies.
+
+In robotics, RL has been transformative in enabling autonomous learning and adaptation.
+Robots have leveraged RL for tasks like locomotion, object manipulation, and navigation in dynamic environments.
+For instance, RL-based controllers allow robots to learn behaviors such as balancing, grasping, and obstacle avoidance.
+RL also complements traditional planning techniques, enhancing the ability of robots to operate in unstructured and
+uncertain real-world settings.
+
+These, are the applications on which we will apply RL to, in this thesis.
+However, it is important to keep in mind that the field of RL application is wider.
+Some other applications could be found in various domains such as healthcare~\citep{yu2021reinforcement},
+autonomous vehicles~\citep{kiran2021deep}, resources management~\citep{mao2016resource}, finance~\footnote{For portfolio
+management~\citep{jiang2017deep}, algorithmic trading~\citep{theate2021application}, and fraud
+detection~\citep{el2017fraud}.},
+energy~\footnote{For smart grid optimisation~\citep{zhang2018review}, nuclear fucion plasma
+control~\citep{degrave2022magnetic}, and building energy management~\citep{yu2021review}.}, and autonomous control in
+space~\citep{tipaldi2022reinforcement}.
+
+These applications highlight the adaptability of RL to diverse challenges.
+As RL continues to evolve, it is poised to unlock new opportunities and address increasingly complex problems across
+industries.

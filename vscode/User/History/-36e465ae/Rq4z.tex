@@ -1,0 +1,325 @@
+\section{Planning and reinforcement learning}\label{section:bg:planning-rl}
+
+RL can present an extremely low efficiency when it is learning in bad conditions.
+Without modifying the RL algorithm, it is possible to modify the environment in such a way as to facilitate learning
+in a more straightforward context.
+The solution to a reinforcement learning problem is a policy, denoted by $\pi$, that maximises the sum of expected rewards.
+To ascertain the action that maximises the sum of expected rewards from a given state, an agent must explore all
+possible actions in all possible states, as it is unable to evaluate each pair of states and actions otherwise.
+It can thus be concluded that reducing the size of the environment in which the RL algorithm is operating will in fact
+make it easier for it to learn.
+The optimal action in a given space is contingent on the actions that are feasible.
+Consequently, it is not possible to reduce the size of the research space over the action space.
+However, a reduction in the research space through the investigation of a specific subset of the state space may result
+in the elimination of numerous rewarding states.
+Consequently, the optimal policy of the sub-problem may diverge from that of the initial problem.
+In such cases, the creation of sub-tasks, each with its own reward function, becomes imperative.
+The subsequent challenge is to ascertain the sequence in which these sub-tasks are to be executed.
+This determination can be facilitated by an alternative policy, which will select the necessary sub-task.
+This results in the existence of two distinct policies: a local policy, denoted by $\pi_l$, and a global policy, denoted by $\pi_g$.
+The local policy will solve simple tasks chosen by the global policy, and the global policy will interact with a
+simpler environment that is a composition of the local policy and the original environment.
+This paradigm is represented in Figure~\ref{figure:bg:plan-rl:wrapped-agent}.
+
+\begin{definition}[stochastic hierarchical policy]
+    A stochastic policy $\pi(a|s)$ can be express in the context of hierarchical agents by:
+    \begin{equation}
+        \begin{split}
+            \pi(a|s) &= \int_{A'}\pi_l(a \mid a', s')\pi_g(a' \mid s) da' \\
+            &= \mathbb{E}_{a'\sim \pi_g(s)} \left [ \pi_l(a \mid a', s') \right ]
+        \end{split}
+    \end{equation}
+    Where $a' \in A'$ is a global action, and $A'$ is the global actions space.
+\end{definition}
+
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=1, transform shape]
+        \tikzstyle{every node}=[font=\sffamily\small]
+        \useasboundingbox (0, 0) rectangle (10, 6);
+
+        % Global agent
+        \coordinate (G) at (0, 5);  % Global agent position
+        \draw[orange, rounded corners=10pt, thick] (G) rectangle ($(G) + (4.5,-2)$);
+        \node[anchor=north west, text width=\linewidth, color=orange] at ($(G) + (0.1,-0.1)$) {Global Agent};
+        % Global policy
+        \coordinate (Gp) at ($(G) + (2.5,-0.2)$);  % Global agent position
+        \draw[orange, rounded corners=5pt, very thick, dashed] (Gp) rectangle ($(Gp) + (1.5,-1.5)$);
+        \node[anchor=north west, text width=\linewidth, color=orange] at ($(Gp) + (0.1,-0.1)$) {Global \\ policy};
+
+        % Control agent
+        \coordinate (C) at (0, 2.5);  % Control agent position
+        \draw[red, rounded corners=10pt, thick] (C) rectangle ($(C) + (4.5,-2)$);
+        \node[anchor=north west, text width=\linewidth, color=red] at ($(C) + (0.1,-0.1)$) {Control Agent};
+        % Control policy
+        \coordinate (Cp) at ($(C) + (2.5,-0.2)$);  % Control agent position
+        \draw[red, rounded corners=5pt, very thick, dashed] (Cp) rectangle ($(Cp) + (1.5,-1.5)$);
+        \node[anchor=north west, text width=\linewidth, color=red] at ($(Cp) + (0.1,-0.1)$) {Control \\ policy};
+
+        % Environment
+        \coordinate (E) at (6,3.75);  % Control agent position
+        \draw[green, rounded corners=10pt, thick] (E) rectangle ($(E) + (2.5, -2)$);
+        \node[anchor=north west, text width=\linewidth, color=green] at ($(E) + (0.1, -0.1)$) {Environment};
+
+        % ARROWS
+        %> State
+        \draw[->, line width=1.5pt, blue] ($(Gp) + (4.5,-0.5)$) -- ($(Gp) + (1.5,-0.5)$);
+        \draw[->, line width=1.5pt, blue, rounded corners=5pt] ($(E) + (1.25, 0)$) --  ($(E|-Gp) + (1.25, -0.5)$) -- ($(Gp) + (2.5,-0.5)$) -- ($(Cp) + (2.5,-0.5)$) -- ($(Cp) + (1.5,-0.5)$);
+        \node[anchor=north west, text width=\linewidth, color=blue] at (5.9,4.7) {$s$};
+
+        %> Action
+        \draw[->, line width=1.5pt, red, rounded corners=5pt] ($(Cp) + (1.5,-1)$) -- ($(E|-Cp) + (1.25, -1)$) -- ($(E) + (1.25, -2)$);
+        \node[anchor=north west, text width=\linewidth, color=red] at (5.7,1.2) {$a$};
+
+        %> Global action
+        \draw[->, line width=1.5pt, orange] ($(Gp) + (0.75,-1.5)$) -- ($(Cp) + (0.75,0)$);
+        \node[anchor=north west, text width=\linewidth, color=red] at ($(Gp) + (0.2, -1.8)$) {$a'$};
+
+        % Steps markers
+        \node[draw, circle, thick] at (4,3.6) {1};
+        \node[draw, circle, thick] at (3.1,1) {2};
+
+        % Legend
+        \coordinate (L) at (8, 4.8);  % Control agent position
+        \draw[->, line width=1.5pt, blue] (L) -- ($(L) + (0.7,0)$);
+        \node[anchor=north west, text width=\linewidth, color=blue] at ($(L) + (0.8,0.25)$) {state};
+        \draw[->, line width=1.5pt, red] ($(L) + (0,-0.4)$) -- ($(L) + (0.7,-0.4)$);
+        \node[anchor=north west, text width=\linewidth, color=red] at ($(L) + (0.8,-0.15)$) {action};
+        \draw[->, line width=1.5pt, orange] ($(L) + (0,-0.8)$) -- ($(L) + (0.7,-0.8)$);
+        \node[anchor=north west, text width=\linewidth, color=orange] at ($(L) + (0.8,-0.55)$) {global action};
+    \end{tikzpicture}
+    \caption{Hierarchical agent diagram. At step 1, the state is given to the global policy to produce a global action
+        (orange arrow) $a'$ that will be used to contition the control policy. At step 2, the control policy produce a
+        control action $a$ using the state, and the global policy conditioning action.}
+    \label{figure:bg:plan-rl:wrapped-agent}
+\end{figure}
+
+This definition underscores the fact that the stochastic local policy, denoted by $p_l$, is defined on
+$S \times A \times A'$ and that the stochastic global policy, denoted by $\pi_g$, is defined on $S \times A'$.
+From this perspective, it does not appear that the scope of our research has been reduced.
+In practice, the control policy is required to solve sub-tasks, thereby facilitating the identification of rewarding
+state-action pairs.
+Despite the fact that the local policy is defined on the entire state-action space, it is not required to explore this
+entire space in order to identify the actions that maximise its sum of expected rewards.
+Conversely, for the global policy, which is tasked with solving the original problem through the utilisation of its
+global actions, the research space is equivalent in complexity to that which a conventional RL algorithm must confront.
+However, the implementation of a local policy serves to reduce the complexity of this research.
+Specifically, the global actions generated by the global policy are stored in memory and utilised to inform the local
+policy for a subset of actions.
+In general, the local policy will be used as the default policy for at most $H$ steps,
+or until the task defined by the global action is completed.
+Subsequently, for each global action $a'$, a multitude of local actions $a$ are disseminated to the environment.
+The global agent will then interact with a macro-environment, composed of the local policy and the original environment
+itself, where the local policy is an element of the global transition function $P_g$.
+
+\begin{definition}[Global-transition function]
+    The global-transition function $P'(s_{i+1} \mid a', s_i)$ is defined by:
+    \begin{equation}
+        P'(s_{i+H} \mid a', s_i) = \prod_{t = i}^{H} T(s_{t+1} \mid a, s_t)\pi_l(a \mid a', s_t)
+    \end{equation}
+    Where $H$ is an hyper-parameter that define the duration of a sub-task.
+\end{definition}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        % Define parameters
+        \def\smallradius{0.3cm}
+        \def\bigradius{0.6cm}
+        \def\arrowsize{1mm}
+
+        \node[draw, fill=Orange, circle, minimum size=2*\bigradius](s0) at (0.0, 0) {$s_{0}$};
+        \node[draw, fill=CornflowerBlue, circle, minimum size=2*\smallradius](s1) at (1.4, 0.06) {$s_{1}$};
+        \node[draw, fill=CornflowerBlue, circle, minimum size=2*\smallradius](s2) at (2.8, 1.22) {$s_{2}$};
+        \node[draw, fill=CornflowerBlue, circle, minimum size=2*\smallradius](s3) at (4.2, 1.81) {$s_{3}$};
+        \node[draw, fill=Orange, circle, minimum size=2*\bigradius](s4) at (5.6, 2.29) {$s_{4}$};
+        \node[draw, fill=CornflowerBlue, circle, minimum size=2*\smallradius](s5) at (7.0, 1.79) {$s_{5}$};
+        \node[draw, fill=CornflowerBlue, circle, minimum size=2*\smallradius](s6) at (8.4, 1.55) {$s_{6}$};
+        \node[draw, fill=CornflowerBlue, circle, minimum size=2*\smallradius](s7) at (9.8, 1.45) {$s_{7}$};
+        \node[draw, fill=Orange, circle, minimum size=2*\bigradius](s8) at (11.2, 0.85) {$s_{8}$};
+
+        \draw[->] (s0) edge[red, line width=\arrowsize, bend right] node[midway, xshift=0.0cm, yshift=-0.4cm, color=red]{$a_0$} (s1);
+        \draw[->] (s1) edge[red, line width=\arrowsize, bend right] node[midway, xshift=0.0cm, yshift=-0.4cm, color=red]{$a_1$} (s2);
+        \draw[->] (s2) edge[red, line width=\arrowsize, bend right] node[midway, xshift=0.0cm, yshift=-0.4cm, color=red]{$a_2$} (s3);
+        \draw[->] (s3) edge[red, line width=\arrowsize, bend right] node[midway, xshift=0.0cm, yshift=-0.4cm, color=red]{$a_3$} (s4);
+        \draw[->] (s4) edge[red, line width=\arrowsize, bend right] node[midway, xshift=0.0cm, yshift=-0.4cm, color=red]{$a_4$} (s5);
+        \draw[->] (s5) edge[red, line width=\arrowsize, bend right] node[midway, xshift=0.0cm, yshift=-0.4cm, color=red]{$a_5$} (s6);
+        \draw[->] (s6) edge[red, line width=\arrowsize, bend right] node[midway, xshift=0.0cm, yshift=-0.4cm, color=red]{$a_6$} (s7);
+        \draw[->] (s7) edge[red, line width=\arrowsize, bend right] node[midway, xshift=-0.1cm, yshift=-0.4cm, color=red]{$a_7$} (s8);
+
+        \draw[->] (s0) edge[Orange, line width=\arrowsize, bend left] node[midway, color=red, fill=white]{$a'_0$} (s4);
+        \draw[->] (s4) edge[Orange, line width=\arrowsize, bend left] node[midway, color=red, fill=white]{$a'_1$} (s8);
+
+    \end{tikzpicture}
+    \caption{Representation of the transitions made by a hierarchical agent. Orange actions and states represent global
+    transitions. Light blue states and red actions represent local transitions.}
+    \label{figure:bg:plan-rl:hierarchical-transitions}
+\end{figure}
+
+% CONTINUER à DEEPL WRITE ICI
+% CONTINUER à DEEPL WRITE ICI
+% CONTINUER à DEEPL WRITE ICI
+% CONTINUER à DEEPL WRITE ICI
+% CONTINUER à DEEPL WRITE ICI
+% CONTINUER à DEEPL WRITE ICI
+% CONTINUER à DEEPL WRITE ICI
+% CONTINUER à DEEPL WRITE ICI
+% CONTINUER à DEEPL WRITE ICI
+% CONTINUER à DEEPL WRITE ICI
+% CONTINUER à DEEPL WRITE ICI
+% CONTINUER à DEEPL WRITE ICI
+
+Figure~\ref{figure:bg:plan-rl:hierarchical-transitions} propose a representation of the global transitions compare to
+the local ones.
+
+We know why we might want to build this architecture, but the technical aspect of how to build a global policy stay a
+mistery, let's demystify it.
+
+\subsection{Various methods for hierarchical agents}\label{subsection:bg:plan-rl:global-actions}
+
+Some methods may vary in the way they condition the control policy, or in the way they build and train the global
+policy.
+
+\textbf{Global actions} can take multiple types.
+Our goal is to use it to choose which task our local policy will perform.
+The most trivial way to do this is to learn different policies and choose which one we want to do.
+The most popular method is to learn \important{options}.
+An option is defined by:
+\begin{itemize}
+    \item An initialisation condition $I_o(s)$ that define when the option can be started.
+    \item A termination condition $\beta_o(s)$ that define when the option is done.
+    \item A policy $\pi_o(s)$ that is the local policy selected for this option.
+\end{itemize}
+This paradigm has been introduced by \citet{sutton1999between}.
+
+We can also have a single local policy and condition it with the global action $a'$.
+Then the action $a'$ can be a goal, and $\pi_l$ is a goal-conditioned policy, a policy conditioned by a goal that gets
+higher rewards if the agent is considered close to the goal by some hand design criteria.
+
+The following are the most frequently cited conditioning types in the extant literature.
+However, it is conceivable that other global actions, such as integers in a bounded global action set $A'$, will
+condition a single local policy that will learn as many macro-actions as possible.
+
+\textbf{Global policy.} In hierarchical agent, the global policy can of course be trained with reinforcement learning.
+In this context, the global policy action space $A$ could be the local policy goal space $G$ if the local policy is
+goal-conditioned, or a discrete space for the other global actions types presented previously.
+However, it should be noted that the global policy may not necessarily be trained using reinforcement learning.
+Alternatively, it can be any conceivable policy that engenders one of the macro action types previously delineated,
+such as a reachability graph.
+
+This data structure is equivalent to the one defined in Section~\ref{section:bg:planning},
+Definition~\ref{definition:bg:plan:classical-planning-model}.
+The resolution of the shortest path problem in this reachability graph results in the provision of a sequence of
+actions and nodes.
+In the event that the local policy is goal-conditioned, it can be posited that the nodes can be used as a sequence of
+sub-goals for the local policy.
+These can then be used as global actions.
+Conversely, if the local policy is a sequence of policies or a single policy conditioned by discrete global actions,
+the actions that comprise the plan (i.e.\ the edges in the reachability graph) can be used as global actions.
+
+The motivation for the concept of hierarchical agents is predicated on the premise that they are capable of dividing a
+complex problem into a series of more straightforward sub-problems.
+With a more profound comprehension of the implementation of such architectures, there is a corresponding enhancement in
+the discernment of the problems to which they pertain, in addition to the manner in which they address those problems.
+
+\subsection{Impact of hierarchical agents on RL problems}\label{subsection:bg:plan-rl:impact-on-rl-problems}
+
+In this chapter, we presented a substantial yet non-exhaustive compendium of issues pertaining to RL
+(see Section~\ref{subsection:bg:rl:challenges-in-reinforcement-learning}).
+It is posited that the implementation of a hierarchical agent architecture may serve to circumscribe a number of these
+challenges.
+
+\textbf{Credit assignment.}\label{paragraphe:bg:plan-rl:impact:credit-assignment}
+
+The present study introduces the concept that the global policy interacts with a distinct transition function compared
+to the one induced by the environment.
+This global transition function, denoted by $P'(s_{t+H} | s_t, a')$, has the consequence of global actions having a
+greater temporal impact than local actions.
+In summary, for a given global action $a'$, the global agent will execute $H$ steps within the environment.
+From the global agent's perspective, the reward, or the value of the new state $s_{t+H}$, is associated with the global
+action $a'$ and the state $s_t$.
+In the context of the credit assignment problem
+(Subsection~\ref{subsection:bg:rl:challenges-in-reinforcement-learning}), this implies that the value of a state is
+propagated at a rate that is $H$ times faster to the state-action pairs that could lead the agent to it.
+In the event that the global policy is endowed with a research space of an equivalent size to that of a single policy
+RL agent, it will learn at a significantly faster rate as a consequence of this sample-efficient credit assignment.
+
+\textbf{Exploration.}
+
+% NOTE: Je pourrais définir plus formellement ce que j'entend par diversité, ou ce que j'entend par la maximisation de
+% la couverture de l'espace d'état, mais je ne les utiliserait pas donc pour le moment je laisse comme ça.
+
+The term 'exploration' is broad in scope.
+One perspective posits that this is optimised when each action is selected with equal probability.
+Alternatively, it can be argued that exploration is maximised when the coverage of the state space $S$ by the states
+sampled by the policy since the beginning of the training is maximal.
+It is imperative to ensure that the agent engages in a minimum of both types of exploration, although the relative
+importance of these two approaches may vary depending on the specific problem being addressed.
+The former ensures the avoidance of untested actions with the potential to yield high rewards.
+The latter ensures the identification of all potential high-reward actions that could facilitate the identification of
+the actions leading to them.
+
+The initial definition is of particular interest in the context of RL, given the inherent uncertainty surrounding the
+outcomes of actions.
+Consequently, it is imperative to conduct rigorous testing on all actions to ensure the reliability of the system.
+However, it is generally straightforward to ensure that all actions from a given state have been thoroughly examined.
+However, it is a more arduous task to ensure that every possible state has been thoroughly explored, or to maximise the
+coverage of state space.
+
+The exploration of global actions is of interest in the context of reinforcement learning (RL), as they have been shown
+to facilitate the maximisation of state-space coverage in certain scenarios.
+As previously outlined in Section~\ref{subsection:bg:rl:challenges-in-reinforcement-learning}, specifically in the
+paragraph addressing sparse rewards, it is evident that an agent trained through RL is incapable of navigating the
+state space efficiently without first identifying these rewards.
+The local policy, when solving simpler tasks with denser rewards, as induced by the selected global actions, will
+navigate more efficiently in the directions of the sub-task, or global action, rewards.
+Consequently, global actions will result in a more efficient state space coverage, as they will direct the agent in
+specific directions within the state space, thereby facilitating the maximisation of its coverage.
+However, it is important to note that global actions must also possess a second characteristic in order to achieve
+enhanced state space coverage.
+In the event that all global actions $a'$ belonging to a set $A'$ result in equivalent local reward functions, the
+local policy will be directed uniformly within a specific region of the state space for any given global action.
+This outcome, however, does not align with the established definition of space coverage.
+In general, hierarchical agent methods ensure a minimum of diversity in the skills (the local policy conditioned by a
+specific global action) produced by the agent.
+This diversity ensures that, for a given global action, executed from a given state $s_t$, the states sampled by the
+local policy will differ from those sampled by any other skills.
+
+\textbf{Catastrophic forgetting and distribution shift}
+
+In Section~\ref{subsection:bg:rl:challenges-in-reinforcement-learning}, the distribution shift problem was discussed.
+In the context of RL, this problem manifests in numerous instances.
+Primarily, the exploration of state space is never instantaneous, even in the absence of a hierarchical agent.
+Secondly, the policy will learn the optimal actions to perform in some states before learning the optimal actions to
+perform in completely different states.
+This suggests that the policy will forget the optimal action to perform in the old states, unless it continues to learn
+them.
+This phenomenon is further exacerbated by the increase in the size of the state space, necessitating larger replay
+buffers (memory storage for previous interactions) and training batches (sets of interactions to be learned at each
+training state), leading to computational inefficiency in both space and time.
+The utilisation of a hierarchical agent has been posited as a potential solution to this predicament.
+The learning options could be regarded as a means to address this distribution shift problem and the catastrophic
+forgetting that results from it.
+It is evident that each option is designed to be implemented under specific initial conditions.
+In the event of an alternative initial condition (or, alternatively, an alternative state), an alternative policy will
+execute the subtask.
+It is noteworthy that each option retains the capacity to recall the most effective actions to be performed from these
+initial conditions.
+The CURIOUS~\citep{colas2019curious} algorithm is a hierarchical agent that learns various skills associated with
+human-designed reward functions.
+The probability of selection of a skill to learn is contingent on the agent's learning progress with respect to the
+skill in question.
+In the event of a skill being forgotten due to the acquisition of other skills, the agent will be unable to perform the
+skill, but will rapidly relearn it.
+It is evident that the learning
+progress~\footnote{How much the agent is making progress at performing this skill while learning it.} and the
+probability of learning a skill increase when it is forgotten.
+Hierarchical agents do not necessarily assist in resolving this distribution shift problem; however, they can
+facilitate the implementation of efficient mechanisms to address it.
+This architecture can also facilitate the development of a local policy that is efficient for domain adaptation, a
+topic that will be elaborated upon in Chapter~\ref{chap:rgl}.
+
+A comprehensive understanding of the hierarchical agents architecture's capacity to address these issues, coupled with
+a discerning awareness of the specific challenges it is designed to overcome, facilitates a nuanced appreciation of its
+practical applications.

@@ -1,0 +1,7 @@
+{
+    "files.autoSave": "afterDelay",
+    "python.defaultInterpreterPath": "/home/hedwin/computing/home_venv",
+    "window.autoDetectColorScheme": true,
+    "tabnine.experimentalAutoImports": true,
+    "workbench.preferredDarkColorTheme": "Monokai"
+}

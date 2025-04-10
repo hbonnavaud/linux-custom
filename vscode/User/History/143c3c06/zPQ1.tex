@@ -1,0 +1,150 @@
+% Author = hedwin
+% Date = 25/11/2024
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Preamble
+\documentclass[11pt]{report}
+\listfiles
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages
+\usepackage[x11names,dvipsnames,svgnames]{xcolor}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{natbib}
+\usepackage[pdfpagelabels]{hyperref}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{blindtext}
+\usepackage{titlesec}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[acronym]{glossaries}
+\usepackage[linesnumbered, vlined, ruled]{algorithm2e}
+\usepackage{helvet}
+\usepackage{float}
+\usepackage{fancyref}
+\usepackage{cleveref}
+\usepackage{pdfpages}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{matrix}
+\usepackage{ifthen}
+
+% For page numbering
+\usepackage{fancyhdr}   % For custom headers and footers
+\usepackage{lastpage}   % Provides the LastPage label
+
+% RGL robots
+\usepackage{accessibility}
+
+\usepackage{subcaption}
+\usepackage{algpseudocode}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Commands
+\definecolor{myLightBlue}{RGB}{173, 216, 230}
+% - For RGL paper
+\newcommand{\edits}[1]{\textcolor{red}{#1}}
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+\newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}% Remove line number for one line
+\newcommand{\important}[1]{\textbf{\gls{#1}}}
+
+% - For rgl-robots paper
+\newcommand{\rglchange}[1]{{\color{blue}$\blacksquare$ #1}}
+\newcommand{\pluseq}{\mathrel{\raisebox{0.19ex}{$\scriptstyle+$}}=}
+
+% Theorems
+\newtheorem{definition}{Definition}
+
+% Colors
+\definecolor{customgreen}{HTML}{6AA84F}  % Your original green
+\definecolor{goldenrod}{HTML}{BF9000}    % Your original gold
+\definecolor{lavender}{HTML}{8E7CC3}     % Your original lavender
+\definecolor{blueberry}{HTML}{1155CC}    % Your original blue
+\definecolor{deepred}{HTML}{990000}      % Your original deep red
+\definecolor{skyblue}{HTML}{42A5F5}      % Standard bright blue
+\definecolor{softpurple}{HTML}{B39DDB}   % Soft purple
+\definecolor{sunnyyellow}{HTML}{FFD54F}  % Warm yellow
+\definecolor{freshorange}{HTML}{FF7043}  % Warm orange
+\definecolor{coolteal}{HTML}{26A69A}     % Teal/cyan shade
+\definecolor{richbrown}{HTML}{795548}    % Dark brown
+\definecolor{slategray}{HTML}{607D8B}    % Cool gray
+\definecolor{darkforest}{HTML}{2E7D32}   % Deep green
+
+% Used to show the page numbering
+\fancyhead{}
+\fancyfoot{}
+
+\fancypagestyle{main_content_style}{
+    \fancyhf{}  % Clear all header and footer fields
+    \fancyfoot[C]{Page \thepage\ of \pageref{DocumentEnd}}  % Custom footer with page number and total pages
+    \renewcommand{\headrulewidth}{0pt}  % Remove the line under the header
+    \renewcommand{\footrulewidth}{0pt}  % Remove the line under the footer
+}
+
+\fancypagestyle{appendix_style}{
+    \fancyhf{}  % Clear all header and footer fields
+    \fancyfoot[C]{Appendix page \thepage\ of \pageref{AppendixEnd}}  % Custom footer with page number and total pages
+    \renewcommand{\headrulewidth}{0pt}  % Remove the line under the header
+    \renewcommand{\footrulewidth}{0pt}  % Remove the line under the footer
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document
+\input{glossary_definitions}
+
+\begin{document}
+
+\pagenumbering{roman}
+
+\includepdf[pages=-]{guard_page.pdf}
+
+\tableofcontents
+
+\newpage
+\pagestyle{fancyplain}  % Force same style for plain pages and fancy pages (chapters and content)
+\pagestyle{main_content_style}
+\pagenumbering{arabic}
+\setcounter{page}{1} % Reset page numbering for the main content
+\input{chapters/1-introduction/introduction}
+\input{chapters/2-background/background}
+\input{chapters/3-related_work/related_work}
+\input{chapters/4-rgl/rgl}
+\input{chapters/5-rgl_robots/rgl_robots}
+%\input{chapters/6-future_works/future_works}
+\input{chapters/7-conclusion/conclusion}
+
+% To help with terms, we include a \gls{glossary} at the end.
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+% Add the glossary
+\glsaddall
+\newpage
+\printglossary
+\clearpage
+\printglossary[type=\acronymtype]
+% Add a reference to the end of the document (for the page numbering)
+This is a super cool line.
+\label{DocumentEnd}
+
+% Add the appendix
+\newpage
+\appendix
+\setcounter{page}{1} % Reset page numbering for the main content
+\pagestyle{appendix_style}
+\input{chapters/8-appendix/rlg}
+
+
+\label{AppendixEnd}
+
+\end{document}

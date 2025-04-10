@@ -9,32 +9,15 @@ SOURCE_EXT_FILE="$SCRIPT_DIR/extensions.txt"
 
 # Destination directories
 DEST_USER_DIR="$HOME/.config/Code/User"
-mkdir -p "$DEST_USER_DIR"
 
 echo "Importing VS Code configuration to: $DEST_USER_DIR"
 
-# Copy settings.json
-if [[ -f "$SOURCE_USER_DIR/settings.json" ]]; then
-    cp "$SOURCE_USER_DIR/settings.json" "$DEST_USER_DIR/"
-    echo "✓ Restored settings.json"
+# Copy User folder
+if [[ -d "$SOURCE_USER_DIR" ]]; then
+    cp -r "$SOURCE_USER_DIR" "$DEST_USER_DIR"
+    echo "✓ Restored User/"
 else
-    echo "✗ settings.json not found in $SOURCE_USER_DIR"
-fi
-
-# Copy keybindings.json
-if [[ -f "$SOURCE_USER_DIR/keybindings.json" ]]; then
-    cp "$SOURCE_USER_DIR/keybindings.json" "$DEST_USER_DIR/"
-    echo "✓ Restored keybindings.json"
-else
-    echo "✗ keybindings.json not found in $SOURCE_USER_DIR"
-fi
-
-# Copy snippets folder
-if [[ -d "$SOURCE_USER_DIR/snippets" ]]; then
-    cp -r "$SOURCE_USER_DIR/snippets" "$DEST_USER_DIR/"
-    echo "✓ Restored snippets/"
-else
-    echo "✗ snippets/ folder not found in $SOURCE_USER_DIR"
+    echo "✗ User/ folder not found in $SOURCE_USER_DIR"
 fi
 
 # Reinstall extensions

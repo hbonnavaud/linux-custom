@@ -1,0 +1,34 @@
+\documentclass{article}
+
+% Package for input encoding
+\usepackage[utf8]{inputenc}
+
+% Package for handling graphics
+\usepackage{graphicx}
+
+% Package for page numbering
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+% Title and author
+\title{Policy invariance in Reinforcement Learning}
+\author{Hedwin BONNAVAUD}
+\date{\today}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{Page \thepage\ out of \pageref{LastPage}}
+
+\begin{document}
+
+\maketitle
+
+% Including external files
+\input{sections/1-introduction.tex}
+\input{sections/2-intuition.tex}
+\pagebreak
+\input{sections/3-formalisation.tex}
+
+\label{LastPage}
+
+\end{document}
