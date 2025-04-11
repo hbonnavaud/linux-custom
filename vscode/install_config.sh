@@ -10,6 +10,9 @@ SOURCE_KEYBINDINGS_FILE="$SCRIPT_DIR/User/keybindings.json"
 # Detect the correct VS Code config directory
 if [[ -d "$HOME/.config/Code" ]]; then
     DEST_USER_DIR="$HOME/.config/Code/User"
+    if [[ -f "/usr/share/code/resources/app/out/media/code-icon.svg" ]]; then
+        sudo cp "$SCRIPT_DIR/code-icon.svg" "/usr/share/code/resources/app/out/media/code-icon.svg"
+    fi
     echo "Using VS Code directory: $DEST_USER_DIR"
 elif [[ -d "$HOME/.config/Code - OSS" ]]; then
     DEST_USER_DIR="$HOME/.config/Code - OSS/User"
