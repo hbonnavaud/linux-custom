@@ -1,0 +1,12 @@
+[SddmGreeterTheme]
+Name=Samurai
+Description=SamuraiTheme
+License=GPL-3.0-or-later
+Type=sddm-theme
+Version=1.6
+Screenshot=Previews/PartialBlur.png
+MainScript=Main.qml
+ConfigFile=theme.conf
+TranslationsDirectory=translations
+Theme-Id=sugar-candy
+Theme-API=2.11
