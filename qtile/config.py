@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 import os
+import sys
+import pathlib
+
+parent_dir = pathlib.Path(__file__).resolve().parent
+sys.path.insert(0, str(parent_dir))
+
+import settings
 import subprocess
 from typing import List
 from libqtile import bar, layout, widget, hook
@@ -7,6 +14,7 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from libqtile.log_utils import logger
+from utils.place_floating_window import place_floating_window
 
 @hook.subscribe.startup_once
 def set_wallpaper():
@@ -44,6 +52,8 @@ import subprocess
 def set_background():
     subprocess.run(["feh", "--bg-scale", "/home/hedwin/images/wallpapers/image.jpg"])
 
+logger.warning("warning test")
+
 # Keybindings
 keys = [
     # Window management
@@ -51,31 +61,31 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    
+
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
     Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
-    
+
     Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
     Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    
+
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     Key([mod], "m", lazy.layout.maximize(), desc="Toggle window between minimum and maximum sizes"),
     Key([mod, "shift"], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
-    
+
     # Layout management
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod, "shift"], "Tab", lazy.prev_layout(), desc="Toggle between layouts reverse"),
     Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
-    
+
     # Qtile management
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    
+
     # Applications
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
@@ -83,19 +93,44 @@ keys = [
     Key([mod, "shift"], "space", lazy.spawn("rofi -show run"), desc="Command launcher"),
     Key([mod], "b", lazy.spawn("firefox"), desc="Launch Firefox"),
     Key([mod], "e", lazy.spawn("thunar"), desc="Launch file manager"),
-    
+
     # Audio controls
     Key([], "XF86AudioMute", lazy.spawn("pamixer -t"), desc="Toggle volume on/off."),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pamixer -d 10"), desc="Volume down."),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pamixer -i 10"), desc="Volume up."),
-    
+
     # Screen brightness
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set 10%+"), desc="Brightness up"),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-"), desc="Brightness down"),
-    
+
     # Screenshot
     Key(["control"], "Print", lazy.spawn("flameshot full"), desc="Take screenshot"),
     Key([], "Print", lazy.spawn("flameshot gui"), desc="Take full screenshot"),
+    Key(["mod1"], "w", lazy.function(place_floating_window, h_position="left", v_position="bottom"), desc="Move and resize window under mouse"),
+    Key(["mod1"], "x", lazy.function(place_floating_window, h_position="full", v_position="bottom"), desc="Move and resize window under mouse"),
+    Key(["mod1"], "c", lazy.function(place_floating_window, h_position="right", v_position="bottom"), desc="Move and resize window under mouse"),
+    Key(["mod1"], "q", lazy.function(place_floating_window, h_position="left", v_position="full"), desc="Move and resize window under mouse"),
+    Key(["mod1"], "s", lazy.function(place_floating_window, h_position="center", v_position="center"), desc="Move and resize window under mouse"),
+    Key(["mod1"], "d", lazy.function(place_floating_window, h_position="right", v_position="full"), desc="Move and resize window under mouse"),
+    Key(["mod1"], "a", lazy.function(place_floating_window, h_position="left", v_position="top"), desc="Move and resize window under mouse"),
+    Key(["mod1"], "z", lazy.function(place_floating_window, h_position="full", v_position="top"), desc="Move and resize window under mouse"),
+    Key(["mod1"], "e", lazy.function(place_floating_window, h_position="right", v_position="top"), desc="Move and resize window under mouse"),
+    Key(["mod1"], "f", lazy.function(place_floating_window, h_position="full", v_position="full"), desc="Move and resize window under mouse"),
+
+    Key(["mod1"], 87, lazy.function(place_floating_window, h_position="left", v_position="bottom"), desc="Move and resize window under mouse"),
+    Key(["mod1"], 88, lazy.function(place_floating_window, h_position="full", v_position="bottom"), desc="Move and resize window under mouse"),
+    Key(["mod1"], 89, lazy.function(place_floating_window, h_position="right", v_position="bottom"), desc="Move and resize window under mouse"),
+    Key(["mod1"], 83, lazy.function(place_floating_window, h_position="left", v_position="full"), desc="Move and resize window under mouse"),
+    Key(["mod1"], 84, lazy.function(place_floating_window, h_position="center", v_position="center"), desc="Move and resize window under mouse"),
+    Key(["mod1"], 85, lazy.function(place_floating_window, h_position="right", v_position="full"), desc="Move and resize window under mouse"),
+    Key(["mod1"], 79, lazy.function(place_floating_window, h_position="left", v_position="top"), desc="Move and resize window under mouse"),
+    Key(["mod1"], 80, lazy.function(place_floating_window, h_position="full", v_position="top"), desc="Move and resize window under mouse"),
+    Key(["mod1"], 81, lazy.function(place_floating_window, h_position="right", v_position="top"), desc="Move and resize window under mouse"),
+
+    Key(["mod1"], "Up", lazy.function(place_floating_window, h_position="full", v_position="top"), desc="Move and resize window under mouse"),
+    Key(["mod1"], "Left", lazy.function(place_floating_window, h_position="left", v_position="full"), desc="Move and resize window under mouse"),
+    Key(["mod1"], "Down", lazy.function(place_floating_window, h_position="full", v_position="bottom"), desc="Move and resize window under mouse"),
+    Key(["mod1"], "Right", lazy.function(place_floating_window, h_position="right", v_position="full"), desc="Move and resize window under mouse"),
 ]
 
 # Custom keybinding
@@ -126,10 +161,10 @@ def next_group(qtile):
     next_group = groups[next_index]
 
     qtile.groups_map[next_group.name].toscreen()
-   
+
 def remove_group(qtile):
     current = qtile.current_group
-    
+
 def new_group(qtile):
     Group("n", layout="monadtall")
 
@@ -139,11 +174,12 @@ def remove_focused_window(qtile):
         group = window.group
         window.kill()
         if not group.windows:
-            delete_group(qtile, group)    
+            delete_group(qtile, group)
 
 keys += [
     # Custom launch shortcut
     Key(["control", "mod1"], "f", lazy.spawn("firefox"), desc="Launch firefox."),
+    Key(["control", "mod1"], "z", lazy.spawn("zed"), desc="Launch zed."),
     Key(["control", "mod1"], "d", lazy.spawn("discord"), desc="Launch discord."),
     Key(["control", "mod1"], "s", lazy.spawn("slack"), desc="Launch slack."),
     Key(["control", "mod1"], "t", lazy.spawn("terminator"), desc="Launch terminator."),
@@ -167,8 +203,8 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 
 # Layouts
 layout_theme = {
-    "border_width": 2,
-    "margin": 8,
+    "border_width": settings.windows_border_width,
+    "margin": settings.windows_margin,
     "border_focus": colors["frost3"],
     "border_normal": colors["polar_night2"],
 }
@@ -348,7 +384,8 @@ screens = init_screens()
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front()),
+    # Click([mod], "Button2", lazy.window.bring_to_front()),
+    Drag([], "Button2", lazy.window.set_position_floating(), start=lazy.window.get_position())
 ]
 
 # General configuration
