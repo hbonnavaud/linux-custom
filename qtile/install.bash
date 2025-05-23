@@ -21,11 +21,12 @@ file_paths=(
 script_dir=$(dirname "$(realpath "$0")")
 
 # Iterate through the list of file paths
-for file_path in "${file_paths[@]}"; do
-    # Remove the file if it exists, ignore if it doesn't
-    rm -f "$file_path"
 
-    # Create a symlink to the file in the script's directory
-    ln -s "$script_dir/$(basename "$file_path")" "$file_path"
-    echo "Created symlink at $file_path pointing to $script_dir/$(basename "$file_path")"
-done
+rm -f "$user_home/.config/picom/picom.conf"
+ln -s "$script_dir/picom.conf" "$user_home/.config/picom/picom.conf"
+
+rm -f "$user_home/.config/qtile/autostart.sh"
+ln -s "$script_dir/autostart.sh" "$user_home/.config/qtile/autostart.sh"
+
+rm -f "$user_home/.config/qtile/config.py"
+ln -s "$script_dir/config_files/config.py" "$user_home/.config/qtile/config.py"
