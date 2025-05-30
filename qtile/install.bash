@@ -29,4 +29,7 @@ rm -f "$user_home/.config/qtile/autostart.sh"
 ln -s "$script_dir/autostart.sh" "$user_home/.config/qtile/autostart.sh"
 
 rm -f "$user_home/.config/qtile/config.py"
-ln -s "$script_dir/config_files/config.py" "$user_home/.config/qtile/config.py"
+ln -s "$script_dir/config.py" "$user_home/.config/qtile/config.py"
+
+rm -f "$user_home/.config/qtile/mypy.ini"
+ln -s "$script_dir/mypy.ini" "$user_home/.config/qtile/mypy.ini"

@@ -2,10 +2,14 @@ from libqtile import layout, hook
 from libqtile.config import Key
 from libqtile.lazy import lazy
 from libqtile import log_utils
-
+import pathlib, os, sys
+parent_dir = pathlib.Path(__file__).resolve().parent
+sys.path.insert(0, str(parent_dir))
+import settings
 
 def create_group(qtile, group_name, keys=None):
-    qtile.add_group(group_name, layout="monadtall", persist=True)
+    label = group_name if settings.group_label_type == "int" else "○"
+    qtile.add_group(name=group_name, label=label, layout="monadtall", persist=True)
     if group_name in [str(i) for i in range(1, 11)]:
         group_index = int(group_name)
         keys.extend([
@@ -40,9 +44,9 @@ def delete_group(qtile, group_name):
         new_name = str(num - 1)
         qtile.groups_map.pop(group.name)
         group.name = new_name
-        group.label = new_name
+        if settings.group_label_type == "int":
+            group.label = new_name
         qtile.groups_map[new_name] = group
-    
     qtile.groups = [qtile.groups_map[name] for name in sorted(qtile.groups_map.keys(), key=int)]
 
 
