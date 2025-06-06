@@ -1,0 +1,27 @@
+/* Polybar Rounded Corners CSS */
+/* Place this in ~/.config/polybar/style.css */
+
+.polybar {
+    background: transparent;
+}
+
+/* Left section rounded corners */
+.left-section {
+    background: #2E3440;
+    border-radius: 10px 0 0 10px;
+    margin-right: 5px;
+}
+
+/* Center section rounded corners */
+.center-section {
+    background: #2E3440;
+    border-radius: 10px;
+    margin: 0 5px;
+}
+
+/* Right section rounded corners */
+.right-section {
+    background: #2E3440;
+    border-radius: 0 10px 10px 0;
+    margin-left: 5px;
+}

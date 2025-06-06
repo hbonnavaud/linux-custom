@@ -1,0 +1,448 @@
+2025-06-06 19:51:19 - Received listen
+2025-06-06 19:51:19 - Detected listen
+2025-06-06 19:51:19 - Starting workspace manager event listener
+2025-06-06 19:51:19 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1749223746_1248175239
+2025-06-06 19:51:19 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1749223746_1248175239/.socket2.sock
+2025-06-06 19:51:23 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:51:23 - Event: activewindowv2 > >564ea69e9740
+2025-06-06 19:51:23 - Event: workspace > >5
+2025-06-06 19:51:23 - Event: workspacev2 > >5,5
+2025-06-06 19:51:25 - Window close event detected: >564ea69e9740
+2025-06-06 19:51:25 - \n\nWindow closed on workspace 5\n\n
+2025-06-06 19:51:25 - Workspace 5 has 0 windows remaining
+2025-06-06 19:51:25 - Workspace 5 is empty, initiating deletion
+2025-06-06 19:51:25 - Deleting workspace 5 (current: 5)
+2025-06-06 19:51:25 - Switching to workspace 5 before deletion
+2025-06-06 19:51:25 - Starting renumbering process
+2025-06-06 19:51:25 - Renaming workspace 6 to 5
+2025-06-06 19:51:25 - Renumbering completed
+2025-06-06 19:51:25 - Event: activewindow > >,
+2025-06-06 19:51:25 - Event: activewindowv2 > >
+2025-06-06 19:51:25 - Event: movewindow > >564ea69fbe60,5
+2025-06-06 19:51:25 - Event: movewindowv2 > >564ea69fbe60,5,5
+2025-06-06 19:51:25 - Event: destroyworkspace > >6
+2025-06-06 19:51:25 - Event: destroyworkspacev2 > >6,6
+2025-06-06 19:51:26 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:51:26 - Event: activewindowv2 > >564ea69fbe60
+2025-06-06 19:58:09 - Received next
+2025-06-06 19:58:09 - Executing next navigation
+2025-06-06 19:58:09 - \n[NEXT] Current: 5, Max: 5, Next: 6
+2025-06-06 19:58:09 - [LAST] [NON EMPTY] Creating new workspace 6
+ok
+2025-06-06 19:58:09 - Event: createworkspace > >6
+2025-06-06 19:58:09 - Event: createworkspacev2 > >6,6
+2025-06-06 19:58:09 - Event: activewindow > >,
+2025-06-06 19:58:09 - Event: activewindowv2 > >
+2025-06-06 19:58:09 - Event: workspace > >6
+2025-06-06 19:58:09 - Event: workspacev2 > >6,6
+2025-06-06 19:58:10 - Event: windowtitle > >564ea6a04530
+2025-06-06 19:58:10 - Event: windowtitlev2 > >564ea6a04530,None
+2025-06-06 19:58:10 - Event: urgent > >564ea6a04530
+2025-06-06 19:58:10 - Event: urgent > >564ea6a04530
+2025-06-06 19:58:10 - Event: openwindow > >564ea6a04530,6,terminator,None
+2025-06-06 19:58:10 - Event: activewindow > >terminator,None
+2025-06-06 19:58:10 - Event: activewindowv2 > >564ea6a04530
+2025-06-06 19:58:10 - Event: windowtitle > >564ea6a04530
+2025-06-06 19:58:10 - Event: windowtitlev2 > >564ea6a04530,/usr/bin/zsh
+2025-06-06 19:58:10 - Event: activewindow > >terminator,/usr/bin/zsh
+2025-06-06 19:58:10 - Event: activewindowv2 > >564ea6a04530
+2025-06-06 19:58:10 - Event: windowtitle > >564ea6a04530
+2025-06-06 19:58:10 - Event: windowtitlev2 > >564ea6a04530,hedwin@tour:~
+2025-06-06 19:58:10 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:10 - Event: activewindowv2 > >564ea6a04530
+2025-06-06 19:58:10 - Received next
+2025-06-06 19:58:10 - Executing next navigation
+2025-06-06 19:58:10 - \n[NEXT] Current: 6, Max: 6, Next: 7
+2025-06-06 19:58:10 - [LAST] [NON EMPTY] Creating new workspace 7
+ok
+2025-06-06 19:58:10 - Event: createworkspace > >7
+2025-06-06 19:58:10 - Event: createworkspacev2 > >7,7
+2025-06-06 19:58:10 - Event: activewindow > >,
+2025-06-06 19:58:10 - Event: activewindowv2 > >
+2025-06-06 19:58:10 - Event: workspace > >7
+2025-06-06 19:58:10 - Event: workspacev2 > >7,7
+2025-06-06 19:58:12 - Event: urgent > >564ea68f1270
+2025-06-06 19:58:12 - Event: urgent > >564ea68f1270
+2025-06-06 19:58:12 - Event: urgent > >564ea68f1270
+2025-06-06 19:58:12 - Event: urgent > >564ea68f1270
+2025-06-06 19:58:12 - Event: urgent > >564ea68f1270
+2025-06-06 19:58:12 - Event: urgent > >564ea68f1270
+2025-06-06 19:58:12 - Event: windowtitle > >564ea6a05750
+2025-06-06 19:58:12 - Event: windowtitlev2 > >564ea6a05750,discord
+2025-06-06 19:58:14 - Event: activewindow > >discord,#💬général | Pynard - Discord
+2025-06-06 19:58:14 - Event: activewindowv2 > >564ea68f1270
+2025-06-06 19:58:14 - Event: workspace > >1
+2025-06-06 19:58:14 - Event: workspacev2 > >1,1
+2025-06-06 19:58:14 - Event: destroyworkspace > >7
+2025-06-06 19:58:14 - Event: destroyworkspacev2 > >7,7
+2025-06-06 19:58:15 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:15 - Event: activewindowv2 > >564ea6a04530
+2025-06-06 19:58:15 - Event: workspace > >6
+2025-06-06 19:58:15 - Event: workspacev2 > >6,6
+2025-06-06 19:58:16 - Received next
+2025-06-06 19:58:16 - Executing next navigation
+2025-06-06 19:58:16 - \n[NEXT] Current: 6, Max: 6, Next: 7
+2025-06-06 19:58:16 - [LAST] [NON EMPTY] Creating new workspace 7
+ok
+2025-06-06 19:58:16 - Event: createworkspace > >7
+2025-06-06 19:58:16 - Event: createworkspacev2 > >7,7
+2025-06-06 19:58:16 - Event: activewindow > >,
+2025-06-06 19:58:16 - Event: activewindowv2 > >
+2025-06-06 19:58:16 - Event: workspace > >7
+2025-06-06 19:58:16 - Event: workspacev2 > >7,7
+2025-06-06 19:58:20 - Event: windowtitle > >564ea6a26430
+2025-06-06 19:58:20 - Event: windowtitlev2 > >564ea6a26430,Mozilla Thunderbird
+2025-06-06 19:58:20 - Event: openwindow > >564ea6a26430,7,thunderbird,Mozilla Thunderbird
+2025-06-06 19:58:20 - Event: activewindow > >thunderbird,Mozilla Thunderbird
+2025-06-06 19:58:20 - Event: activewindowv2 > >564ea6a26430
+2025-06-06 19:58:20 - Event: windowtitle > >564ea6a26430
+2025-06-06 19:58:20 - Event: windowtitlev2 > >564ea6a26430,Home - Mozilla Thunderbird
+2025-06-06 19:58:20 - Event: activewindow > >thunderbird,Home - Mozilla Thunderbird
+2025-06-06 19:58:20 - Event: activewindowv2 > >564ea6a26430
+2025-06-06 19:58:20 - Event: windowtitle > >564ea6a26430
+2025-06-06 19:58:20 - Event: windowtitlev2 > >564ea6a26430,Inbox - hbonnavaud@gmail.com - Mozilla Thunderbird
+2025-06-06 19:58:20 - Event: activewindow > >thunderbird,Inbox - hbonnavaud@gmail.com - Mozilla Thunderbird
+2025-06-06 19:58:20 - Event: activewindowv2 > >564ea6a26430
+2025-06-06 19:58:21 - Received next
+2025-06-06 19:58:21 - Executing next navigation
+2025-06-06 19:58:21 - \n[NEXT] Current: 7, Max: 7, Next: 8
+2025-06-06 19:58:21 - [LAST] [NON EMPTY] Creating new workspace 8
+ok
+2025-06-06 19:58:21 - Event: createworkspace > >8
+2025-06-06 19:58:21 - Event: createworkspacev2 > >8,8
+2025-06-06 19:58:21 - Event: activewindow > >,
+2025-06-06 19:58:21 - Event: activewindowv2 > >
+2025-06-06 19:58:21 - Event: workspace > >8
+2025-06-06 19:58:21 - Event: workspacev2 > >8,8
+2025-06-06 19:58:21 - Event: openlayer > >notifications
+2025-06-06 19:58:24 - Event: windowtitle > >564ea6a4b8c0
+2025-06-06 19:58:24 - Event: windowtitlev2 > >564ea6a4b8c0,None
+2025-06-06 19:58:24 - Event: urgent > >564ea6a4b8c0
+2025-06-06 19:58:24 - Event: urgent > >564ea6a4b8c0
+2025-06-06 19:58:24 - Event: openwindow > >564ea6a4b8c0,8,terminator,None
+2025-06-06 19:58:24 - Event: activewindow > >terminator,None
+2025-06-06 19:58:24 - Event: activewindowv2 > >564ea6a4b8c0
+2025-06-06 19:58:24 - Event: windowtitle > >564ea6a4b8c0
+2025-06-06 19:58:24 - Event: windowtitlev2 > >564ea6a4b8c0,/usr/bin/zsh
+2025-06-06 19:58:24 - Event: activewindow > >terminator,/usr/bin/zsh
+2025-06-06 19:58:24 - Event: activewindowv2 > >564ea6a4b8c0
+2025-06-06 19:58:24 - Event: windowtitle > >564ea6a4b8c0
+2025-06-06 19:58:24 - Event: windowtitlev2 > >564ea6a4b8c0,hedwin@tour:~
+2025-06-06 19:58:24 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:24 - Event: activewindowv2 > >564ea6a4b8c0
+2025-06-06 19:58:25 - Event: activewindow > >thunderbird,Inbox - hbonnavaud@gmail.com - Mozilla Thunderbird
+2025-06-06 19:58:25 - Event: activewindowv2 > >564ea6a26430
+2025-06-06 19:58:25 - Event: workspace > >7
+2025-06-06 19:58:25 - Event: workspacev2 > >7,7
+2025-06-06 19:58:26 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:26 - Event: activewindowv2 > >564ea6993170
+2025-06-06 19:58:26 - Event: workspace > >4
+2025-06-06 19:58:26 - Event: workspacev2 > >4,4
+2025-06-06 19:58:29 - Event: closelayer > >notifications
+2025-06-06 19:58:29 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:29 - Event: activewindowv2 > >564ea6993170
+2025-06-06 19:58:34 - Window close event detected: >564ea6993170
+2025-06-06 19:58:34 - \n\nWindow closed on workspace 4\n\n
+2025-06-06 19:58:34 - Workspace 4 has 0 windows remaining
+2025-06-06 19:58:34 - Workspace 4 is empty, initiating deletion
+2025-06-06 19:58:34 - Deleting workspace 4 (current: 4)
+2025-06-06 19:58:34 - Switching to workspace 4 before deletion
+2025-06-06 19:58:34 - Starting renumbering process
+2025-06-06 19:58:34 - Renaming workspace 5 to 4
+2025-06-06 19:58:34 - Renaming workspace 6 to 5
+2025-06-06 19:58:34 - Renaming workspace 7 to 6
+2025-06-06 19:58:35 - Renaming workspace 8 to 7
+2025-06-06 19:58:35 - Renumbering completed
+2025-06-06 19:58:35 - Event: activewindow > >,
+2025-06-06 19:58:35 - Event: activewindowv2 > >
+2025-06-06 19:58:35 - Event: movewindow > >564ea69fbe60,4
+2025-06-06 19:58:35 - Event: movewindowv2 > >564ea69fbe60,4,4
+2025-06-06 19:58:35 - Event: destroyworkspace > >5
+2025-06-06 19:58:35 - Event: destroyworkspacev2 > >5,5
+2025-06-06 19:58:35 - Event: createworkspace > >5
+2025-06-06 19:58:35 - Event: createworkspacev2 > >5,5
+2025-06-06 19:58:35 - Event: movewindow > >564ea6a04530,5
+2025-06-06 19:58:35 - Event: movewindowv2 > >564ea6a04530,5,5
+2025-06-06 19:58:35 - Event: destroyworkspace > >6
+2025-06-06 19:58:35 - Event: destroyworkspacev2 > >6,6
+2025-06-06 19:58:35 - Event: createworkspace > >6
+2025-06-06 19:58:35 - Event: createworkspacev2 > >6,6
+2025-06-06 19:58:35 - Event: movewindow > >564ea6a26430,6
+2025-06-06 19:58:35 - Event: movewindowv2 > >564ea6a26430,6,6
+2025-06-06 19:58:35 - Event: destroyworkspace > >7
+2025-06-06 19:58:35 - Event: destroyworkspacev2 > >7,7
+2025-06-06 19:58:35 - Event: createworkspace > >7
+2025-06-06 19:58:35 - Event: createworkspacev2 > >7,7
+2025-06-06 19:58:35 - Event: movewindow > >564ea6a4b8c0,7
+2025-06-06 19:58:35 - Event: movewindowv2 > >564ea6a4b8c0,7,7
+2025-06-06 19:58:35 - Event: destroyworkspace > >8
+2025-06-06 19:58:35 - Event: destroyworkspacev2 > >8,8
+2025-06-06 19:58:35 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:35 - Event: activewindowv2 > >564ea69fbe60
+2025-06-06 19:58:37 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:37 - Event: activewindowv2 > >564ea6a04530
+2025-06-06 19:58:37 - Event: workspace > >5
+2025-06-06 19:58:37 - Event: workspacev2 > >5,5
+2025-06-06 19:58:38 - Event: activewindow > >thunderbird,Inbox - hbonnavaud@gmail.com - Mozilla Thunderbird
+2025-06-06 19:58:38 - Event: activewindowv2 > >564ea6a26430
+2025-06-06 19:58:38 - Event: workspace > >6
+2025-06-06 19:58:38 - Event: workspacev2 > >6,6
+2025-06-06 19:58:40 - Window close event detected: >564ea6a26430
+2025-06-06 19:58:40 - \n\nWindow closed on workspace 6\n\n
+2025-06-06 19:58:41 - Workspace 6 has 0 windows remaining
+2025-06-06 19:58:41 - Workspace 6 is empty, initiating deletion
+2025-06-06 19:58:41 - Deleting workspace 6 (current: 6)
+2025-06-06 19:58:41 - Switching to workspace 6 before deletion
+2025-06-06 19:58:41 - Starting renumbering process
+2025-06-06 19:58:41 - Renaming workspace 7 to 6
+2025-06-06 19:58:41 - Renumbering completed
+2025-06-06 19:58:41 - Event: activewindow > >,
+2025-06-06 19:58:41 - Event: activewindowv2 > >
+2025-06-06 19:58:41 - Event: movewindow > >564ea6a4b8c0,6
+2025-06-06 19:58:41 - Event: movewindowv2 > >564ea6a4b8c0,6,6
+2025-06-06 19:58:41 - Event: destroyworkspace > >7
+2025-06-06 19:58:41 - Event: destroyworkspacev2 > >7,7
+2025-06-06 19:58:41 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:41 - Event: activewindowv2 > >564ea6a4b8c0
+2025-06-06 19:58:42 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:42 - Event: activewindowv2 > >564ea69fbe60
+2025-06-06 19:58:42 - Event: workspace > >4
+2025-06-06 19:58:42 - Event: workspacev2 > >4,4
+2025-06-06 19:58:44 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:44 - Event: activewindowv2 > >564ea6a4b8c0
+2025-06-06 19:58:44 - Event: workspace > >6
+2025-06-06 19:58:44 - Event: workspacev2 > >6,6
+2025-06-06 19:58:45 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:45 - Event: activewindowv2 > >564ea69fbe60
+2025-06-06 19:58:45 - Event: workspace > >4
+2025-06-06 19:58:45 - Event: workspacev2 > >4,4
+2025-06-06 19:58:46 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:46 - Event: activewindowv2 > >564ea6a4b8c0
+2025-06-06 19:58:46 - Event: workspace > >6
+2025-06-06 19:58:46 - Event: workspacev2 > >6,6
+2025-06-06 19:58:49 - Window close event detected: >564ea6a4b8c0
+2025-06-06 19:58:49 - \n\nWindow closed on workspace 6\n\n
+2025-06-06 19:58:49 - Workspace 6 has 0 windows remaining
+2025-06-06 19:58:49 - Workspace 6 is empty, initiating deletion
+2025-06-06 19:58:49 - Deleting workspace 6 (current: 6)
+2025-06-06 19:58:49 - Switching to workspace 5 before deletion
+2025-06-06 19:58:49 - Starting renumbering process
+2025-06-06 19:58:49 - Renumbering completed
+2025-06-06 19:58:49 - Event: activewindow > >,
+2025-06-06 19:58:49 - Event: activewindowv2 > >
+2025-06-06 19:58:49 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:49 - Event: activewindowv2 > >564ea6a04530
+2025-06-06 19:58:49 - Event: workspace > >5
+2025-06-06 19:58:49 - Event: workspacev2 > >5,5
+2025-06-06 19:58:49 - Event: destroyworkspace > >6
+2025-06-06 19:58:49 - Event: destroyworkspacev2 > >6,6
+2025-06-06 19:58:51 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:51 - Event: activewindowv2 > >564ea69fbe60
+2025-06-06 19:58:51 - Event: workspace > >4
+2025-06-06 19:58:51 - Event: workspacev2 > >4,4
+2025-06-06 19:58:52 - Window close event detected: >564ea69fbe60
+2025-06-06 19:58:52 - \n\nWindow closed on workspace 4\n\n
+2025-06-06 19:58:52 - Workspace 4 has 0 windows remaining
+2025-06-06 19:58:52 - Workspace 4 is empty, initiating deletion
+2025-06-06 19:58:52 - Deleting workspace 4 (current: 4)
+2025-06-06 19:58:52 - Switching to workspace 4 before deletion
+2025-06-06 19:58:52 - Starting renumbering process
+2025-06-06 19:58:52 - Renaming workspace 5 to 4
+2025-06-06 19:58:52 - Renumbering completed
+2025-06-06 19:58:52 - Event: activewindow > >,
+2025-06-06 19:58:52 - Event: activewindowv2 > >
+2025-06-06 19:58:52 - Event: movewindow > >564ea6a04530,4
+2025-06-06 19:58:52 - Event: movewindowv2 > >564ea6a04530,4,4
+2025-06-06 19:58:52 - Event: destroyworkspace > >5
+2025-06-06 19:58:52 - Event: destroyworkspacev2 > >5,5
+2025-06-06 19:58:52 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:52 - Event: activewindowv2 > >564ea6a04530
+2025-06-06 19:58:52 - Window close event detected: >564ea6a04530
+2025-06-06 19:58:52 - \n\nWindow closed on workspace 4\n\n
+2025-06-06 19:58:53 - Workspace 4 has 0 windows remaining
+2025-06-06 19:58:53 - Workspace 4 is empty, initiating deletion
+2025-06-06 19:58:53 - Deleting workspace 4 (current: 4)
+2025-06-06 19:58:53 - Switching to workspace 3 before deletion
+2025-06-06 19:58:53 - Starting renumbering process
+2025-06-06 19:58:53 - Renumbering completed
+2025-06-06 19:58:53 - Event: activewindow > >,
+2025-06-06 19:58:53 - Event: activewindowv2 > >
+2025-06-06 19:58:53 - Event: activewindow > >firefox,Switch TTY to Hyprland — Mozilla Firefox
+2025-06-06 19:58:53 - Event: activewindowv2 > >564ea6945600
+2025-06-06 19:58:53 - Event: workspace > >3
+2025-06-06 19:58:53 - Event: workspacev2 > >3,3
+2025-06-06 19:58:53 - Event: destroyworkspace > >4
+2025-06-06 19:58:53 - Event: destroyworkspacev2 > >4,4
+2025-06-06 19:58:54 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:54 - Event: activewindowv2 > >564ea69e44e0
+2025-06-06 19:58:55 - Event: activewindow > >firefox,Switch TTY to Hyprland — Mozilla Firefox
+2025-06-06 19:58:55 - Event: activewindowv2 > >564ea6945600
+2025-06-06 19:58:56 - Event: activewindow > >firefox,Switch TTY to Hyprland — Mozilla Firefox
+2025-06-06 19:58:56 - Event: activewindowv2 > >564ea6945600
+2025-06-06 19:58:57 - Event: activewindow > >firefox,Switch TTY to Hyprland — Mozilla Firefox
+2025-06-06 19:58:57 - Event: activewindowv2 > >564ea6945600
+2025-06-06 19:58:57 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:57 - Event: activewindowv2 > >564ea69e44e0
+2025-06-06 19:58:57 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:57 - Event: activewindowv2 > >564ea69e44e0
+2025-06-06 19:58:57 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:58:57 - Event: activewindowv2 > >564ea69e44e0
+2025-06-06 19:59:00 - Event: windowtitle > >564ea6a2a4a0
+2025-06-06 19:59:00 - Event: windowtitlev2 > >564ea6a2a4a0,None
+2025-06-06 19:59:00 - Event: urgent > >564ea6a2a4a0
+2025-06-06 19:59:00 - Event: urgent > >564ea6a2a4a0
+2025-06-06 19:59:00 - Event: openwindow > >564ea6a2a4a0,3,terminator,None
+2025-06-06 19:59:00 - Event: activewindow > >terminator,None
+2025-06-06 19:59:00 - Event: activewindowv2 > >564ea6a2a4a0
+2025-06-06 19:59:00 - Event: windowtitle > >564ea6a2a4a0
+2025-06-06 19:59:00 - Event: windowtitlev2 > >564ea6a2a4a0,/usr/bin/zsh
+2025-06-06 19:59:00 - Event: activewindow > >terminator,/usr/bin/zsh
+2025-06-06 19:59:00 - Event: activewindowv2 > >564ea6a2a4a0
+2025-06-06 19:59:00 - Event: windowtitle > >564ea6a2a4a0
+2025-06-06 19:59:00 - Event: windowtitlev2 > >564ea6a2a4a0,hedwin@tour:~
+2025-06-06 19:59:00 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:00 - Event: activewindowv2 > >564ea6a2a4a0
+2025-06-06 19:59:01 - Event: activewindow > >firefox,Switch TTY to Hyprland — Mozilla Firefox
+2025-06-06 19:59:01 - Event: activewindowv2 > >564ea6945600
+2025-06-06 19:59:02 - Event: windowtitle > >564ea69ec190
+2025-06-06 19:59:02 - Event: windowtitlev2 > >564ea69ec190,None
+2025-06-06 19:59:02 - Event: urgent > >564ea69ec190
+2025-06-06 19:59:02 - Event: urgent > >564ea69ec190
+2025-06-06 19:59:02 - Event: openwindow > >564ea69ec190,3,terminator,None
+2025-06-06 19:59:02 - Event: activewindow > >terminator,None
+2025-06-06 19:59:02 - Event: activewindowv2 > >564ea69ec190
+2025-06-06 19:59:02 - Event: windowtitle > >564ea69ec190
+2025-06-06 19:59:02 - Event: windowtitlev2 > >564ea69ec190,/usr/bin/zsh
+2025-06-06 19:59:02 - Event: activewindow > >terminator,/usr/bin/zsh
+2025-06-06 19:59:02 - Event: activewindowv2 > >564ea69ec190
+2025-06-06 19:59:02 - Event: windowtitle > >564ea69ec190
+2025-06-06 19:59:02 - Event: windowtitlev2 > >564ea69ec190,hedwin@tour:~
+2025-06-06 19:59:02 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:02 - Event: activewindowv2 > >564ea69ec190
+2025-06-06 19:59:02 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:02 - Event: activewindowv2 > >564ea6a2a4a0
+2025-06-06 19:59:02 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:02 - Event: activewindowv2 > >564ea69e44e0
+2025-06-06 19:59:03 - Event: windowtitle > >564ea6993170
+2025-06-06 19:59:03 - Event: windowtitlev2 > >564ea6993170,None
+2025-06-06 19:59:03 - Event: urgent > >564ea6993170
+2025-06-06 19:59:03 - Event: urgent > >564ea6993170
+2025-06-06 19:59:03 - Event: openwindow > >564ea6993170,3,terminator,None
+2025-06-06 19:59:03 - Event: activewindow > >terminator,None
+2025-06-06 19:59:03 - Event: activewindowv2 > >564ea6993170
+2025-06-06 19:59:03 - Event: windowtitle > >564ea6993170
+2025-06-06 19:59:03 - Event: windowtitlev2 > >564ea6993170,/usr/bin/zsh
+2025-06-06 19:59:03 - Event: activewindow > >terminator,/usr/bin/zsh
+2025-06-06 19:59:03 - Event: activewindowv2 > >564ea6993170
+2025-06-06 19:59:03 - Event: windowtitle > >564ea6993170
+2025-06-06 19:59:03 - Event: windowtitlev2 > >564ea6993170,hedwin@tour:~
+2025-06-06 19:59:03 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:03 - Event: activewindowv2 > >564ea6993170
+2025-06-06 19:59:04 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:04 - Event: activewindowv2 > >564ea6a2a4a0
+2025-06-06 19:59:04 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:04 - Event: activewindowv2 > >564ea6993170
+2025-06-06 19:59:06 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:06 - Event: activewindowv2 > >564ea6993170
+2025-06-06 19:59:07 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:07 - Event: activewindowv2 > >564ea6993170
+2025-06-06 19:59:07 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:07 - Event: activewindowv2 > >564ea6a2a4a0
+2025-06-06 19:59:07 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:07 - Event: activewindowv2 > >564ea6a2a4a0
+2025-06-06 19:59:07 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:07 - Event: activewindowv2 > >564ea6a2a4a0
+2025-06-06 19:59:07 - Event: activewindow > >firefox,Switch TTY to Hyprland — Mozilla Firefox
+2025-06-06 19:59:07 - Event: activewindowv2 > >564ea6945600
+2025-06-06 19:59:07 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:07 - Event: activewindowv2 > >564ea69ec190
+2025-06-06 19:59:07 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:07 - Event: activewindowv2 > >564ea69ec190
+2025-06-06 19:59:08 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:08 - Event: activewindowv2 > >564ea69ec190
+2025-06-06 19:59:08 - Event: activewindow > >firefox,Switch TTY to Hyprland — Mozilla Firefox
+2025-06-06 19:59:08 - Event: activewindowv2 > >564ea6945600
+2025-06-06 19:59:08 - Event: activewindow > >firefox,Switch TTY to Hyprland — Mozilla Firefox
+2025-06-06 19:59:08 - Event: activewindowv2 > >564ea6945600
+2025-06-06 19:59:10 - Event: activewindow > >firefox,Switch TTY to Hyprland — Mozilla Firefox
+2025-06-06 19:59:10 - Event: activewindowv2 > >564ea6945600
+2025-06-06 19:59:10 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:10 - Event: activewindowv2 > >564ea6a2a4a0
+2025-06-06 19:59:12 - Window close event detected: >564ea6a2a4a0
+2025-06-06 19:59:12 - \n\nWindow closed on workspace 3\n\n
+2025-06-06 19:59:12 - Workspace 3 has 4 windows remaining
+2025-06-06 19:59:12 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:12 - Event: activewindowv2 > >564ea6993170
+2025-06-06 19:59:12 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:12 - Event: activewindowv2 > >564ea69ec190
+2025-06-06 19:59:12 - Window close event detected: >564ea69ec190
+2025-06-06 19:59:12 - \n\nWindow closed on workspace 3\n\n
+2025-06-06 19:59:12 - Workspace 3 has 3 windows remaining
+2025-06-06 19:59:12 - Event: activewindow > >firefox,Switch TTY to Hyprland — Mozilla Firefox
+2025-06-06 19:59:12 - Event: activewindowv2 > >564ea6945600
+2025-06-06 19:59:12 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:12 - Event: activewindowv2 > >564ea6993170
+2025-06-06 19:59:12 - Window close event detected: >564ea6993170
+2025-06-06 19:59:12 - \n\nWindow closed on workspace 3\n\n
+2025-06-06 19:59:13 - Workspace 3 has 2 windows remaining
+2025-06-06 19:59:13 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 19:59:13 - Event: activewindowv2 > >564ea69e44e0
+2025-06-06 19:59:13 - Window close event detected: >564ea69e44e0
+2025-06-06 19:59:13 - \n\nWindow closed on workspace 3\n\n
+2025-06-06 19:59:13 - Workspace 3 has 1 windows remaining
+2025-06-06 19:59:13 - Event: activewindow > >firefox,Switch TTY to Hyprland — Mozilla Firefox
+2025-06-06 19:59:13 - Event: activewindowv2 > >564ea6945600
+2025-06-06 19:59:16 - Event: activewindow > >code-oss,workspace_nav.log - linux-custom - Code - OSS
+2025-06-06 19:59:16 - Event: activewindowv2 > >564ea68bbb50
+2025-06-06 19:59:16 - Event: workspace > >2
+2025-06-06 19:59:16 - Event: workspacev2 > >2,2
+2025-06-06 19:59:19 - Event: windowtitle > >564ea68bbb50
+2025-06-06 19:59:19 - Event: windowtitlev2 > >564ea68bbb50,workspace_manager.sh - linux-custom - Code - OSS
+2025-06-06 19:59:19 - Event: activewindow > >code-oss,workspace_manager.sh - linux-custom - Code - OSS
+2025-06-06 19:59:19 - Event: activewindowv2 > >564ea68bbb50
+2025-06-06 20:00:04 - Event: activewindow > >firefox,Switch TTY to Hyprland — Mozilla Firefox
+2025-06-06 20:00:04 - Event: activewindowv2 > >564ea6945600
+2025-06-06 20:00:04 - Event: workspace > >3
+2025-06-06 20:00:04 - Event: workspacev2 > >3,3
+2025-06-06 20:00:06 - Event: windowtitle > >564ea6945600
+2025-06-06 20:00:06 - Event: windowtitlev2 > >564ea6945600,Hyprland Dynamic Workspaces, and how to manage them · Aylur/ags · Discussion #280 — Mozilla Firefox
+2025-06-06 20:00:06 - Event: activewindow > >firefox,Hyprland Dynamic Workspaces, and how to manage them · Aylur/ags · Discussion #280 — Mozilla Firefox
+2025-06-06 20:00:06 - Event: activewindowv2 > >564ea6945600
+2025-06-06 20:00:08 - Event: windowtitle > >564ea6945600
+2025-06-06 20:00:08 - Event: windowtitlev2 > >564ea6945600,Mozilla Firefox
+2025-06-06 20:00:08 - Event: activewindow > >firefox,Mozilla Firefox
+2025-06-06 20:00:08 - Event: activewindowv2 > >564ea6945600
+2025-06-06 20:00:09 - Event: windowtitle > >564ea6945600
+2025-06-06 20:00:09 - Event: windowtitlev2 > >564ea6945600,GitHub — Mozilla Firefox
+2025-06-06 20:00:09 - Event: activewindow > >firefox,GitHub — Mozilla Firefox
+2025-06-06 20:00:09 - Event: activewindowv2 > >564ea6945600
+2025-06-06 20:00:25 - Event: windowtitle > >564ea6945600
+2025-06-06 20:00:25 - Event: windowtitlev2 > >564ea6945600,Mozilla Firefox
+2025-06-06 20:00:25 - Event: activewindow > >firefox,Mozilla Firefox
+2025-06-06 20:00:25 - Event: activewindowv2 > >564ea6945600
+2025-06-06 20:00:25 - Event: windowtitle > >564ea6945600
+2025-06-06 20:00:25 - Event: windowtitlev2 > >564ea6945600,hbonnavaud/linux-custom — Mozilla Firefox
+2025-06-06 20:00:25 - Event: activewindow > >firefox,hbonnavaud/linux-custom — Mozilla Firefox
+2025-06-06 20:00:25 - Event: activewindowv2 > >564ea6945600
+2025-06-06 20:00:35 - Event: activewindow > >code-oss,workspace_manager.sh - linux-custom - Code - OSS
+2025-06-06 20:00:35 - Event: activewindowv2 > >564ea68bbb50
+2025-06-06 20:00:35 - Event: workspace > >2
+2025-06-06 20:00:35 - Event: workspacev2 > >2,2
+2025-06-06 20:00:36 - Event: activewindow > >discord,#💬général | Pynard - Discord
+2025-06-06 20:00:36 - Event: activewindowv2 > >564ea68f1270
+2025-06-06 20:00:36 - Event: workspace > >1
+2025-06-06 20:00:36 - Event: workspacev2 > >1,1
+2025-06-06 20:00:36 - Event: activewindow > >terminator,hedwin@tour:~
+2025-06-06 20:00:36 - Event: activewindowv2 > >564ea69a8ea0
+2025-06-06 20:00:39 - Event: windowtitle > >564ea69a8ea0
+2025-06-06 20:00:39 - Event: windowtitlev2 > >564ea69a8ea0,hedwin@tour:~/computing
+2025-06-06 20:00:39 - Event: activewindow > >terminator,hedwin@tour:~/computing
+2025-06-06 20:00:39 - Event: activewindowv2 > >564ea69a8ea0
+2025-06-06 20:00:41 - Event: windowtitle > >564ea69a8ea0
+2025-06-06 20:00:41 - Event: windowtitlev2 > >564ea69a8ea0,hedwin@tour:~/computing/linux-custom
+2025-06-06 20:00:41 - Event: activewindow > >terminator,hedwin@tour:~/computing/linux-custom
+2025-06-06 20:00:41 - Event: activewindowv2 > >564ea69a8ea0
+2025-06-06 20:00:43 - Event: windowtitle > >564ea69a8ea0
+2025-06-06 20:00:43 - Event: windowtitlev2 > >564ea69a8ea0,git add *
+2025-06-06 20:00:43 - Event: activewindow > >terminator,git add *
+2025-06-06 20:00:43 - Event: activewindowv2 > >564ea69a8ea0

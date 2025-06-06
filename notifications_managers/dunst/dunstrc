@@ -1,0 +1,44 @@
+[global]
+    monitor = 0
+    follow = mouse
+    width = 400
+    height = 300
+    origin = top-right
+    offset = 10x50
+    font = Inter 11
+    frame_color = "#88c0d0"
+    frame_width = 2
+    corner_radius = 10
+    
+    # Click actions
+    mouse_left_click = do_action, close_current
+    mouse_middle_click = none
+    mouse_right_click = close_current
+    
+    # Enable action indicators
+    show_indicators = yes
+    
+    # Other behavior
+    sticky_history = yes
+    history_length = 20
+    browser = /usr/bin/xdg-open
+    always_run_script = true
+    
+    # Format
+    format = "<b>%s</b>\n%b"
+    markup = full
+    
+[urgency_low]
+    background = "#2e3440"
+    foreground = "#d8dee9"
+    timeout = 3
+
+[urgency_normal]
+    background = "#2e3440"
+    foreground = "#d8dee9"
+    timeout = 5
+
+[urgency_critical]
+    background = "#bf616a"
+    foreground = "#eceff4"
+    timeout = 0
