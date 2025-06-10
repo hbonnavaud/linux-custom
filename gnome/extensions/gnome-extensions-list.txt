@@ -1,2 +1,0 @@
-dash-to-dock@micxgx.gmail.com
-clipboard-history@alexsaveau.dev
