@@ -66,3 +66,4 @@ fi
 
 echo ""
 echo "Setup complete! Your ${NAME} configuration is now linked to your code directory."
+

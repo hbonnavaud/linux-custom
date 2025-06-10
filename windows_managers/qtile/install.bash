@@ -5,47 +5,69 @@ pacman -S --noconfirm python-xlib python-psutil
 sudo pacman -S --noconfirm ttf-jetbrains-mono-nerd
 yay -S qtile-extras
 
-# Get the user home directory
-if [ -n "$SUDO_USER" ]; then
-    user_home=$(eval echo ~$SUDO_USER)
-else
-    user_home="$HOME"
+# Install the parent directory by creating a symling from ~/.config/${NAME} to this parent directory where $NAME is the name of the said directory
+
+SOURCE_DIR=$(dirname "$(realpath "$0")")
+NAME=$(basename "$(realpath "$0")")
+TARGET_DIR="$HOME/.config/${NAME}"
+
+echo "Setting up ${NAME} configuration symlink..."
+
+# Check if source directory exists
+if [ ! -d "$SOURCE_DIR" ]; then
+    echo "Error: Source directory '$SOURCE_DIR' does not exist!"
+    echo "Please create the directory first or check the path."
+    exit 1
 fi
 
-# List of config files to copy
-file_paths=(
-    "$user_home/.config/picom/picom.conf"
-    "$user_home/.config/qtile/autostart.sh"
-    "$user_home/.config/qtile/config.py"
-)
+# Check if target directory already exists
+if [ -e "$TARGET_DIR" ]; then
+    echo "Warning: '$TARGET_DIR' already exists."
 
-# Get the directory where the script is located
-script_dir=$(dirname "$(realpath "$0")")
+    # Check if it's already a symlink
+    if [ -L "$TARGET_DIR" ]; then
+        echo "It's already a symbolic link pointing to: $(readlink -f "$TARGET_DIR")"
+        read -p "Do you want to replace it? (y/N): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            rm "$TARGET_DIR"
+            echo "Removed existing symlink."
+        else
+            echo "Operation cancelled."
+            exit 0
+        fi
+    else
+        echo "It's a regular directory/file."
+        read -p "Do you want to backup and replace it? (y/N): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            # Create backup
+            backup_name="${TARGET_DIR}.backup.$(date +%Y%m%d_%H%M%S)"
+            mv "$TARGET_DIR" "$backup_name"
+            echo "Backed up existing directory to: $backup_name"
+        else
+            echo "Operation cancelled."
+            exit 0
+        fi
+    fi
+fi
 
-# Iterate through the list of file paths
+# Create the ~/.config directory if it doesn't exist
+mkdir -p "$(dirname "$TARGET_DIR")"
 
-rm -f "$user_home/.config/picom/picom.conf"
-ln -s "$script_dir/picom.conf" "$user_home/.config/picom/picom.conf"
+# Create the symbolic link
+ln -s "$SOURCE_DIR" "$TARGET_DIR"
 
-rm -f "$user_home/.config/qtile/autostart.sh"
-ln -s "$script_dir/autostart.sh" "$user_home/.config/qtile/autostart.sh"
+if [ $? -eq 0 ]; then
+    echo "✅ Successfully created symbolic link:"
+    echo "   $TARGET_DIR -> $SOURCE_DIR"
+    echo ""
+    echo "Verification:"
+    ls -la "$TARGET_DIR"
+else
+    echo "❌ Failed to create symbolic link!"
+    exit 1
+fi
 
-rm -f "$user_home/.config/qtile/config.py"
-ln -s "$script_dir/config.py" "$user_home/.config/qtile/config.py"
-
-rm -f "$user_home/.config/qtile/mypy.ini"
-ln -s "$script_dir/mypy.ini" "$user_home/.config/qtile/mypy.ini"
-
-# Update libqtile with the additional GPU widget
-if [ ! -f /usr/lib/python3.13/site-packages/libqtile/widget/gpu.py ]; then
-    sudo cp "$script_dir/utils/gpu_widget.py" /usr/lib/python3.13/site-packages/libqtile/widget/gpu.py
-
-    
-# Update /usr/lib/python3.13/site-packages/libqtile/widget/__init__.py
-# Path to the target file
-WIDGETS_INIT="/usr/lib/python3.13/site-packages/libqtile/widget/__init__.py"
-NEW_LINE='"GPU": "gpu",'
-
-# Insert only if the line doesn't exist
-grep -qF "$NEW_LINE" "$WIDGETS_INIT" || sed -i '/"CPU": "cpu",/a\
-    '"$NEW_LINE" "$WIDGETS_INIT"
+echo ""
+echo "Setup complete! Your ${NAME} configuration is now linked to your code directory."

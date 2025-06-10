@@ -1,5 +1,28 @@
 #!/bin/bash
 
+# Dependencies
+
+if command -v apt >/dev/null 2>&1; then
+    echo "Detected: apt (Debian/Ubuntu)"
+    sudo apt update
+    sudo apt install -y rofi fonts-noto-color-emoji inetutils
+elif command -v pacman >/dev/null 2>&1; then
+    echo "Detected: pacman (Arch/Manjaro)"
+    sudo pacman -Syu --noconfirm
+    sudo pacman -S --noconfirm rofi-emoji noto-fonts-emoji inetutils
+elif command -v dnf >/dev/null 2>&1; then
+    echo "Detected: dnf (Fedora/RHEL)"
+    sudo dnf install -y rofi google-noto-emoji-fonts net-tools
+elif command -v zypper >/dev/null 2>&1; then
+    echo "Detected: zypper (openSUSE)"
+    sudo zypper refresh
+    sudo zypper install -y rofi noto-coloremoji-fonts net-tools
+else
+    echo "Unknown package manager — manual install required."
+fi
+
+#!/bin/bash
+
 # Install the parent directory by creating a symling from ~/.config/${NAME} to this parent directory where $NAME is the name of the said directory
 
 SOURCE_DIR=$(dirname "$(realpath "$0")")

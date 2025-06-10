@@ -1,0 +1,73 @@
+# Swaynag configuration for clean, modern appearance
+# Add this to your ~/.config/sway/config file
+
+# Set swaynag styling
+set $nag exec swaynag \
+    --type warning \
+    --font 'Inter 11' \
+    --background '#1e1e2e' \
+    --text '#cdd6f4' \
+    --border '#89b4fa' \
+    --border-bottom '#89b4fa' \
+    --button-background '#313244' \
+    --button-text '#cdd6f4' \
+    --button-border '#89b4fa' \
+    --button-gap 10 \
+    --button-dismiss-gap 10 \
+    --button-margin-right 10 \
+    --button-padding 8 \
+    --message-padding 10 \
+    --details-padding 10 \
+    --layer overlay
+
+# Override the default exit confirmation
+bindsym $mod+Shift+e exec swaynag \
+    --type warning \
+    --font 'Inter 11' \
+    --background '#1e1e2e' \
+    --text '#cdd6f4' \
+    --border '#f38ba8' \
+    --border-bottom '#f38ba8' \
+    --button-background '#313244' \
+    --button-text '#cdd6f4' \
+    --button-border '#f38ba8' \
+    --button-gap 10 \
+    --button-dismiss-gap 10 \
+    --button-margin-right 10 \
+    --button-padding 8 \
+    --message-padding 10 \
+    --details-padding 10 \
+    --layer overlay \
+    --message 'Do you really want to exit sway?' \
+    --button 'Exit' 'swaymsg exit' \
+    --button 'Reload' 'swaymsg reload'
+
+# Alternative minimal style (uncomment to use instead)
+# set $nag exec swaynag \
+#     --type warning \
+#     --font 'JetBrains Mono 10' \
+#     --background '#2d3748' \
+#     --text '#e2e8f0' \
+#     --border '#4a5568' \
+#     --border-bottom '#4a5568' \
+#     --button-background '#4a5568' \
+#     --button-text '#e2e8f0' \
+#     --button-border '#718096' \
+#     --button-gap 8 \
+#     --button-padding 6 \
+#     --message-padding 12
+
+# Dracula theme variant (uncomment to use)
+# set $nag exec swaynag \
+#     --type warning \
+#     --font 'Fira Code 10' \
+#     --background '#282a36' \
+#     --text '#f8f8f2' \
+#     --border '#6272a4' \
+#     --border-bottom '#6272a4' \
+#     --button-background '#44475a' \
+#     --button-text '#f8f8f2' \
+#     --button-border '#6272a4' \
+#     --button-gap 10 \
+#     --button-padding 8 \
+#     --message-padding 10

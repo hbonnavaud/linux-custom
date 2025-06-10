@@ -125,10 +125,14 @@
     "format-alt": "{ifname}: {ipaddr}/{cidr}",
     "on-click": "nm-connection-editor"
   },
-
+  
   "custom/power": {
-    "format": "⏻",
-    "tooltip": false,
-    "on-click": "wlogout"
+    "format": "⏻ ",
+    "tooltip": true,
+    "on-click": "bash ~/.config/rofi/scripts/powermenu_t2.sh",
+    "tooltip-format": "Power Menu - Click to open power options",
+    "on-click-right": "swaylock -f",
+    "on-click-middle": "systemctl hibernate",
+    "escape": true
   }
 }

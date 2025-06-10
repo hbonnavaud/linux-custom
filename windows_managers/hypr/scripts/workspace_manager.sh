@@ -8,7 +8,7 @@ set -e
 LOG_FILE="$HOME/.config/hypr/workspace_nav.log"
 
 log_message() {
-    exit 0  # Comment this to enable debugging
+    # exit 0  # Comment this to enable debugging
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
 }
 

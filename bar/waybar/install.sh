@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Waybar Symlink Setup Script
-# Creates a symbolic link from ~/.config/waybar to linux-custom/waybar
+# Install the parent directory by creating a symling from ~/.config/${NAME} to this parent directory where $NAME is the name of the said directory
 
 SOURCE_DIR=$(dirname "$(realpath "$0")")
-TARGET_DIR="$HOME/.config/waybar"
+NAME=$(basename "$(realpath "$0")")
+TARGET_DIR="$HOME/.config/${NAME}"
 
-echo "Setting up waybar configuration symlink..."
+echo "Setting up ${NAME} configuration symlink..."
 
 # Check if source directory exists
 if [ ! -d "$SOURCE_DIR" ]; then
@@ -65,4 +65,4 @@ else
 fi
 
 echo ""
-echo "Setup complete! Your waybar configuration is now linked to your code directory."
+echo "Setup complete! Your ${NAME} configuration is now linked to your code directory."
