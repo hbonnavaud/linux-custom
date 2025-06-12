@@ -13,6 +13,9 @@ configuration {
     show-icons:                 true;
     display-drun:               "";
 	drun-display-format:        "{name}";
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: [ MousePrimary, MouseSecondary, MouseDPrimary ];
 }
 
 /*****----- Global Properties -----*****/
