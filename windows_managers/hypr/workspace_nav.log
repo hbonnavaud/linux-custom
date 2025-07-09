@@ -24031,3 +24031,1012 @@ ok
 2025-06-10 08:08:57 - Event: windowtitlev2 > >563d9e238a00,git add *
 2025-06-10 08:08:57 - Event: activewindow > >terminator,git add *
 2025-06-10 08:08:57 - Event: activewindowv2 > >563d9e238a00
+2025-06-11 08:32:30 - Received listen
+2025-06-11 08:32:30 - Detected listen
+2025-06-11 08:32:30 - Starting workspace manager event listener
+2025-06-11 08:32:30 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1749623547_522553078
+2025-06-11 08:32:30 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1749623547_522553078/.socket2.sock
+2025-06-11 08:34:06 - Received next
+2025-06-11 08:34:06 - Executing next navigation
+2025-06-11 08:34:06 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-11 08:34:06 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-06-11 08:34:06 - Received prev
+2025-06-11 08:34:06 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-11 08:34:07 - Received prev
+2025-06-11 08:34:07 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-11 08:34:07 - Received prev
+2025-06-11 08:34:07 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-11 08:34:07 - Received prev
+2025-06-11 08:34:07 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-11 08:34:08 - Received next
+2025-06-11 08:34:08 - Executing next navigation
+2025-06-11 08:34:08 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-11 08:34:08 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-11 08:34:08 - Received next
+2025-06-11 08:34:08 - Executing next navigation
+2025-06-11 08:34:08 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-11 08:34:08 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-11 08:34:08 - Received prev
+2025-06-11 08:34:08 - Executing prev navigation
+2025-06-11 08:34:09 - Received next
+2025-06-11 08:34:09 - Executing next navigation
+2025-06-11 08:34:09 - \n[NEXT] Current: 1, Max: , Next: 2
+Error in changeworkspace, invalid value
+2025-06-11 08:34:09 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-11 08:34:09 - Received prev
+2025-06-11 08:34:09 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-11 08:34:09 - Received next
+2025-06-11 08:34:09 - Executing next navigation
+2025-06-11 08:34:09 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-11 08:34:09 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-11 08:34:09 - Received prev
+2025-06-11 08:34:09 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 06:24:10 - Received listen
+2025-06-13 06:24:10 - Detected listen
+2025-06-13 06:24:10 - Starting workspace manager event listener
+2025-06-13 06:24:10 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1749788648_634329647
+2025-06-13 06:24:10 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1749788648_634329647/.socket2.sock
+2025-06-13 06:25:51 - Received listen
+2025-06-13 06:25:51 - Detected listen
+2025-06-13 06:25:51 - Starting workspace manager event listener
+2025-06-13 06:25:51 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1749788749_1353451790
+2025-06-13 06:25:51 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1749788749_1353451790/.socket2.sock
+2025-06-13 07:48:23 - Received listen
+2025-06-13 07:48:23 - Detected listen
+2025-06-13 07:48:23 - Starting workspace manager event listener
+2025-06-13 07:48:23 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1749793700_1060382663
+2025-06-13 07:48:23 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1749793700_1060382663/.socket2.sock
+2025-06-13 07:49:29 - Received next
+2025-06-13 07:49:29 - Executing next navigation
+2025-06-13 07:49:29 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 07:49:29 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-06-13 07:50:33 - Received prev
+2025-06-13 07:50:33 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 07:50:34 - Received prev
+2025-06-13 07:50:34 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 07:50:35 - Received next
+2025-06-13 07:50:35 - Executing next navigation
+2025-06-13 07:50:35 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 07:50:35 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 07:50:35 - Received next
+2025-06-13 07:50:35 - Executing next navigation
+2025-06-13 07:50:36 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 07:50:36 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 07:50:36 - Received prev
+2025-06-13 07:50:36 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 07:50:36 - Received next
+2025-06-13 07:50:36 - Executing next navigation
+2025-06-13 07:50:36 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 07:50:36 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 07:50:36 - Received prev
+2025-06-13 07:50:36 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 07:50:36 - Received next
+2025-06-13 07:50:36 - Executing next navigation
+2025-06-13 07:50:36 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 07:50:36 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 07:50:40 - Received next
+2025-06-13 07:50:40 - Executing next navigation
+2025-06-13 07:50:40 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 07:50:40 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 07:50:40 - Received next
+2025-06-13 07:50:40 - Executing next navigation
+2025-06-13 07:50:40 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 07:50:40 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 07:50:41 - Received prev
+2025-06-13 07:50:41 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 07:50:42 - Received prev
+2025-06-13 07:50:42 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 07:50:42 - Received prev
+2025-06-13 07:50:42 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 10:44:29 - Received listen
+2025-06-13 10:44:29 - Detected listen
+2025-06-13 10:44:29 - Starting workspace manager event listener
+2025-06-13 10:44:29 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1749804266_718795821
+2025-06-13 10:44:29 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1749804266_718795821/.socket2.sock
+2025-06-13 10:50:09 - Received next
+2025-06-13 10:50:09 - Executing next navigation
+2025-06-13 10:50:09 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 10:50:09 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-06-13 10:50:09 - Received prev
+2025-06-13 10:50:09 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 10:50:10 - Received prev
+2025-06-13 10:50:10 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 10:50:10 - Received prev
+2025-06-13 10:50:10 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 10:50:10 - Received next
+2025-06-13 10:50:10 - Executing next navigation
+2025-06-13 10:50:10 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 10:50:10 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 10:50:10 - Received next
+2025-06-13 10:50:10 - Executing next navigation
+2025-06-13 10:50:10 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 10:50:10 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 10:50:11 - Received next
+2025-06-13 10:50:11 - Executing next navigation
+2025-06-13 10:50:11 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 10:50:11 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 10:50:11 - Received next
+2025-06-13 10:50:11 - Executing next navigation
+2025-06-13 10:50:11 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 10:50:11 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 10:50:11 - Received next
+2025-06-13 10:50:11 - Executing next navigation
+2025-06-13 10:50:11 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 10:50:11 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 10:50:12 - Received next
+2025-06-13 10:50:12 - Executing next navigation
+2025-06-13 10:50:12 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 10:50:12 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 10:50:50 - Received listen
+2025-06-13 10:50:50 - Detected listen
+2025-06-13 10:50:50 - Starting workspace manager event listener
+2025-06-13 10:50:50 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1749804266_718795821
+2025-06-13 10:50:50 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1749804266_718795821/.socket2.sock
+2025-06-13 10:50:50 - Received listen
+2025-06-13 10:50:50 - Detected listen
+2025-06-13 10:50:50 - Starting workspace manager event listener
+2025-06-13 10:50:50 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1749804266_718795821
+2025-06-13 10:50:50 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1749804266_718795821/.socket2.sock
+2025-06-13 10:50:58 - Received listen
+2025-06-13 10:50:58 - Detected listen
+2025-06-13 10:50:58 - Starting workspace manager event listener
+2025-06-13 10:50:58 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1749804266_718795821
+2025-06-13 10:50:58 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1749804266_718795821/.socket2.sock
+2025-06-13 10:50:59 - Received listen
+2025-06-13 10:50:59 - Detected listen
+2025-06-13 10:50:59 - Starting workspace manager event listener
+2025-06-13 10:50:59 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1749804266_718795821
+2025-06-13 10:50:59 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1749804266_718795821/.socket2.sock
+2025-06-13 11:32:58 - Received listen
+2025-06-13 11:32:58 - Detected listen
+2025-06-13 11:32:58 - Starting workspace manager event listener
+2025-06-13 11:32:58 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1749807175_638951811
+2025-06-13 11:32:58 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1749807175_638951811/.socket2.sock
+2025-06-13 11:39:06 - Received listen
+2025-06-13 11:39:06 - Detected listen
+2025-06-13 11:39:06 - Starting workspace manager event listener
+2025-06-13 11:39:06 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1749807175_638951811
+2025-06-13 11:39:06 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1749807175_638951811/.socket2.sock
+2025-06-13 12:07:12 - Received listen
+2025-06-13 12:07:12 - Detected listen
+2025-06-13 12:07:12 - Starting workspace manager event listener
+2025-06-13 12:07:12 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1749809230_1844403842
+2025-06-13 12:07:12 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1749809230_1844403842/.socket2.sock
+2025-06-13 12:08:41 - Received prev
+2025-06-13 12:08:41 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 12:10:06 - Received next
+2025-06-13 12:10:06 - Executing next navigation
+2025-06-13 12:10:06 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 12:10:06 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-06-13 12:10:33 - Received prev
+2025-06-13 12:10:33 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 12:10:34 - Received prev
+2025-06-13 12:10:34 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 12:10:35 - Received prev
+2025-06-13 12:10:35 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 12:10:35 - Received prev
+2025-06-13 12:10:35 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 12:10:35 - Received next
+2025-06-13 12:10:35 - Executing next navigation
+2025-06-13 12:10:35 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 12:10:35 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 12:10:35 - Received next
+2025-06-13 12:10:35 - Executing next navigation
+2025-06-13 12:10:35 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 12:10:35 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 12:10:35 - Received prev
+2025-06-13 12:10:35 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 12:11:56 - Received next
+2025-06-13 12:11:56 - Executing next navigation
+2025-06-13 12:11:56 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 12:11:56 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 12:12:44 - Received prev
+2025-06-13 12:12:44 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 12:14:17 - Received prev
+2025-06-13 12:14:17 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 12:14:18 - Received next
+2025-06-13 12:14:18 - Executing next navigation
+2025-06-13 12:14:18 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 12:14:18 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 12:14:19 - Received next
+2025-06-13 12:14:19 - Executing next navigation
+2025-06-13 12:14:19 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 12:14:19 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 12:14:19 - Received next
+2025-06-13 12:14:19 - Executing next navigation
+2025-06-13 12:14:19 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 12:14:19 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 13:43:05 - Received listen
+2025-06-13 13:43:05 - Detected listen
+2025-06-13 13:43:05 - Starting workspace manager event listener
+2025-06-13 13:43:05 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1749814983_761393213
+2025-06-13 13:43:05 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1749814983_761393213/.socket2.sock
+2025-06-13 14:41:35 - Received listen
+2025-06-13 14:41:35 - Detected listen
+2025-06-13 14:41:35 - Starting workspace manager event listener
+2025-06-13 14:41:35 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1749818493_1461660557
+2025-06-13 14:41:35 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1749818493_1461660557/.socket2.sock
+2025-06-13 14:42:26 - Received next
+2025-06-13 14:42:26 - Executing next navigation
+2025-06-13 14:42:26 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 14:42:26 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-06-13 14:42:29 - Received prev
+2025-06-13 14:42:29 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-13 14:42:30 - Received next
+2025-06-13 14:42:30 - Executing next navigation
+2025-06-13 14:42:30 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 14:42:30 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-13 14:42:30 - Received next
+2025-06-13 14:42:30 - Executing next navigation
+2025-06-13 14:42:30 - Received prev
+2025-06-13 14:42:30 - Executing prev navigation
+2025-06-13 14:42:30 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-13 14:42:30 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+Error in changeworkspace, invalid value
+2025-06-13 14:42:30 - Received prev
+2025-06-13 14:42:30 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-22 14:54:42 - Received listen
+2025-06-22 15:00:44 - Received next
+2025-06-22 15:00:44 - Executing next navigation
+2025-06-22 15:00:44 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:00:44 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-06-22 15:00:48 - Received next
+2025-06-22 15:00:48 - Executing next navigation
+2025-06-22 15:00:48 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:00:48 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:00:48 - Received next
+2025-06-22 15:00:48 - Executing next navigation
+2025-06-22 15:00:48 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:00:48 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:00:48 - Received next
+2025-06-22 15:00:48 - Executing next navigation
+2025-06-22 15:00:49 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:00:49 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:00:49 - Received next
+2025-06-22 15:00:49 - Executing next navigation
+2025-06-22 15:00:49 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:00:49 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:00:49 - Received prev
+2025-06-22 15:00:49 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-22 15:00:51 - Received next
+2025-06-22 15:00:51 - Executing next navigation
+2025-06-22 15:00:51 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:00:51 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:00:51 - Received next
+2025-06-22 15:00:51 - Executing next navigation
+2025-06-22 15:00:51 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:00:51 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:00:52 - Received prev
+2025-06-22 15:00:52 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-22 15:00:52 - Received next
+2025-06-22 15:00:52 - Executing next navigation
+2025-06-22 15:00:52 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:00:52 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:00:52 - Received next
+2025-06-22 15:00:52 - Executing next navigation
+2025-06-22 15:00:52 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:00:52 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:00:52 - Received prev
+2025-06-22 15:00:52 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-22 15:00:53 - Received next
+2025-06-22 15:00:53 - Executing next navigation
+2025-06-22 15:00:53 - Received prev
+2025-06-22 15:00:53 - Executing prev navigation
+2025-06-22 15:00:53 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:00:53 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+Error in changeworkspace, invalid value
+2025-06-22 15:00:54 - Received next
+2025-06-22 15:00:54 - Executing next navigation
+2025-06-22 15:00:54 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:00:54 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:00:54 - Received prev
+2025-06-22 15:00:54 - Executing prev navigation
+2025-06-22 15:00:54 - Received next
+2025-06-22 15:00:54 - Executing next navigation
+Error in changeworkspace, invalid value
+2025-06-22 15:00:54 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:00:54 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:00:54 - Received prev
+2025-06-22 15:00:54 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-22 15:01:03 - Received prev
+2025-06-22 15:01:03 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-22 15:01:04 - Received next
+2025-06-22 15:01:04 - Executing next navigation
+2025-06-22 15:01:04 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:04 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:04 - Received prev
+2025-06-22 15:01:04 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-22 15:01:04 - Received next
+2025-06-22 15:01:04 - Executing next navigation
+2025-06-22 15:01:04 - Received prev
+2025-06-22 15:01:04 - Executing prev navigation
+2025-06-22 15:01:04 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:04 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+Error in changeworkspace, invalid value
+2025-06-22 15:01:05 - Received next
+2025-06-22 15:01:05 - Executing next navigation
+2025-06-22 15:01:05 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:05 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:05 - Received prev
+2025-06-22 15:01:05 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-22 15:01:05 - Received next
+2025-06-22 15:01:05 - Executing next navigation
+2025-06-22 15:01:05 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:05 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:05 - Received prev
+2025-06-22 15:01:05 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-22 15:01:05 - Received prev
+2025-06-22 15:01:05 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-22 15:01:06 - Received next
+2025-06-22 15:01:06 - Executing next navigation
+2025-06-22 15:01:06 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:06 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:06 - Received prev
+2025-06-22 15:01:06 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-22 15:01:39 - Received prev
+2025-06-22 15:01:39 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-22 15:01:39 - Received next
+2025-06-22 15:01:39 - Executing next navigation
+2025-06-22 15:01:39 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:39 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:40 - Received next
+2025-06-22 15:01:40 - Executing next navigation
+2025-06-22 15:01:40 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:40 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:40 - Received next
+2025-06-22 15:01:40 - Executing next navigation
+2025-06-22 15:01:40 - Received prev
+2025-06-22 15:01:40 - Executing prev navigation
+2025-06-22 15:01:40 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:40 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+Error in changeworkspace, invalid value
+2025-06-22 15:01:40 - Received next
+2025-06-22 15:01:40 - Executing next navigation
+2025-06-22 15:01:40 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:40 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:40 - Received next
+2025-06-22 15:01:40 - Executing next navigation
+2025-06-22 15:01:40 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:40 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:40 - Received next
+2025-06-22 15:01:40 - Executing next navigation
+2025-06-22 15:01:40 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:40 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:41 - Received next
+2025-06-22 15:01:41 - Executing next navigation
+2025-06-22 15:01:41 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:41 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:41 - Received next
+2025-06-22 15:01:41 - Executing next navigation
+2025-06-22 15:01:41 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:41 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:41 - Received next
+2025-06-22 15:01:41 - Executing next navigation
+2025-06-22 15:01:41 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:41 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:41 - Received next
+2025-06-22 15:01:41 - Executing next navigation
+2025-06-22 15:01:41 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:41 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:41 - Received next
+2025-06-22 15:01:41 - Executing next navigation
+2025-06-22 15:01:41 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:41 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:42 - Received next
+2025-06-22 15:01:42 - Executing next navigation
+2025-06-22 15:01:42 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:42 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:42 - Received next
+2025-06-22 15:01:42 - Executing next navigation
+2025-06-22 15:01:42 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:42 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:42 - Received next
+2025-06-22 15:01:42 - Executing next navigation
+2025-06-22 15:01:42 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:42 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:01:42 - Received next
+2025-06-22 15:01:42 - Executing next navigation
+2025-06-22 15:01:42 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-06-22 15:01:42 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-06-22 15:22:56 - Received prev
+2025-06-22 15:22:56 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-06-22 15:22:56 - Received prev
+2025-06-22 15:22:56 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-07-03 11:07:49 - Received listen
+2025-07-03 11:07:49 - Detected listen
+2025-07-03 11:07:49 - Starting workspace manager event listener
+2025-07-03 11:07:49 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751533667_1589657690
+2025-07-03 11:07:49 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751533667_1589657690/.socket2.sock
+2025-07-04 12:38:32 - Received listen
+2025-07-04 12:38:32 - Detected listen
+2025-07-04 12:38:32 - Starting workspace manager event listener
+2025-07-04 12:38:32 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751625510_209172518
+2025-07-04 12:38:32 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751625510_209172518/.socket2.sock
+2025-07-04 12:40:30 - Received next
+2025-07-04 12:40:30 - Executing next navigation
+2025-07-04 12:40:30 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 12:40:30 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-04 12:45:59 - Received listen
+2025-07-04 12:45:59 - Detected listen
+2025-07-04 12:45:59 - Starting workspace manager event listener
+2025-07-04 12:45:59 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751625510_209172518
+2025-07-04 12:45:59 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751625510_209172518/.socket2.sock
+2025-07-04 12:47:50 - Received listen
+2025-07-04 12:47:50 - Detected listen
+2025-07-04 12:47:50 - Starting workspace manager event listener
+2025-07-04 12:47:50 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751626068_1178847804
+2025-07-04 12:47:50 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751626068_1178847804/.socket2.sock
+2025-07-04 12:48:43 - Received listen
+2025-07-04 12:48:43 - Detected listen
+2025-07-04 12:48:43 - Starting workspace manager event listener
+2025-07-04 12:48:43 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751626122_768407379
+2025-07-04 12:48:43 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751626122_768407379/.socket2.sock
+2025-07-04 12:49:00 - Received next
+2025-07-04 12:49:00 - Executing next navigation
+2025-07-04 12:49:00 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 12:49:00 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-04 12:49:02 - Received next
+2025-07-04 12:49:02 - Executing next navigation
+2025-07-04 12:49:02 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 12:49:02 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-07-04 12:49:03 - Received next
+2025-07-04 12:49:03 - Executing next navigation
+2025-07-04 12:49:03 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 12:49:03 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-07-04 12:49:04 - Received next
+2025-07-04 12:49:04 - Executing next navigation
+2025-07-04 12:49:04 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 12:49:04 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-07-04 12:49:04 - Received next
+2025-07-04 12:49:04 - Executing next navigation
+2025-07-04 12:49:04 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 12:49:04 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-07-04 12:49:04 - Received next
+2025-07-04 12:49:04 - Executing next navigation
+2025-07-04 12:49:04 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 12:49:04 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-07-04 12:49:04 - Received prev
+2025-07-04 12:49:04 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-07-04 12:49:05 - Received next
+2025-07-04 12:49:05 - Executing next navigation
+2025-07-04 12:49:05 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 12:49:05 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-07-04 12:49:05 - Received next
+2025-07-04 12:49:05 - Executing next navigation
+2025-07-04 12:49:05 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 12:49:05 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-07-04 12:49:08 - Received next
+2025-07-04 12:49:08 - Executing next navigation
+2025-07-04 12:49:08 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 12:49:08 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-07-04 13:02:34 - Received listen
+2025-07-04 13:02:34 - Detected listen
+2025-07-04 13:03:24 - Received next
+2025-07-04 13:03:24 - Executing next navigation
+2025-07-04 13:03:25 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 13:03:25 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-04 13:07:01 - Received listen
+2025-07-04 13:07:01 - Detected listen
+2025-07-04 13:07:01 - Starting workspace manager event listener
+2025-07-04 13:07:01 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751627220_2105110790
+2025-07-04 13:07:01 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751627220_2105110790/.socket2.sock
+2025-07-04 13:08:12 - Received next
+2025-07-04 13:08:12 - Executing next navigation
+2025-07-04 13:08:12 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 13:08:12 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-04 13:08:13 - Received next
+2025-07-04 13:08:13 - Executing next navigation
+2025-07-04 13:08:13 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 13:08:13 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-07-04 13:08:13 - Received next
+2025-07-04 13:08:13 - Executing next navigation
+2025-07-04 13:08:13 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 13:08:13 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-07-04 13:08:14 - Received prev
+2025-07-04 13:08:14 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-07-04 13:08:14 - Received prev
+2025-07-04 13:08:14 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-07-04 13:08:14 - Received prev
+2025-07-04 13:08:14 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-07-04 13:08:15 - Received next
+2025-07-04 13:08:15 - Executing next navigation
+2025-07-04 13:08:15 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 13:08:15 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-07-04 13:08:15 - Received next
+2025-07-04 13:08:15 - Executing next navigation
+2025-07-04 13:08:15 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 13:08:15 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-07-04 13:08:15 - Received next
+2025-07-04 13:08:15 - Executing next navigation
+2025-07-04 13:08:15 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 13:08:15 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-07-04 13:08:48 - Received listen
+2025-07-04 13:08:48 - Detected listen
+2025-07-04 13:08:48 - Starting workspace manager event listener
+2025-07-04 13:08:48 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751627326_1510932917
+2025-07-04 13:08:48 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751627326_1510932917/.socket2.sock
+2025-07-04 13:13:29 - Received next
+2025-07-04 13:13:29 - Executing next navigation
+2025-07-04 13:13:29 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 13:13:29 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-04 13:13:34 - Received next
+2025-07-04 13:13:34 - Executing next navigation
+2025-07-04 13:13:34 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 13:13:34 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-07-04 16:57:28 - Received listen
+2025-07-04 16:57:28 - Detected listen
+2025-07-04 16:57:28 - Starting workspace manager event listener
+2025-07-04 16:57:28 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751641046_1116243454
+2025-07-04 16:57:28 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751641046_1116243454/.socket2.sock
+2025-07-04 16:58:00 - Received next
+2025-07-04 16:58:00 - Executing next navigation
+2025-07-04 16:58:00 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 16:58:00 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-04 16:58:15 - Received next
+2025-07-04 16:58:15 - Executing next navigation
+2025-07-04 16:58:15 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 16:58:15 - [NOT LAST] Navigating to existing workspace 2
+Previous workspace doesn't exist
+2025-07-04 17:06:06 - Received listen
+2025-07-04 17:06:06 - Detected listen
+2025-07-04 17:06:06 - Starting workspace manager event listener
+2025-07-04 17:06:06 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751641046_1116243454
+2025-07-04 17:06:06 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751641046_1116243454/.socket2.sock
+2025-07-04 17:06:12 - Received listen
+2025-07-04 17:06:12 - Detected listen
+2025-07-04 17:06:12 - Starting workspace manager event listener
+2025-07-04 17:06:12 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751641046_1116243454
+2025-07-04 17:06:12 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751641046_1116243454/.socket2.sock
+2025-07-04 17:06:12 - Received listen
+2025-07-04 17:06:12 - Detected listen
+2025-07-04 17:06:12 - Starting workspace manager event listener
+2025-07-04 17:06:12 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751641046_1116243454
+2025-07-04 17:06:12 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751641046_1116243454/.socket2.sock
+2025-07-04 17:07:22 - Received listen
+2025-07-04 17:07:22 - Detected listen
+2025-07-04 17:07:22 - Starting workspace manager event listener
+2025-07-04 17:07:22 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751641641_1689934766
+2025-07-04 17:07:22 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751641641_1689934766/.socket2.sock
+2025-07-04 17:08:04 - Received next
+2025-07-04 17:08:04 - Executing next navigation
+2025-07-04 17:08:04 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 17:08:04 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-04 17:11:13 - Received next
+2025-07-04 17:11:13 - Executing next navigation
+2025-07-04 17:11:13 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 17:11:13 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-04 17:11:59 - Received next
+2025-07-04 17:11:59 - Executing next navigation
+2025-07-04 17:11:59 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 17:11:59 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-04 17:12:31 - Received listen
+2025-07-04 17:12:31 - Detected listen
+2025-07-04 17:15:11 - Received next
+2025-07-04 17:15:11 - Executing next navigation
+2025-07-04 17:15:11 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 17:15:11 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-04 17:36:38 - Received listen
+2025-07-04 17:37:00 - Received next
+2025-07-04 17:37:00 - Executing next navigation
+2025-07-04 17:37:00 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 17:37:00 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-04 17:37:07 - Received prev
+2025-07-04 17:37:07 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-07-04 17:42:14 - Received next
+2025-07-04 17:42:14 - Executing next navigation
+2025-07-04 17:42:14 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 17:42:14 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-04 18:07:58 - Received prev
+2025-07-04 18:07:58 - Executing prev navigation
+Error in changeworkspace, invalid value
+2025-07-04 18:08:49 - Received next
+2025-07-04 18:08:49 - Executing next navigation
+2025-07-04 18:08:49 - \n[NEXT] Current: 1, Max: , Next: 2
+2025-07-04 18:08:49 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-04 18:15:49 - Received listen
+2025-07-04 18:15:49 - Detected listen
+2025-07-04 18:15:49 - Starting workspace manager event listener
+2025-07-04 18:15:49 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751645747_1637808876
+2025-07-04 18:15:49 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751645747_1637808876/.socket2.sock
+2025-07-05 18:06:56 - Received listen
+2025-07-05 18:08:31 - Received next
+2025-07-05 18:08:31 - Executing next navigation
+2025-07-05 18:08:31 - \n[NEXT] Current: 1, Max: 1, Next: 2
+2025-07-05 18:08:31 - [LAST] [NON EMPTY] Creating new workspace 2
+ok
+2025-07-05 18:08:32 - Received next
+2025-07-05 18:08:32 - Executing next navigation
+2025-07-05 18:08:32 - \n[NEXT] Current: 2, Max: 2, Next: 3
+2025-07-05 18:08:32 - [LAST] [EMPTY] Empty workspace, going to workspace 1
+ok
+2025-07-05 18:08:32 - Received next
+2025-07-05 18:08:32 - Executing next navigation
+2025-07-05 18:08:32 - \n[NEXT] Current: 1, Max: 1, Next: 2
+2025-07-05 18:08:32 - [LAST] [NON EMPTY] Creating new workspace 2
+ok
+2025-07-05 18:08:32 - Received next
+2025-07-05 18:08:32 - Executing next navigation
+2025-07-05 18:08:32 - \n[NEXT] Current: 2, Max: 2, Next: 3
+2025-07-05 18:08:32 - [LAST] [EMPTY] Empty workspace, going to workspace 1
+ok
+2025-07-05 18:08:33 - Received next
+2025-07-05 18:08:33 - Executing next navigation
+2025-07-05 18:08:33 - \n[NEXT] Current: 1, Max: 1, Next: 2
+2025-07-05 18:08:33 - [LAST] [NON EMPTY] Creating new workspace 2
+ok
+2025-07-05 18:08:58 - Received next
+2025-07-05 18:08:58 - Executing next navigation
+2025-07-05 18:08:58 - \n[NEXT] Current: 2, Max: 2, Next: 3
+2025-07-05 18:08:58 - [LAST] [NON EMPTY] Creating new workspace 3
+ok
+2025-07-05 18:08:59 - Received prev
+2025-07-05 18:08:59 - Executing prev navigation
+ok
+2025-07-05 18:08:59 - Received prev
+2025-07-05 18:08:59 - Executing prev navigation
+ok
+2025-07-05 18:08:59 - Received next
+2025-07-05 18:08:59 - Executing next navigation
+2025-07-05 18:08:59 - \n[NEXT] Current: 1, Max: 2, Next: 2
+2025-07-05 18:08:59 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-05 18:09:00 - Received next
+2025-07-05 18:09:00 - Executing next navigation
+2025-07-05 18:09:00 - \n[NEXT] Current: 2, Max: 2, Next: 3
+2025-07-05 18:09:00 - [LAST] [NON EMPTY] Creating new workspace 3
+ok
+2025-07-05 18:09:00 - Received next
+2025-07-05 18:09:00 - Executing next navigation
+2025-07-05 18:09:00 - \n[NEXT] Current: 3, Max: 3, Next: 4
+2025-07-05 18:09:00 - [LAST] [EMPTY] Empty workspace, going to workspace 1
+ok
+2025-07-05 18:09:00 - Received next
+2025-07-05 18:09:00 - Executing next navigation
+2025-07-05 18:09:00 - \n[NEXT] Current: 1, Max: 2, Next: 2
+2025-07-05 18:09:00 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-05 18:09:00 - Received next
+2025-07-05 18:09:00 - Executing next navigation
+2025-07-05 18:09:00 - \n[NEXT] Current: 2, Max: 2, Next: 3
+2025-07-05 18:09:00 - [LAST] [NON EMPTY] Creating new workspace 3
+ok
+2025-07-05 18:09:01 - Received next
+2025-07-05 18:09:01 - Executing next navigation
+2025-07-05 18:09:01 - \n[NEXT] Current: 3, Max: 3, Next: 4
+2025-07-05 18:09:01 - [LAST] [EMPTY] Empty workspace, going to workspace 1
+ok
+2025-07-05 18:09:01 - Received next
+2025-07-05 18:09:01 - Executing next navigation
+2025-07-05 18:09:01 - \n[NEXT] Current: 1, Max: 2, Next: 2
+2025-07-05 18:09:01 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-05 18:09:01 - Received next
+2025-07-05 18:09:01 - Executing next navigation
+2025-07-05 18:09:01 - \n[NEXT] Current: 2, Max: 2, Next: 3
+2025-07-05 18:09:01 - [LAST] [NON EMPTY] Creating new workspace 3
+ok
+2025-07-05 18:09:02 - Received next
+2025-07-05 18:09:02 - Executing next navigation
+2025-07-05 18:09:02 - \n[NEXT] Current: 3, Max: 3, Next: 4
+2025-07-05 18:09:03 - [LAST] [EMPTY] Empty workspace, going to workspace 1
+ok
+2025-07-05 18:09:03 - Received next
+2025-07-05 18:09:03 - Executing next navigation
+2025-07-05 18:09:03 - \n[NEXT] Current: 1, Max: 2, Next: 2
+2025-07-05 18:09:03 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-05 18:09:03 - Received next
+2025-07-05 18:09:03 - Executing next navigation
+2025-07-05 18:09:03 - \n[NEXT] Current: 2, Max: 2, Next: 3
+2025-07-05 18:09:03 - [LAST] [NON EMPTY] Creating new workspace 3
+ok
+2025-07-05 18:09:04 - Received next
+2025-07-05 18:09:04 - Executing next navigation
+2025-07-05 18:09:04 - \n[NEXT] Current: 3, Max: 3, Next: 4
+2025-07-05 18:09:04 - [LAST] [EMPTY] Empty workspace, going to workspace 1
+ok
+2025-07-06 15:53:43 - Received listen
+2025-07-06 16:07:20 - Received listen
+2025-07-06 16:28:25 - Received listen
+2025-07-06 16:28:25 - Detected listen
+2025-07-06 16:28:25 - Starting workspace manager event listener
+2025-07-06 16:28:25 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751812104_165081703
+2025-07-06 16:28:25 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751812104_165081703/.socket2.sock
+2025-07-06 16:41:25 - Received next
+2025-07-06 16:41:25 - Executing next navigation
+2025-07-06 16:41:25 - \n[NEXT] Current: 1, Max: 1, Next: 2
+2025-07-06 16:41:25 - [LAST] [NON EMPTY] Creating new workspace 2
+ok
+2025-07-06 16:47:23 - Received listen
+2025-07-06 16:47:23 - Detected listen
+2025-07-06 16:47:23 - Starting workspace manager event listener
+2025-07-06 16:50:49 - Received listen
+2025-07-06 16:51:10 - Received next
+2025-07-06 16:51:10 - Executing next navigation
+2025-07-06 16:51:10 - \n[NEXT] Current: 1, Max: 1, Next: 2
+2025-07-06 16:51:10 - [LAST] [NON EMPTY] Creating new workspace 2
+ok
+2025-07-06 17:52:18 - Received listen
+2025-07-06 17:52:18 - Detected listen
+2025-07-06 17:55:59 - Received next
+2025-07-06 17:55:59 - Executing next navigation
+2025-07-06 17:55:59 - \n[NEXT] Current: 1, Max: 1, Next: 2
+2025-07-06 17:55:59 - [LAST] [NON EMPTY] Creating new workspace 2
+ok
+2025-07-06 17:59:40 - Received prev
+2025-07-06 17:59:40 - Executing prev navigation
+ok
+2025-07-06 17:59:43 - Received next
+2025-07-06 17:59:43 - Executing next navigation
+2025-07-06 17:59:43 - \n[NEXT] Current: 1, Max: 1, Next: 2
+2025-07-06 17:59:43 - [LAST] [NON EMPTY] Creating new workspace 2
+ok
+2025-07-06 18:54:25 - Received next
+2025-07-06 18:54:25 - Executing next navigation
+2025-07-06 18:54:25 - \n[NEXT] Current: 1, Max: 2, Next: 2
+2025-07-06 18:54:25 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-06 18:54:25 - Received prev
+2025-07-06 18:54:25 - Executing prev navigation
+ok
+2025-07-06 19:26:43 - Received next
+2025-07-06 19:26:43 - Executing next navigation
+2025-07-06 19:26:43 - \n[NEXT] Current: 1, Max: 2, Next: 2
+2025-07-06 19:26:43 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-06 19:26:43 - Received next
+2025-07-06 19:26:43 - Executing next navigation
+2025-07-06 19:26:43 - \n[NEXT] Current: 2, Max: 2, Next: 3
+2025-07-06 19:26:43 - [LAST] [NON EMPTY] Creating new workspace 3
+ok
+2025-07-06 19:44:34 - Received listen
+2025-07-06 19:44:34 - Detected listen
+2025-07-06 19:44:34 - Starting workspace manager event listener
+2025-07-06 19:44:34 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751823873_370388657
+2025-07-06 19:44:34 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751823873_370388657/.socket2.sock
+2025-07-07 00:15:46 - Received listen
+2025-07-07 00:15:46 - Detected listen
+2025-07-07 00:15:46 - Starting workspace manager event listener
+2025-07-07 00:15:46 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751840144_1369105
+2025-07-07 00:15:46 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751840144_1369105/.socket2.sock
+2025-07-07 00:15:57 - Received next
+2025-07-07 00:15:57 - Executing next navigation
+2025-07-07 00:15:57 - \n[NEXT] Current: 1, Max: 1, Next: 2
+2025-07-07 00:15:57 - [LAST] [NON EMPTY] Creating new workspace 2
+ok
+2025-07-07 00:50:31 - Received listen
+2025-07-07 00:51:08 - Received next
+2025-07-07 00:51:08 - Executing next navigation
+2025-07-07 00:51:08 - \n[NEXT] Current: 1, Max: 1, Next: 2
+2025-07-07 00:51:08 - [LAST] [NON EMPTY] Creating new workspace 2
+ok
+2025-07-07 01:37:29 - Received listen
+2025-07-07 12:41:05 - Received listen
+2025-07-07 12:41:05 - Detected listen
+2025-07-07 12:41:05 - Starting workspace manager event listener
+2025-07-07 12:41:05 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751884864_932336297
+2025-07-07 12:41:05 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751884864_932336297/.socket2.sock
+2025-07-07 12:44:48 - Received next
+2025-07-07 12:44:48 - Executing next navigation
+2025-07-07 12:44:48 - \n[NEXT] Current: 1, Max: 1, Next: 2
+2025-07-07 12:44:48 - [LAST] [NON EMPTY] Creating new workspace 2
+ok
+2025-07-07 12:46:20 - Received next
+2025-07-07 12:46:20 - Executing next navigation
+2025-07-07 12:46:20 - \n[NEXT] Current: 1, Max: 2, Next: 2
+2025-07-07 12:46:20 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-07 13:03:06 - Received prev
+2025-07-07 13:03:06 - Executing prev navigation
+ok
+2025-07-07 13:03:07 - Received prev
+2025-07-07 13:03:07 - Executing prev navigation
+ok
+2025-07-07 13:03:07 - Received prev
+2025-07-07 13:03:07 - Executing prev navigation
+ok
+2025-07-07 13:17:57 - Received next
+2025-07-07 13:17:57 - Executing next navigation
+2025-07-07 13:17:57 - \n[NEXT] Current: 1, Max: 2, Next: 2
+2025-07-07 13:17:57 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-07 13:17:58 - Received next
+2025-07-07 13:17:58 - Executing next navigation
+2025-07-07 13:17:58 - \n[NEXT] Current: 2, Max: 2, Next: 3
+2025-07-07 13:17:58 - [LAST] [NON EMPTY] Creating new workspace 3
+ok
+2025-07-07 13:18:27 - Received prev
+2025-07-07 13:18:27 - Executing prev navigation
+ok
+2025-07-07 13:18:28 - Received prev
+2025-07-07 13:18:28 - Executing prev navigation
+ok
+2025-07-07 13:18:37 - Received next
+2025-07-07 13:18:37 - Executing next navigation
+2025-07-07 13:18:37 - \n[NEXT] Current: 1, Max: 2, Next: 2
+2025-07-07 13:18:37 - [NOT LAST] Navigating to existing workspace 2
+ok
+2025-07-07 13:18:38 - Received next
+2025-07-07 13:18:38 - Executing next navigation
+2025-07-07 13:18:38 - \n[NEXT] Current: 2, Max: 2, Next: 3
+2025-07-07 13:18:38 - [LAST] [NON EMPTY] Creating new workspace 3
+ok
+2025-07-07 13:19:03 - Received prev
+2025-07-07 13:19:03 - Executing prev navigation
+ok
+2025-07-07 13:19:04 - Received prev
+2025-07-07 13:19:04 - Executing prev navigation
+ok
+2025-07-07 13:21:10 - Received listen
+2025-07-07 13:21:10 - Detected listen
+2025-07-07 13:21:10 - Starting workspace manager event listener
+2025-07-07 13:21:47 - Received prev
+2025-07-07 13:21:47 - Executing prev navigation
+ok
+2025-07-07 13:21:47 - Received prev
+2025-07-07 13:21:47 - Executing prev navigation
+ok
+2025-07-07 13:46:15 - Received next
+2025-07-07 13:46:15 - Executing next navigation
+2025-07-07 13:46:15 - \n[NEXT] Current: 1, Max: 1, Next: 2
+2025-07-07 13:46:15 - [LAST] [NON EMPTY] Creating new workspace 2
+ok
+2025-07-07 13:47:33 - Received listen
+2025-07-07 13:47:33 - Detected listen
+2025-07-07 13:47:33 - Starting workspace manager event listener
+2025-07-07 13:47:33 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751887268_1575444388
+2025-07-07 13:47:33 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751887268_1575444388/.socket2.sock
+2025-07-07 13:47:38 - Received listen
+2025-07-07 13:47:38 - Detected listen
+2025-07-07 13:47:38 - Starting workspace manager event listener
+2025-07-07 13:47:38 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751887268_1575444388
+2025-07-07 13:47:38 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751887268_1575444388/.socket2.sock
+2025-07-07 13:47:38 - Received listen
+2025-07-07 13:47:38 - Detected listen
+2025-07-07 13:47:38 - Starting workspace manager event listener
+2025-07-07 13:47:38 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1751887268_1575444388
+2025-07-07 13:47:38 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1751887268_1575444388/.socket2.sock
+2025-07-07 14:03:18 - Received next
+2025-07-07 14:03:18 - Executing next navigation
+2025-07-07 14:03:18 - \n[NEXT] Current: 1, Max: 1, Next: 2
+2025-07-07 14:03:18 - [LAST] [NON EMPTY] Creating new workspace 2
+ok
+2025-07-07 18:58:32 - Received listen
+2025-07-07 18:58:32 - Detected listen
+2025-07-09 18:53:18 - Received listen
+2025-07-09 18:53:18 - Detected listen
+2025-07-09 18:53:18 - Starting workspace manager event listener
+2025-07-09 18:53:18 - Hyprland instance: 9958d297641b5c84dcff93f9039d80a5ad37ab00_1752079997_2069632084
+2025-07-09 18:53:18 - Socket path: /run/user/1000/hypr/9958d297641b5c84dcff93f9039d80a5ad37ab00_1752079997_2069632084/.socket2.sock

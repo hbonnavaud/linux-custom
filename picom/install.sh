@@ -3,7 +3,7 @@
 # Install the parent directory by creating a symling from ~/.config/${NAME} to this parent directory where $NAME is the name of the said directory
 
 SOURCE_DIR=$(dirname "$(realpath "$0")")
-NAME=$(basename "$(realpath "$0")")
+NAME=$(basename "$SOURCE_DIR")
 TARGET_DIR="$HOME/.config/${NAME}"
 
 echo "Setting up ${NAME} configuration symlink..."

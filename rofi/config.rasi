@@ -7,8 +7,9 @@
  * Rofi Version: 1.7.3
  **/
 
-/*****----- Configuration -----*****/
+/*****----- Configuration -----*****
 configuration {
+    font: "JetBrainsMono Nerd Font 12";
 	modi:                       "drun";
     show-icons:                 true;
     display-drun:               " Applications";

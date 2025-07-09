@@ -4,7 +4,8 @@
 # Creates a symbolic link from ~/.config/hypr to linux-custom/hyprland
 
 SOURCE_DIR=$(dirname "$(realpath "$0")")
-TARGET_DIR="$HOME/.config/hypr"
+NAME=$(basename "$SOURCE_DIR")
+TARGET_DIR="$HOME/.config/"
 
 echo "Setting up hyprland configuration symlink..."
 

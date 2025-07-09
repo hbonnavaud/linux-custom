@@ -77,7 +77,7 @@
   },
 
   "custom/gpu": {
-    "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | head -n1",
+    "exec": "~/.config/waybar/scripts/gpu-check.sh",
     "format": "<span size='14000' rise='-1500'>󰾲</span> {}%",
     "return-type": "",
     "interval": 5,
@@ -87,8 +87,8 @@
   
   "pulseaudio": {
     "scroll-step": 5,
-    "format": " {icon} {volume}%",
-    "format-muted": "󰝮 {volume}%",
+    "format": " {volume}%",
+    "format-muted": " {volume}%",
     "format-icons": {
       "headphone": "",
       "hands-free": "",
@@ -106,9 +106,9 @@
   },
 
   "bluetooth": {
-    "format": "{EMPTY}",
-    "format-connected": " {device_alias}",
-    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "format": "",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
@@ -127,7 +127,7 @@
   },
   
   "custom/power": {
-    "format": "⏻ ",
+    "format": "⏻",
     "tooltip": true,
     "on-click": "bash ~/.config/rofi/scripts/powermenu_t2.sh",
     "tooltip-format": "Power Menu - Click to open power options",
