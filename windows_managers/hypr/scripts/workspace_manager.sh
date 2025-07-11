@@ -5,7 +5,7 @@
 
 # Enable debugging
 set -e
-ENABLE_LOG_FILE="false"
+ENABLE_LOG_FILE="true"
 LOG_FILE="$HOME/.config/hypr/workspace_nav.log"
 
 log_message() {
@@ -52,12 +52,15 @@ workspace_exists() {
 
 create_workspace() {
     local ws_id=$1
-    hyprctl dispatch workspace "$ws_id" >/dev/null 2>&1
+    if ! workspace_exists "$ws_id"; then
+        hyprctl dispatch workspace "$ws_id" >/dev/null 2>&1
+    fi
 }
 
 remove_empty_workspace() {
     local ws_id=$1
     local windows=$(get_workspace_windows "$ws_id")
+    log_message "removing empty workspace $ws_id"
     if [[ "$windows" == "0" ]]; then
         # Switch away from the workspace before removing it
         hyprctl dispatch workspace 1 >/dev/null 2>&1
@@ -89,7 +92,7 @@ navigate_next() {
             hyprctl dispatch workspace 1 2>&1 | tee -a "$LOG_FILE"
         fi
     else
-        # Navigate to next existing workspace
+        # Navigate to next workspace
         log_message "[NOT LAST] Navigating to existing workspace $next_ws"
         hyprctl dispatch workspace "$next_ws" 2>&1 | tee -a "$LOG_FILE"
     fi
@@ -112,15 +115,37 @@ navigate_prev() {
         fi
     else
         local prev_ws=$((current_ws - 1))
-        # Navigate to previous existing workspace
-        if workspace_exists "$prev_ws"; then
-            # log_message "Navigating to existing workspace $prev_ws"
-            hyprctl dispatch workspace "$prev_ws" 2>&1 | tee -a "$LOG_FILE"
-        else
-            log_message "Previous workspace $prev_ws doesn't exist"
-            exit 1
-        fi
+        hyprctl dispatch workspace "$prev_ws" 2>&1 | tee -a "$LOG_FILE"  # Navigate to previous workspace
     fi
+}
+
+move_window_next() {
+    local current_ws=$(get_current_workspace)
+    local max_ws=$(get_max_workspace)
+    local next_ws=$((current_ws + 1))
+    log_message "moving window from workspace $current_ws to workspace $next_ws."
+    # Send the focused window to the next workspace
+    hyprctl dispatch movetoworkspace "$next_ws"
+    # Navigate to the workspace where we sent out window
+    # hyprctl dispatch workspace "$next_ws"
+}
+
+move_window_prev() {
+    local current_ws=$(get_current_workspace)
+    local min_ws=$(get_min_workspace)
+
+    # Compute destination workspace
+    if [[ "$current_ws" == 1 ]]; then
+        # Propose a new workspace at the end
+        local destination=$(( $(get_max_workspace) + 1 ))
+        echo "Computed destination as $destination with get_max_workspace = $(get_max_workspace)"
+    else
+        local destination=$((current_ws - 1))
+    fi
+    echo "sending window to workspace $destination from current workspace $current_ws"
+    # Move the focused window to the destination
+    hyprctl dispatch movetoworkspace "$destination"
+    # hyprctl dispatch workspace "$destination"
 }
 
 # Function to delete a workspace and renumber subsequent ones
@@ -250,6 +275,14 @@ case "${1:-listen}" in
     "prev")
         log_message "Executing prev navigation"
         navigate_prev
+        ;;
+    "move_win_next")
+        log_message "Executing move window next navigation"
+        move_window_next
+        ;;
+    "move_win_prev")
+        log_message "Executing move window prev navigation"
+        move_window_prev
         ;;
     "listen")
         log_message "Detected listen"
