@@ -91,9 +91,7 @@ run_rofi() {
 chosen="$(run_rofi)"
 case ${chosen} in
     $shutdown)
-		hyprctl dispatch exit
-    		sleep 1
-		systemctl poweroff
+		shutdown -a now
         ;;
     $reboot)
                 hyprctl dispatch exit
