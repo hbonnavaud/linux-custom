@@ -71,6 +71,7 @@
   },
 
   "memory": {
+    "interval": 2,
     "format": " {}%",
     "tooltip": true,
     "on-click": "gnome-system-monitor"
